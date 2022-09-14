@@ -17,6 +17,7 @@ export const Hero: React.FC = () => {
       <Box className={styles.BackgoundOpacity} />
       <Container maxWidth="lg" className={styles.container}>
         <Typography
+          variant="h1"
           component="h1"
           className={styles.h1}
         >
