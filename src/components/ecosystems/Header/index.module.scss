@@ -1,0 +1,52 @@
+@import '../../../styles/variables.module';
+
+.header {
+  background-color: #2a2b36 !important;
+  position: sticky !important;
+
+  .divLogo {
+    flex-grow: 1;
+    display: flex;
+  }
+
+  .divMenuMobile {
+    flex-grow: 0;
+    display: flex;
+    @media screen and (min-width: $theme-breakpoints-values-md) {
+      display: none;
+    }
+
+    .iconMenu {
+      color: $theme-palette-secondary-main;
+    }
+    .menu {
+      display: block;
+      @media screen and (min-width: $theme-breakpoints-values-md) {
+        display: none;
+      }
+
+      .a {
+        color: $theme-palette-secondary-main;
+      }
+    }
+  }
+
+  .divMenuDesktop {
+    flex-grow: 0;
+    display: none;
+    @media screen and (min-width: $theme-breakpoints-values-md) {
+      display: flex;
+    }
+
+    .a {
+      color: rgba(255, 255, 255, 0.75) !important;
+      text-transform: unset;
+      font-size: 16px;
+      font-weight: 400;
+
+      &:hover {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+    }
+  }
+}

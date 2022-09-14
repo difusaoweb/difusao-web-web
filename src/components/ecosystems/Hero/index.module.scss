@@ -1,0 +1,54 @@
+@import '../../../styles/variables.module';
+
+.section {
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+
+  .BackgoundOpacity {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .container {
+    z-index: 2;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+
+    .h1 {
+      font-size: 56px !important;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 48px;
+      .colorError {
+        color: $theme-palette-error-main;
+      }
+      .colorSuccess {
+        color: $theme-palette-success-main;
+      }
+    }
+
+    .button {
+      background-color: $theme-palette-primary-main;
+      font-size: 20px;
+      padding: 6px 20px;
+      border-radius: 10px;
+      border: 1px solid;
+      text-transform: none;
+
+      @media screen and (min-width: $theme-breakpoints-values-md) {
+        font-size: 30px;
+        padding: 12px 40px;
+      }
+    }
+  }
+}

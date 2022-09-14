@@ -1,0 +1,34 @@
+@import '../../../styles/variables.module';
+
+.gridItem {
+  position: relative;
+
+  .gridItemBox {
+    padding: 10px;
+    z-index: 2;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .carousel {
+      margin-bottom: 10px;
+
+      .imagemBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        .img {
+          object-fit: cover;
+          width: 100%;
+          height: 200px;
+          @media screen and (min-width: $theme-breakpoints-values-md) {
+            height: 400px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+$theme-palette-primary-main: #857dcc;
+$theme-palette-secondary-main: #a7a7a7;
+$theme-palette-success-main: #519668;
+$theme-palette-error-main: #c77171;
+$theme-palette-warning-main: #d5a439;
+$theme-palette-info-main: #5299e0;
+$theme-palette-background-default: #181924;
+$theme-palette-background-paper: #24252f;
+$theme-breakpoints-values-md: 900px;
+
+:export {
+  theme-palette-primary-main: $theme-palette-primary-main;
+  theme-palette-secondary-main: $theme-palette-secondary-main;
+  theme-palette-success-main: $theme-palette-success-main;
+  theme-palette-error-main: $theme-palette-error-main;
+  theme-palette-warning-main: $theme-palette-warning-main;
+  theme-palette-info-main: $theme-palette-info-main;
+  theme-palette-background-default: $theme-palette-background-default;
+  theme-palette-background-paper: $theme-palette-background-paper;
+  theme-breakpoints-values-md: $theme-breakpoints-values-md;
+}
