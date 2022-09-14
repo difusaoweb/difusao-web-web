@@ -5,6 +5,7 @@ import { ThemeProvider } from '@mui/material/styles'
 
 import { Home } from './pages/index'
 import {theme} from './styles/theme'
+import './styles/global.scss'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ThemeProvider theme={theme}>

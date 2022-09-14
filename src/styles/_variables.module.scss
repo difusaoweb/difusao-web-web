@@ -6,6 +6,24 @@ $theme-palette-warning-main: #d5a439;
 $theme-palette-info-main: #5299e0;
 $theme-palette-background-default: #181924;
 $theme-palette-background-paper: #24252f;
+$theme-palette-text-primary: rgba(255, 255, 255, 0.6);
+
+$theme-typography-h1-color: rgba(255, 255, 255, 0.87);
+$theme-typography-h1-font-weight: 400;
+$theme-typography-h1-font-size: 56px;
+
+$theme-typography-h2-color: $theme-typography-h1-color;
+$theme-typography-h2-font-weight: $theme-typography-h1-font-weight;
+$theme-typography-h2-font-size: 40px;
+
+$theme-typography-h3-color: $theme-typography-h1-color;
+$theme-typography-h3-font-weight: $theme-typography-h1-font-weight;
+$theme-typography-h3-font-size: 28px;
+
+$theme-typography-h4-color: $theme-typography-h1-color;
+$theme-typography-h4-font-weight: $theme-typography-h1-font-weight;
+$theme-typography-h4-font-size: 24px;
+
 $theme-breakpoints-values-md: 900px;
 
 :export {
@@ -17,5 +35,23 @@ $theme-breakpoints-values-md: 900px;
   theme-palette-info-main: $theme-palette-info-main;
   theme-palette-background-default: $theme-palette-background-default;
   theme-palette-background-paper: $theme-palette-background-paper;
+  theme-palette-text-primary: $theme-palette-text-primary;
+
+  theme-typography-h1-color: $theme-typography-h1-color;
+  theme-typography-h1-font-weight: $theme-typography-h1-font-weight;
+  theme-typography-h1-font-size: $theme-typography-h1-font-size;
+
+  theme-typography-h2-color: $theme-typography-h2-color;
+  theme-typography-h2-font-weight: $theme-typography-h2-font-weight;
+  theme-typography-h2-font-size: $theme-typography-h2-font-size;
+
+  theme-typography-h3-color: $theme-typography-h3-color;
+  theme-typography-h3-font-weight: $theme-typography-h3-font-weight;
+  theme-typography-h3-font-size: $theme-typography-h3-font-size;
+
+  theme-typography-h4-color: $theme-typography-h4-color;
+  theme-typography-h4-font-weight: $theme-typography-h4-font-weight;
+  theme-typography-h4-font-size: $theme-typography-h4-font-size;
+
   theme-breakpoints-values-md: $theme-breakpoints-values-md;
 }
