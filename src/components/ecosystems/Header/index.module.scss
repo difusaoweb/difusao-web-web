@@ -6,7 +6,11 @@
 
   .divLogo {
     flex-grow: 1;
-    display: flex;
+
+    div {
+      display: flex;
+      width: 160px;
+    }
   }
 
   .divMenuMobile {
