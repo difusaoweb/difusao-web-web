@@ -22,13 +22,6 @@ export const Cases: React.FC = () => {
         <Typography className={styles.h2} variant="h2" component="h2">
           Cases
         </Typography>
-        <Box
-          justifyContent="center"
-          alignContent="center"
-          className={styles.divDivider}
-        >
-          <Divider className={styles.divider} />
-        </Box>
         <Typography className={styles.p} variant="subtitle1" component="p">
           Alguns dos nossos trabalhos mais detalhadamente.
         </Typography>
