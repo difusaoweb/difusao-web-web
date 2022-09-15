@@ -7,7 +7,7 @@ import styles from './index.module.scss'
 
 export const Services: React.FC = () => {
   return (
-    <Box id="services" className={styles.section} component="section">
+    <Box id="services" component="section">
       <Container maxWidth="lg">
         <Typography component="h2" variant="h2" className={styles.h2}>
           Nossas soluções
