@@ -15,7 +15,7 @@ export const ServicesGridItem = ({ item }: ServicesGridItemProps) => {
           <Box className={styles.imagem}>
             <img className={styles.img} src={item.image} alt={item.title} />
           </Box>
-          <Typography className={styles.h4} variant="h4" component="p">
+          <Typography className={styles.h4} variant="h4" component="h3">
             {item.title}
           </Typography>
 
