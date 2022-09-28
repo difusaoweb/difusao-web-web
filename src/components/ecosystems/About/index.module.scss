@@ -1,24 +1,3 @@
-@import '../../../styles/variables.module';
-
-.section {
-  background-color: $theme-palette-primary-main;
-
-  .img {
-    width: 100%;
-    height: auto;
-  }
-
-  .divDivider {
-    .divider {
-      border-bottom-color: #fff;
-    }
-  }
-
-  .h2,
-  .p {
-    color: #fff;
-  }
-  .p {
-    margin-bottom: 15px;
-  }
+.p {
+  margin-bottom: 15px !important;
 }

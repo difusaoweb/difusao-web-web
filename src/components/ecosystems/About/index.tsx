@@ -1,45 +1,39 @@
-import React from 'react'
+import * as React from 'react'
 import { Container, Typography, Box, Grid, Divider } from '@mui/material'
 
 import styles from './index.module.scss'
-import SubestacaoImage from '../../../assets/images/about/subestacao.jpg?ts-ignore'
+import SubestacaoImageUrl from '../../../assets/images/about/subestacao.jpg?ts-ignore'
+import { Card } from '../../atoms/Card'
 
 export const About: React.FC = () => {
   return (
-    <Box id="about" className={styles.section} component="section">
+    <Box id="about" component="section">
       <Container maxWidth="lg">
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
-            <img
-              alt="Saiba mais sobre nós"
-              src={SubestacaoImage.src}
-              className={styles.img}
-            />
+            <Card>
+              <img alt="Saiba mais sobre nós" src={SubestacaoImageUrl} />
+            </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="h2" component="h2" className={styles.h2}>
+            <Typography variant="h2" component="h2">
               Saiba mais sobre nós
             </Typography>
-            <Box
-              justifyContent="center"
-              alignContent="center"
-              className={styles.divDivider}
-            >
-              <Divider className={styles.divider} />
-            </Box>
-            <Typography component="p" variant="subtitle1" className={styles.p}>
-              Criação e Aprimoramento de Aplicações Mobile e Web.
-            </Typography>
-            <Typography component="p" variant="subtitle1" className={styles.p}>
-              Trabalhamos com:
-            </Typography>
-            <ul>
-              <li>Criação de Websites.</li>
-              <li>Lojas Virtuais.</li>
-              <li>Aplicativos.</li>
-              <li>Criação de sistemas.</li>
-              <li>Integrações com plataformas.</li>
-            </ul>
+            <Card>
+              <Typography component="p" className={styles.p}>
+                Criação e Aprimoramento de Aplicações Mobile e Web.
+              </Typography>
+              <Typography component="p" className={styles.p}>
+                Trabalhamos com:
+              </Typography>
+              <ul>
+                <li>Criação de Websites.</li>
+                <li>Lojas Virtuais.</li>
+                <li>Aplicativos.</li>
+                <li>Criação de sistemas.</li>
+                <li>Integrações com plataformas.</li>
+              </ul>
+            </Card>
           </Grid>
         </Grid>
       </Container>
