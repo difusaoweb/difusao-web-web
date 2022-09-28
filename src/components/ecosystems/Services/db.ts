@@ -60,9 +60,7 @@ export const db: CardInterface[] = [
   {
     image: DesenvolvimentoBlogsWordpressImageUrl,
     title: 'Desenvolvimento de Blogs Wordpress',
-    list: [
-      'Utilize um CMS popular.'
-    ]
+    list: ['Utilize um CMS popular.']
   },
   {
     image: DesenvolvimentoLandingPagesImageUrl,
