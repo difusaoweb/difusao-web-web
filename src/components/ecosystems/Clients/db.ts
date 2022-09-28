@@ -1,10 +1,10 @@
-import NacionalidadePortuguesaImage from '../../../assets/images/clients/nacionalidade-portuguesa.png?width=200&ts-ignore'
-import CiaDoEbookImage from '../../../assets/images/clients/cia-do-ebook.png?width=200&ts-ignore'
-import VisaoMarketingImage from '../../../assets/images/clients/visao-marketing.png?width=200&ts-ignore'
-import LinkOficialImage from '../../../assets/images/clients/link-oficial.png?width=200&ts-ignore'
-import ProEspumaImage from '../../../assets/images/clients/pro-espuma.png?width=200&ts-ignore'
-import SkinnaGrillImage from '../../../assets/images/clients/skinna-grill.png?width=200&ts-ignore'
-import ColecionameImage from '../../../assets/images/clients/colecioname.png?width=200&ts-ignore'
+import NacionalidadePortuguesaImageUrl from '../../../assets/images/clients/nacionalidade-portuguesa.png?width=200&ts-ignore'
+import CiaDoEbookImageUrl from '../../../assets/images/clients/cia-do-ebook.png?width=200&ts-ignore'
+import VisaoMarketingImageUrl from '../../../assets/images/clients/visao-marketing.png?width=200&ts-ignore'
+import LinkOficialImageUrl from '../../../assets/images/clients/link-oficial.png?width=200&ts-ignore'
+import ProEspumaImageUrl from '../../../assets/images/clients/pro-espuma.png?width=200&ts-ignore'
+import SkinnaGrillImageUrl from '../../../assets/images/clients/skinna-grill.png?width=200&ts-ignore'
+import ColecionameImageUrl from '../../../assets/images/clients/colecioname.png?width=200&ts-ignore'
 
 export interface CardInterface {
   image: string
@@ -12,31 +12,31 @@ export interface CardInterface {
 }
 export const db: CardInterface[] = [
   {
-    image: NacionalidadePortuguesaImage.src,
+    image: NacionalidadePortuguesaImageUrl,
     title: 'Nacionalidade Portuguesa'
   },
   {
-    image: CiaDoEbookImage.src,
+    image: CiaDoEbookImageUrl,
     title: 'Cia do Ebook'
   },
   {
-    image: VisaoMarketingImage.src,
+    image: VisaoMarketingImageUrl,
     title: 'Visão Marketing'
   },
   {
-    image: LinkOficialImage.src,
+    image: LinkOficialImageUrl,
     title: 'Link Oficial'
   },
   {
-    image: ProEspumaImage.src,
+    image: ProEspumaImageUrl,
     title: 'Pró-Espuma'
   },
   {
-    image: SkinnaGrillImage.src,
+    image: SkinnaGrillImageUrl,
     title: 'Skinna Grill'
   },
   {
-    image: ColecionameImage.src,
+    image: ColecionameImageUrl,
     title: 'Colecioname'
   }
 ]
