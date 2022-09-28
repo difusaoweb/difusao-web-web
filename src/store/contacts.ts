@@ -1,7 +1,10 @@
 export const contacts = {
-  whatsapp: 'https://api.whatsapp.com/send?phone=5585992910554&text=',
-  instagram: 'https://www.instagram.com/difusaowebinc/',
-  phone: 'tel:+5585992910554',
-  phoneLabel: '(85) 99291-0554',
-  eMail: 'mailto:difusaowebinc@gmail.com'
+  eMail: { title: 'e-Mail', link: 'mailto:difusaoweb@proton.me' },
+  telegram: { title: 'Telegram', link: 'https://t.me/difusaoweb' },
+  whatsapp: { title: 'WhatsApp', link: 'https://wa.link/dqf8zh' },
+  linkedin: {
+    title: 'LinkedIn',
+    link: 'https://www.linkedin.com/company/difusaoweb'
+  },
+  github: { title: 'GitHub', link: 'https://github.com/difusaoweb' }
 }
