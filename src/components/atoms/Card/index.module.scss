@@ -1,0 +1,15 @@
+@import '../../../styles/variables.module';
+
+.card {
+  position: relative;
+  border-radius: 6px;
+  background-color: $theme-palette-background-paper;
+
+  .cardBody {
+    padding: 10px;
+    // z-index: 2;
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+}
