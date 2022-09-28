@@ -29,7 +29,7 @@ export const HeaderBar = () => {
     setAnchorElNav(event.currentTarget)
   }
 
-  function handleCloseNavMenu(){
+  function handleCloseNavMenu() {
     setAnchorElNav(null)
   }
 
@@ -43,9 +43,7 @@ export const HeaderBar = () => {
                 <img src={logoMenuImageUrl} alt="Difusão Web logo" />
               </div>
             </Box>
-            <Box
-              className={styles.divMenuMobile}
-            >
+            <Box className={styles.divMenuMobile}>
               <IconButton
                 size="large"
                 aria-label="Menu"
@@ -82,9 +80,7 @@ export const HeaderBar = () => {
               </Menu>
             </Box>
 
-            <Box
-              className={styles.divMenuDesktop}
-            >
+            <Box className={styles.divMenuDesktop}>
               {pages.map((page, index) => (
                 <Button key={index} href={`#${page[0]}`} className={styles.a}>
                   {page[1]}
