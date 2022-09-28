@@ -39,7 +39,7 @@ export const Hero: React.FC = () => {
         <Stack direction="row" spacing={2} justifyContent="center">
           <Button
             content="Solicitar orçamento"
-            href={contacts.eMail}
+            href={contacts.eMail.link}
             size="large"
           />
         </Stack>
