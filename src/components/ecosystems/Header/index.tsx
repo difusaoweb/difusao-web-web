@@ -39,9 +39,9 @@ export const HeaderBar = () => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Box className={styles.divLogo}>
-              <div>
+              <a href="/">
                 <img src={logoMenuImageUrl} alt="Difusão Web logo" />
-              </div>
+              </a>
             </Box>
             <Box className={styles.divMenuMobile}>
               <IconButton
