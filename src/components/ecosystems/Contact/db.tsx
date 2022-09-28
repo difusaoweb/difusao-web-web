@@ -1,9 +1,10 @@
 import * as React from 'react'
 import {
-  Instagram as InstagramIcon,
+  Email as EmailIcon,
+  Telegram as TelegramIcon,
   WhatsApp as WhatsAppIcon,
-  Phone as PhoneIcon,
-  Email as EmailIcon
+  LinkedIn as LinkedInIcon,
+  GitHub as GitHubIcon
 } from '@mui/icons-material'
 
 import { contacts } from '../../../store/contacts'
@@ -16,23 +17,28 @@ interface CardInterface {
 }
 export const db: CardInterface[] = [
   {
-    title: 'Instagram',
-    link: contacts.instagram,
-    icon: <InstagramIcon className={styles.icon} />
+    title: contacts.eMail.title,
+    link: contacts.eMail.link,
+    icon: <EmailIcon className={styles.icon} />
   },
   {
-    title: 'WhatsApp',
-    link: contacts.whatsapp,
+    title: contacts.telegram.title,
+    link: contacts.telegram.link,
+    icon: <TelegramIcon className={styles.icon} />
+  },
+  {
+    title: contacts.whatsapp.title,
+    link: contacts.whatsapp.link,
     icon: <WhatsAppIcon className={styles.icon} />
   },
   {
-    title: 'Telefone',
-    link: contacts.phone,
-    icon: <PhoneIcon className={styles.icon} />
+    title: contacts.linkedin.title,
+    link: contacts.linkedin.link,
+    icon: <LinkedInIcon className={styles.icon} />
   },
   {
-    title: 'E-Mail',
-    link: contacts.eMail,
-    icon: <EmailIcon className={styles.icon} />
+    title: contacts.github.title,
+    link: contacts.github.link,
+    icon: <GitHubIcon className={styles.icon} />
   }
 ]

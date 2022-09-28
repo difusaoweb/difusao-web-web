@@ -1,19 +1,17 @@
 @import '../../../styles/variables.module';
 
-.section {
-  .iconDiv {
-    min-width: 45px;
+.iconDiv {
+  min-width: 45px;
+  @media screen and (min-width: $theme-breakpoints-values-md) {
+    font-size: 55px;
+  }
+
+  .icon {
+    font-size: 30px;
+    color: $theme-palette-secondary-main;
+
     @media screen and (min-width: $theme-breakpoints-values-md) {
-      font-size: 55px;
-    }
-
-    .icon {
-      font-size: 30px;
-      color: $theme-palette-secondary-main;
-
-      @media screen and (min-width: $theme-breakpoints-values-md) {
-        font-size: 40px;
-      }
+      font-size: 40px;
     }
   }
 }
