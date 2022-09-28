@@ -13,8 +13,8 @@ export const Budget: React.FC = () => {
           Solicite seu orçamento
         </Typography>
         <Button
-          content="Whatsapp"
-          href={contacts.whatsapp}
+          content={contacts.eMail.title}
+          href={contacts.eMail.link}
           size="large"
           className={styles.button}
         />
