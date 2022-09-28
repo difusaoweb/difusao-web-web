@@ -1,7 +1,22 @@
+@import './variables.module';
+
 img, .img {
   width: 100%;
   height: auto;
 }
 section, .section {
   padding: 56px 0 56px 0;
+}
+h2, .h2 {
+  margin-bottom: 25px !important;
+  text-align: center;
+}
+ul, .ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 20px;
+
+  li::marker, .li::marker {
+    color: $theme-palette-primary-main;
+  }
 }
