@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { Button as ButtonE } from '@mui/material'
 
 import styles from './index.module.scss'
