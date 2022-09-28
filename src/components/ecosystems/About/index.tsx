@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { Container, Typography, Box, Grid, Divider } from '@mui/material'
+import { Container, Typography, Box, Grid } from '@mui/material'
 
 import styles from './index.module.scss'
-import SubestacaoImageUrl from '../../../assets/images/about/subestacao.jpg?ts-ignore'
+import SubestacaoImageUrl from '../../../assets/images/hero/hero.jpg'
 import { Card } from '../../atoms/Card'
 
 export const About: React.FC = () => {
@@ -16,7 +16,7 @@ export const About: React.FC = () => {
             </Card>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography variant="h2" component="h2">
+            <Typography variant="h2" component="h2" className={styles.h2}>
               Saiba mais sobre nós
             </Typography>
             <Card>
