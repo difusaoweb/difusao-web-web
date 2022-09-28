@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Container, Typography, Box, Divider, Grid } from '@mui/material'
 
-import {CasesGridItem} from '../../organims/CasesGridItem'
+import { CasesGridItem } from '../../organims/CasesGridItem'
 import styles from './index.module.scss'
 
 import { db as cases } from './db'
@@ -17,12 +17,12 @@ export const Cases: React.FC = () => {
   }
 
   return (
-    <Box id="cases" className={styles.section} component="section">
+    <Box id="cases" component="section">
       <Container maxWidth="lg">
-        <Typography className={styles.h2} variant="h2" component="h2">
+        <Typography variant="h2" component="h2" className={styles.h2}>
           Cases
         </Typography>
-        <Typography className={styles.p} variant="subtitle1" component="p">
+        <Typography className={styles.p} component="p">
           Alguns dos nossos trabalhos mais detalhadamente.
         </Typography>
         <Grid container spacing={2}>
