@@ -1,4 +1,4 @@
-import { createTheme, ComponentsOverrides } from '@mui/material/styles'
+import { createTheme } from '@mui/material/styles'
 import vars from './_variables.module.scss'
 
 export const theme = createTheme({
