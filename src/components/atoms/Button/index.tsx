@@ -7,7 +7,7 @@ interface ButtonProps {
   content: string
   href: string
   className?: string
-  size?: string
+  size?: 'small' | 'medium' | 'large'
 }
 export const Button = ({ content, href, className, size }: ButtonProps) => {
   return (

@@ -3,7 +3,10 @@ import { Box } from '@mui/material'
 
 import styles from './index.module.scss'
 
-export const Card = ({ children }) => {
+interface CardProps {
+  children: React.ReactNode
+}
+export const Card = ({ children }: CardProps) => {
   return (
     <Box className={styles.card}>
       <Box className={styles.cardBody}>{children}</Box>
