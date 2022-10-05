@@ -3,9 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "vite preview",
+    "start": "vite preview --port 8080",
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "heroku-postbuild": "npm build"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
