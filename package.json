@@ -38,5 +38,9 @@
     "typescript": "*",
     "vite": "^3.1.0",
     "vite-imagetools": "^4.0.9"
+  },
+  "engines": {
+    "node": "v18.8.0",
+    "npm": "8.18.0"
   }
 }
