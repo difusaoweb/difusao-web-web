@@ -4,5 +4,10 @@ import { imagetools } from 'vite-imagetools'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), imagetools()]
+  plugins: [react(), imagetools()],
+  server: { port: 3000 },
+  build: {
+    minify: false
+  },
+  root: ''
 })

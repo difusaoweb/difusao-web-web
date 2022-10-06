@@ -3,28 +3,42 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "start": "vite preview --port $PORT",
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "heroku-postbuild": "npm run build"
+    "dev:server": "nodemon --watch server.ts --watch src/server --exec 'ts-node server.ts'",
+    "dev:client": "yarn build:client && vite --config vite.config.ts dev",
+    "build": "rimraf dist && tsc -p tsconfig.prod.json && yarn build:client && yarn build:server && yarn copy-files",
+    "build:client": "vite build --outDir dist/client --ssrManifest",
+    "build:server": "vite build --ssr src/client/main-server.tsx --outDir ./dist/server",
+    "serve": "yarn build && cross-env NODE_ENV=production && yarn ts-node server.ts",
+    "serve:local": "vite serve",
+    "copy-files": "copyfiles static/* dist/assets && copyfiles index.html dist && copyfiles -f dist/client/assets/* dist/assets"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.10.4",
-    "@vitejs/plugin-react": "^2.1.0",
+    "compression": "^1.7.4",
+    "cross-env": "^7.0.3",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.20",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-material-ui-carousel": "^3.4.2",
-    "vite": "^3.1.4",
-    "vite-imagetools": "^4.0.9"
+    "react-router-dom": "^6.4.1",
+    "serve-static": "^1.15.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.8.2",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.36.2",
+    "@vitejs/plugin-react": "^2.1.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
@@ -36,8 +50,11 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.8",
     "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.54.9",
-    "typescript": "*"
+    "typescript": "^4.8.4",
+    "vite": "^3.1.4",
+    "vite-imagetools": "^4.0.9"
   },
   "engines": {
     "node": "v18.8.0",

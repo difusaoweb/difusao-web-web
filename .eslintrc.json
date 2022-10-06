@@ -27,7 +27,9 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-return-await": "off",
     "@typescript-eslint/return-await": "off",
-    "no-unsafe-optional-chaining": "off"
+    "no-unsafe-optional-chaining": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-misused-promises": "off"
   },
   "root": true
 }
