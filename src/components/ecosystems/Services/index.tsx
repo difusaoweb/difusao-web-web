@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { Container, Typography, Box, Grid, Divider } from '@mui/material'
+import { Container, Typography, Box, Grid } from '@mui/material'
 
 import { ServicesGridItem } from '../../organims/ServicesGridItem'
 import { db as cards } from './db'
-import styles from './index.module.scss'
 
 export const Services: React.FC = () => {
   return (

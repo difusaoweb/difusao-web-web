@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Box, Stack, Typography } from '@mui/material'
+import { Container, Box, Typography } from '@mui/material'
 
 import { Button } from '../../atoms/Button'
 import { contacts } from '../../../store/contacts'

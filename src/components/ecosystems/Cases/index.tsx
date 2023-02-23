@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Typography, Box, Divider, Grid } from '@mui/material'
+import { Container, Typography, Box, Grid } from '@mui/material'
 
 import { CasesGridItem } from '../../organims/CasesGridItem'
 import styles from './index.module.scss'

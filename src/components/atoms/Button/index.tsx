@@ -1,8 +1,6 @@
 import * as React from 'react'
 import { Button as ButtonE } from '@mui/material'
 
-import styles from './index.module.scss'
-
 interface ButtonProps {
   content: string
   href: string
