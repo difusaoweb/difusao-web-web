@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   Email as EmailIcon,
-  Telegram as TelegramIcon,
   WhatsApp as WhatsAppIcon,
   LinkedIn as LinkedInIcon,
   GitHub as GitHubIcon
@@ -20,11 +19,6 @@ export const db: CardInterface[] = [
     title: contacts.eMail.title,
     link: contacts.eMail.link,
     icon: <EmailIcon className={styles.icon} />
-  },
-  {
-    title: contacts.telegram.title,
-    link: contacts.telegram.link,
-    icon: <TelegramIcon className={styles.icon} />
   },
   {
     title: contacts.whatsapp.title,
