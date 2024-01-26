@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { Container, Typography, Box, Grid } from '@mui/material'
 import Image from 'next/image'
@@ -19,7 +20,12 @@ export const Clients: React.FC = () => {
             .map((item, index) => (
               <Grid item key={index} xs={4} md={2}>
                 <Card>
-                  <Image src={item.image} alt={item.title} />
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={100}
+                    height={100}
+                  />
                 </Card>
               </Grid>
             ))}

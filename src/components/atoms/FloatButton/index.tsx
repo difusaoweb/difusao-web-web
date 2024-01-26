@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { Fab } from '@mui/material'
 import EmailIcon from '@mui/icons-material/Email'

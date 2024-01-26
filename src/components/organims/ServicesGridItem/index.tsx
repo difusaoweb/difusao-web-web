@@ -14,7 +14,13 @@ export const ServicesGridItem = ({ item }: ServicesGridItemProps) => {
     <Grid item xs={6} md={3}>
       <Card>
         <Box className={styles.imagem}>
-          <Image src={item.image} alt={item.title} className={styles.img} />
+          <Image
+            src={item.image}
+            alt={item.title}
+            className={styles.img}
+            width={348}
+            height={464}
+          />
         </Box>
         <Typography className={styles.h3} variant="h4" component="h3">
           {item.title}

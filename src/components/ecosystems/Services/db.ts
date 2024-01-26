@@ -1,14 +1,20 @@
-import { StaticImageData } from '../../../../node_modules/next/dist/client/image'
-import DesenvolvimentoSistemasWebImage from '../../../assets/images/services/desenvolvimento-de-sistemas-web.png'
-import DesenvolvimentoAplicativoAndroidImage from '../../../assets/images/services/desenvolvimento-de-aplicativo-android.png'
-import DesenvolvimentoLojasVirtuaisImage from '../../../assets/images/services/desenvolvimento-de-lojas-virtuais.png'
-import DesenvolvimentoBlogsImage from '../../../assets/images/services/desenvolvimento-de-blogs.png'
-import DesenvolvimentoLojasVirtuaisWoocommerceImage from '../../../assets/images/services/desenvolvimento-de-lojas-virtuais-woocommerce.png'
-import DesenvolvimentoBlogsWordpressImage from '../../../assets/images/services/desenvolvimento-de-blogs-wordpress.png'
-import DesenvolvimentoLandingPagesImage from '../../../assets/images/services/desenvolvimento-de-landing-pages.png'
+const DesenvolvimentoSistemasWebImage =
+  'http://localhost:3000/services/desenvolvimento-de-sistemas-web.png'
+const DesenvolvimentoAplicativoAndroidImage =
+  'http://localhost:3000/services/desenvolvimento-de-aplicativo-android.png'
+const DesenvolvimentoLojasVirtuaisImage =
+  'http://localhost:3000/services/desenvolvimento-de-lojas-virtuais.png'
+const DesenvolvimentoBlogsImage =
+  'http://localhost:3000/services/desenvolvimento-de-blogs.png'
+const DesenvolvimentoLojasVirtuaisWoocommerceImage =
+  'http://localhost:3000/services/desenvolvimento-de-lojas-virtuais-woocommerce.png'
+const DesenvolvimentoBlogsWordpressImage =
+  'http://localhost:3000/services/desenvolvimento-de-blogs-wordpress.png'
+const DesenvolvimentoLandingPagesImage =
+  'http://localhost:3000/services/desenvolvimento-de-landing-pages.png'
 
 export interface CardInterface {
-  image: StaticImageData
+  image: string
   title: string
   list: string[]
 }

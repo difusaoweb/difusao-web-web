@@ -1,20 +1,30 @@
-import { StaticImageData } from '../../../../node_modules/next/dist/client/image'
-import NacionalidadePortuguesaDesenvolvimentoSistemaCadastroImage from '../../../assets/images/cases/nacionalidade-portuguesa/desenvolvimento-de-sistema-de-cadastro.png'
-import CiaEbookCriacaoPluginImage from '../../../assets/images/cases/cia-do-ebook/criacao-de-plugin.png'
-import VisaoMarketingCriacaoSiteImage from '../../../assets/images/cases/visao-marketing/criacao-de-site.png'
-import LinkOficialCorrecaoErrosImage from '../../../assets/images/cases/link-oficial/correcao-de-erros.png'
-import One7ShopCriacaoMeioPagamentoImage from '../../../assets/images/cases/one-7-shop/criacao-de-meio-de-pagamento.png'
-import PrefeituraMunicipalBanzaeAlteracoesPluginImage from '../../../assets/images/cases/prefeitura-municipal-de-banzae/alteracoes-de-plugin.png'
-import ProEspumaAtualizacaoSistemaImage from '../../../assets/images/cases/pro-espuma/atualizacao-de-sistema.png'
-import SkinnaGrillAlteracoesPluginWordPressImage from '../../../assets/images/cases/skinna-grill/alteracoes-de-plugin-wordpress.png'
-import ColecionameAlteracoesPluginWordPressImage from '../../../assets/images/cases/colecioname/alteracoes-de-plugin-wordpress.png'
-
-import PPCCriacaoDeWidgetImage from '../../../assets/images/cases/ppc/criacao-de-widget.png'
-import PPCCriacaoDeWidget2Image from '../../../assets/images/cases/ppc/criacao-de-widget-2.png'
-import PPCCriacaoDeWidget3Image from '../../../assets/images/cases/ppc/criacao-de-widget-3.png'
+const NacionalidadePortuguesaDesenvolvimentoSistemaCadastroImage =
+  'http://localhost:3000/cases/nacionalidade-portuguesa/desenvolvimento-de-sistema-de-cadastro.png'
+const CiaEbookCriacaoPluginImage =
+  'http://localhost:3000/cases/cia-do-ebook/criacao-de-plugin.png'
+const VisaoMarketingCriacaoSiteImage =
+  'http://localhost:3000/cases/visao-marketing/criacao-de-site.png'
+const LinkOficialCorrecaoErrosImage =
+  'http://localhost:3000/cases/link-oficial/correcao-de-erros.png'
+const One7ShopCriacaoMeioPagamentoImage =
+  'http://localhost:3000/cases/one-7-shop/criacao-de-meio-de-pagamento.png'
+const PrefeituraMunicipalBanzaeAlteracoesPluginImage =
+  'http://localhost:3000/cases/prefeitura-municipal-de-banzae/alteracoes-de-plugin.png'
+const ProEspumaAtualizacaoSistemaImage =
+  'http://localhost:3000/cases/pro-espuma/atualizacao-de-sistema.png'
+const SkinnaGrillAlteracoesPluginWordPressImage =
+  'http://localhost:3000/cases/skinna-grill/alteracoes-de-plugin-wordpress.png'
+const ColecionameAlteracoesPluginWordPressImage =
+  'http://localhost:3000/cases/colecioname/alteracoes-de-plugin-wordpress.png'
+const PPCCriacaoDeWidgetImage =
+  'http://localhost:3000/cases/ppc/criacao-de-widget.png'
+const PPCCriacaoDeWidget2Image =
+  'http://localhost:3000/cases/ppc/criacao-de-widget-2.png'
+const PPCCriacaoDeWidget3Image =
+  'http://localhost:3000/cases/ppc/criacao-de-widget-3.png'
 
 export interface CardInterface {
-  imagens: StaticImageData[]
+  imagens: string[]
   title: string
   description: string
 }

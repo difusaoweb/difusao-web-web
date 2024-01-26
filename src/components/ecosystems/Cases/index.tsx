@@ -1,10 +1,11 @@
+'use client'
 import * as React from 'react'
 import { Container, Typography, Box, Grid } from '@mui/material'
 
-import { CasesGridItem } from '../../organims/CasesGridItem'
-import styles from './index.module.scss'
+import { CasesGridItem } from '@/components/organims/CasesGridItem'
+import styles from '@/components/ecosystems/Cases/index.module.scss'
 
-import { db as cases } from './db'
+import { db as cases } from '@/components/ecosystems/Cases/db'
 
 export const Cases: React.FC = () => {
   const carouselItens = []

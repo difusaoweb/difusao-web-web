@@ -4,9 +4,9 @@ import Carousel from 'react-material-ui-carousel'
 import { isMobile } from 'react-device-detect'
 import Image from 'next/image'
 
-import { CardInterface } from '../../ecosystems/Cases/db'
-import { Card } from '../../atoms/Card'
-import styles from './index.module.scss'
+import { CardInterface } from '@/components/ecosystems/Cases/db'
+import { Card } from '@/components/atoms/Card'
+import styles from '@/components/organims/CasesGridItem/index.module.scss'
 
 interface CasesGridItemProps {
   item: CardInterface
@@ -29,6 +29,8 @@ export const CasesGridItem = ({ item }: CasesGridItemProps) => {
                 src={image}
                 alt={`${item.title}, ${item.description}-${index}`}
                 className={styles.img}
+                width={100}
+                height={100}
               />
             </Box>
           ))}

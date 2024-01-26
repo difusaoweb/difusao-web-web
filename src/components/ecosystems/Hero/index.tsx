@@ -1,15 +1,15 @@
+'use client'
 import * as React from 'react'
 import { Box, Container, Typography, Stack } from '@mui/material'
 
 import { Button } from '../../atoms/Button'
 import styles from './index.module.scss'
-import HeroImage from '../../../assets/images/hero/hero.jpg'
 import { contacts } from '../../../store/contacts'
 
 export const Hero: React.FC = () => {
   return (
     <Box
-      sx={{ backgroundImage: `url(${HeroImage.src})` }}
+      sx={{ backgroundImage: `url(/hero/hero.jpg)` }}
       className={styles.section}
       component="section"
     >

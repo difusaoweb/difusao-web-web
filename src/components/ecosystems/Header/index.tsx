@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import {
   AppBar,
@@ -14,7 +15,6 @@ import { Menu as MenuIcon } from '@mui/icons-material'
 import Image from 'next/image'
 
 import styles from './index.module.scss'
-import logoMenuImage from '../../../assets/images/header/logo-difusao-web.png'
 
 export const HeaderBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
@@ -41,7 +41,12 @@ export const HeaderBar = () => {
           <Toolbar disableGutters>
             <Box className={styles.divLogo}>
               <a href="/">
-                <Image src={logoMenuImage} alt="Difusão Web logo" />
+                <Image
+                  src="/header/logo-difusao-web.png"
+                  alt="Difusão Web logo"
+                  width={162}
+                  height={46}
+                />
               </a>
             </Box>
             <Box className={styles.divMenuMobile}>

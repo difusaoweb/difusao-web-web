@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box } from '@mui/material'
+import { CardContent, Card as CardMui } from '@mui/material'
 
 import styles from './index.module.scss'
 
@@ -8,8 +8,8 @@ interface CardProps {
 }
 export const Card = ({ children }: CardProps) => {
   return (
-    <Box className={styles.card}>
-      <Box className={styles.cardBody}>{children}</Box>
-    </Box>
+    <CardMui className={styles.card}>
+      <CardContent className={styles.cardBody}>{children}</CardContent>
+    </CardMui>
   )
 }
