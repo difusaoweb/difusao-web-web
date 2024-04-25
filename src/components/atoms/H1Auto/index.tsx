@@ -49,7 +49,6 @@ export const H1Auto = () => {
       sx={{
         fontWeight: "700",
         fontSize: { xs: 30, lg: 60 },
-        textAlign: "center",
         mb: 3,
       }}
     >
@@ -61,11 +60,11 @@ export const H1Auto = () => {
             "financeiro",
             800,
             "",
-            () => setTextColor(commercialColor),
+            () => setTextColor(marketingColor),
             "marketing",
             800,
             "",
-            () => setTextColor(marketingColor),
+            () => setTextColor(commercialColor),
             "comercial",
             800,
             "",
