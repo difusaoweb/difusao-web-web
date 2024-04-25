@@ -1,40 +1,56 @@
-"use client";
 import * as React from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import { ThemeProvider } from "@mui/material/styles";
-import { AppAppBar } from "@/components/AppAppBar";
-import Hero from "@/components/Hero";
-import LogoCollection from "@/components/LogoCollection";
-import Highlights from "@/components/Highlights";
-import Pricing from "@/components/Pricing";
-import Features from "@/components/Features";
-import Testimonials from "@/components/Testimonials";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
-import { theme } from "@/styles/theme";
+import { Box, Container, Typography, colors } from "@mui/material";
+
+import { H1Auto } from "@/components/atoms/H1Auto";
 
 export default function HomePage() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <AppAppBar mode="light" />
-      <Hero />
-      <Box sx={{ bgcolor: "background.default" }}>
-        <LogoCollection />
-        <Features />
-        <Divider />
-        <Testimonials />
-        <Divider />
-        <Highlights />
-        <Divider />
-        <Pricing />
-        <Divider />
-        <FAQ />
-        <Divider />
-        <Footer />
+    <>
+      <Box
+        sx={{
+          paddingTop: 10,
+          background:
+            "linear-gradient(132deg, rgba(167,43,220,1) 0%, rgba(130,22,176,1) 25%, rgba(138,26,185,1) 50%, rgba(117,14,160,1) 75%)",
+          color: "#fff",
+        }}
+      >
+        <Container maxWidth="xxl">
+          <H1Auto />
+          <Typography
+            component="p"
+            variant="h5"
+            sx={{
+              // fontWeight: "700",
+              textAlign: "center",
+              mb: 5,
+            }}
+          >
+            ⚛ Controle loja, na palma da sua mão. 👇
+          </Typography>
+          <Box
+            sx={{
+              padding: 3,
+              backgroundColor: colors.red[400],
+              color: "#fff",
+              borderRadius: 9,
+            }}
+          >
+            <Typography component="p" variant="h6" gutterBottom>
+              Está com problemas no fluxo de caixa? Suas campanhas não geram
+              bons leads? Seus clientes conversam, mas não compram? Vendeu
+              produtos que já não estão no estoque?
+            </Typography>
+          </Box>
+          <Typography component="p" variant="h5" gutterBottom>
+            Chegou o aplicativo que irá revolucionar a gestão da sua loja!
+          </Typography>
+          <Typography>
+            Nosso aplicativo é um poderoso assistente financeiro que acompanha
+            suas vendas, gastos e lucros em tempo real, ajudando você a manter
+            um controle absoluto da saúde do seu negócio.
+          </Typography>
+        </Container>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
