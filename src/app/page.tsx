@@ -12,7 +12,7 @@ export default function HomePage() {
           background:
             "linear-gradient(132deg, rgba(167,43,220,1) 0%, rgba(130,22,176,1) 25%, rgba(138,26,185,1) 50%, rgba(117,14,160,1) 75%)",
           color: "#fff",
-          height: "100vh",
+          height: { xs: "100%", lg: "100vh" },
           justifyContent: "center",
           justifyItems: "center",
           display: "flex",
@@ -24,12 +24,12 @@ export default function HomePage() {
             justifyContent: "center",
             justifyItems: "center",
             display: "flex",
-            flexDirection: "row",
+            flexDirection: { xs: "column", lg: "row" },
             alignContent: "center",
             alignItems: "center",
           }}
         >
-          <Box width="70%">
+          <Box sx={{ width: { xs: "100%", lg: "70%" } }}>
             <H1Auto />
             <Typography
               component="p"
@@ -46,9 +46,9 @@ export default function HomePage() {
                 padding: 3,
                 backgroundColor: colors.red[400],
                 color: "#fff",
-                borderRadius: 9,
-                borderTopLeftRadius: 0,
-                borderBottomLeftRadius: 0,
+                borderRadius: { xs: "9px", lg: 3 },
+                borderTopLeftRadius: { xs: "9px", lg: 0 },
+                borderBottomLeftRadius: { xs: "9px", lg: 0 },
                 mb: 5,
               }}
             >
@@ -58,9 +58,11 @@ export default function HomePage() {
                 produtos que já não estão no estoque?
               </Typography>
             </Box>
-            <Button variant="contained" size="large" sx={{ mb: 3 }}>
-              Testar Grátis
-            </Button>
+            <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
+              <Button variant="contained" size="large" sx={{ mb: 3 }}>
+                Testar Grátis
+              </Button>
+            </Box>
             <Typography component="p" variant="h5" gutterBottom>
               Chegou o aplicativo que irá revolucionar a gestão da sua loja!
             </Typography>
@@ -70,13 +72,18 @@ export default function HomePage() {
               você a manter um controle absoluto da saúde do seu negócio.
             </Typography>
           </Box>
-          <Box width="30%" sx={{ paddingLeft: 5 }}>
+          <Box
+            sx={{
+              width: { xs: "100%", lg: "30%" },
+              paddingLeft: { xs: 0, lg: 5 },
+            }}
+          >
             <Image
               src="/tela-smarphone.png"
               width={1080}
-              height={2100}
-              alt="Picture of the author"
-              style={{ width: "100%", height: "auto" }}
+              height={2340}
+              alt="Tela do aplicativo da Difusão Web"
+              style={{ width: "100%", height: "auto", borderRadius: 9 }}
             />
           </Box>
         </Container>
