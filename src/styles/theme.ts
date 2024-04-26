@@ -37,16 +37,10 @@ theme = createTheme(
     palette: {
       mode: "light",
       primary: {
-        light: "#000",
-        main: "#000",
-        dark: "#000",
+        light: "#9300d1",
+        main: "#9300d1",
+        dark: "#9300d1",
         contrastText: "#fff",
-      },
-      secondary: {
-        light: "#e84f3d",
-        main: "#e84f3d",
-        dark: "#e84f3d",
-        contrastText: "#FFF",
       },
     },
     components: {
