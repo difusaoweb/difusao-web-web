@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { SessionProvider } from "@/components/atoms/SessionProvider";
 import { theme } from "@/styles/theme";
@@ -29,6 +30,7 @@ export default function RootLayout({
           </ThemeProvider>
         </SessionProvider>
       </body>
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
     </html>
   );
 }
