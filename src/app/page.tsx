@@ -39,7 +39,7 @@ export default function HomePage() {
                 mb: 5,
               }}
             >
-              ⚛ Controle loja, na palma da sua mão. 👇
+              ⚛ Controle sua loja, na palma da sua mão. 👇
             </Typography>
             <Box
               sx={{
@@ -58,19 +58,27 @@ export default function HomePage() {
                 produtos que já não estão no estoque?
               </Typography>
             </Box>
+            <Typography component="p" variant="h5" gutterBottom>
+              Chegou o aplicativo que irá solucionar estes e seus demais
+              problemas
+            </Typography>
+            <Typography sx={{ mb: 3 }}>
+              Nós da Difusão Web estamos construindo um poderoso assistente para
+              você lojista. Você poderá acompanhar suas transações, os pedidos
+              dos clientes, visualização fácil dos clientes recorrentes,
+              verificar suas campanhas e controlar o estoque da sua loja... Tudo
+              isso e muito mais.
+            </Typography>
             <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
-              <Button variant="contained" size="large" sx={{ mb: 3 }}>
-                Testar Grátis
+              <Button
+                variant="contained"
+                size="large"
+                color="success"
+                sx={{ mb: 3 }}
+              >
+                Testar grátis por 3 dias
               </Button>
             </Box>
-            <Typography component="p" variant="h5" gutterBottom>
-              Chegou o aplicativo que irá revolucionar a gestão da sua loja!
-            </Typography>
-            <Typography>
-              Nosso aplicativo é um poderoso assistente para você lojista, ele
-              acompanha suas vendas, gastos e lucros em tempo real, ajudando
-              você a manter um controle absoluto da saúde do seu negócio.
-            </Typography>
           </Box>
           <Box
             sx={{
