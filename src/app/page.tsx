@@ -1,8 +1,18 @@
 import * as React from "react";
-import { Box, Button, Container, Typography, colors } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Modal,
+  Typography,
+  colors,
+} from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 
 import { H1Auto } from "@/components/atoms/H1Auto";
+import { ButtonOpenModal } from "@/components/atoms/ButtonOpenModal";
+import { ModalGetLed } from "@/components/molecules/ModalGetLed";
 
 export default function HomePage() {
   return (
@@ -70,14 +80,7 @@ export default function HomePage() {
               isso e muito mais.
             </Typography>
             <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
-              <Button
-                variant="contained"
-                size="large"
-                color="success"
-                sx={{ mb: 3 }}
-              >
-                Testar grátis por 3 dias
-              </Button>
+              <ButtonOpenModal />
             </Box>
           </Box>
           <Box
@@ -96,6 +99,7 @@ export default function HomePage() {
           </Box>
         </Container>
       </Box>
+      <ModalGetLed />
     </>
   );
 }
