@@ -12,7 +12,7 @@ import Link from "next/link";
 
 import { H1Auto } from "@/components/atoms/H1Auto";
 import { ButtonOpenModal } from "@/components/atoms/ButtonOpenModal";
-import { ModalGetLed } from "@/components/molecules/ModalGetLed";
+import { ModalGetLed } from "@/components/organisms/ModalGetLead";
 
 export default function HomePage() {
   return (

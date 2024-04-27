@@ -1,5 +1,5 @@
 export interface SessionValueTypes {
-  modalOpen: boolean;
+  modal: string;
 }
 export interface SessionContextSessionValueTypes {
   session: SessionValueTypes;

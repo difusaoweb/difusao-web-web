@@ -13,7 +13,7 @@ export const ButtonOpenModal = () => {
       size="large"
       color="success"
       sx={{ mb: 3 }}
-      onClick={() => setSession({ modalOpen: true })}
+      onClick={() => setSession({ modal: "open" })}
     >
       Testar grátis por 3 dias
     </Button>

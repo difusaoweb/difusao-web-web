@@ -13,7 +13,7 @@ export const SessionContext =
 
 export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = React.useState<SessionValueTypes>({
-    modalOpen: false,
+    modal: "off",
   });
 
   return (
