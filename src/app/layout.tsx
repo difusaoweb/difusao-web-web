@@ -2,9 +2,9 @@ import { Inter } from "next/font/google";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
-import { SessionProvider } from "@/components/atoms/SessionProvider";
 import { theme } from "@/styles/theme";
 import { Header } from "@/components/molecules/Header";
+import { Footer } from "@/components/organims/Footer";
 
 import type { Metadata } from "next";
 
@@ -24,13 +24,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <SessionProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            <Box component="main">{children}</Box>
-          </ThemeProvider>
-        </SessionProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Header />
+          <Box component="main">{children}</Box>
+          <Footer />
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />
     </html>

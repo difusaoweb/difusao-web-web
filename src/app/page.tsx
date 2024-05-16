@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Container,
-  Typography,
-  Button,
-} from "@mui/material";
-import Image from "next/image";
+import { Box, Container, Typography, Button } from "@mui/material";
 import Link from "next/link";
 
 export default function HomePage() {
