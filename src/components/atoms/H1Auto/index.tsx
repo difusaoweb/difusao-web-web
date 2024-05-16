@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Typography, colors } from "@mui/material";
+import { Box, Typography, colors } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { TypeAnimation } from "react-type-animation";
 
@@ -53,7 +53,11 @@ export const H1Auto = () => {
       }}
     >
       Controle do setor{" "}
-      <span style={{ color: textColor }}>
+      <Box
+        component="span"
+        style={{ color: textColor }}
+        sx={{ display: { xs: "flex", lg: "inline-block" } }}
+      >
         <TypeAnimation
           preRenderFirstString={true}
           sequence={[
@@ -76,7 +80,7 @@ export const H1Auto = () => {
           ]}
           repeat={Infinity}
         />
-      </span>
+      </Box>
     </Typography>
   );
 };

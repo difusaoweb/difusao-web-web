@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 import { SessionProvider } from "@/components/atoms/SessionProvider";
 import { theme } from "@/styles/theme";
+import { Header } from "@/components/molecules/Header";
+
+import type { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title:
-    "Difusão Web | ⚛ Controle Financeiro, Marketing, Comercial e Operacional da sua loja",
+  title: "Difusão Web",
   description:
-    "⚛ Controle financeiro, marketing, comercial e operacional da sua loja, na palma da sua mão. 👇",
+    "Difusão Web, superando desafios. Ferramentas para auxiliar lojistas.",
 };
 
 export default function RootLayout({
@@ -26,7 +27,8 @@ export default function RootLayout({
         <SessionProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            {children}
+            <Header />
+            <Box component="main">{children}</Box>
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -35,10 +35,20 @@ export const ModalGetLed = () => {
         <Card
           sx={{
             ...style,
-            minWidth: { xs: "90%", lg: 700 },
+            // minWidth: { xs: "90%", lg: 700 },
             "& .MuiCardHeader-action": {
               margin: 0,
             },
+            width: {
+              xs: "96%",
+              lg: 700,
+            },
+            height: {
+              xs: "95%",
+              lg: "auto",
+            },
+            overflowX: "hidden",
+            overflowY: "auto",
           }}
         >
           <CardHeader
