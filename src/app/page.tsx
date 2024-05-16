@@ -1,31 +1,85 @@
 import * as React from "react";
-import {
-  Box,
-  Button,
-  Container,
-  Modal,
-  Typography,
-  colors,
-} from "@mui/material";
-import Image from "next/image";
+import { Box, Container, Typography, Button } from "@mui/material";
 import Link from "next/link";
-
-import { H1Auto } from "@/components/atoms/H1Auto";
-import { ButtonOpenModal } from "@/components/atoms/ButtonOpenModal";
-import { ModalGetLed } from "@/components/molecules/ModalGetLed";
 
 export default function HomePage() {
   return (
     <>
       <Box
         sx={{
-          background:
-            "linear-gradient(132deg, rgba(167,43,220,1) 0%, rgba(130,22,176,1) 25%, rgba(138,26,185,1) 50%, rgba(117,14,160,1) 75%)",
+          background: "#333",
           color: "#fff",
-          height: { xs: "100%", lg: "100vh" },
           justifyContent: "center",
           justifyItems: "center",
           display: "flex",
+          paddingTop: { xs: 8, lg: 25 },
+          paddingBottom: { xs: 8, lg: 25 },
+        }}
+        component="section"
+      >
+        <Container
+          maxWidth="xxl"
+          sx={{
+            justifyContent: "center",
+            justifyItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            component="h1"
+            variant="h4"
+            sx={{
+              textAlign: "center",
+              mb: 5,
+              fontSize: { xs: "2.5rem", lg: "3.75rem" },
+            }}
+          >
+            Ferramentas para lojistas
+          </Typography>
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontSize: { lg: "1.25rem" },
+              fontWeight: { lg: 500 },
+              lineHeight: { lg: 1.6 },
+              letterSpacing: { lg: "0.0075em" },
+            }}
+            component="p"
+            variant="body1"
+          >
+            Fundada com a missão de impulsionar o sucesso de pequenas lojas, a
+            Difusão Web entende que administrar uma loja vai muito além do ato
+            de vender produtos. É preciso uma gestão forte em todos os setores
+            de uma loja, desde de marketing com a atração do público, passando
+            pelo comercial para a conversão em vendas, consequentemente no
+            operacional com a entrega dos produtos, até o setor financeiro com a
+            gestão de caixa.
+          </Typography>
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontSize: { lg: "1.25rem" },
+              fontWeight: { lg: 500 },
+              lineHeight: { lg: 1.6 },
+              letterSpacing: { lg: "0.0075em" },
+            }}
+            component="p"
+            variant="body1"
+          >
+            Com essa visão, a Difusão Web desenvolveu uma solução para auxiliar
+            lojistas em todas as áreas de sua loja.
+          </Typography>
+        </Container>
+      </Box>
+      <Link
+        href="/store"
+        style={{
+          textDecoration: "none",
+          color: "unset",
+          // backgroundImage: "url(/tela-smarphone.png)",
         }}
       >
         <Container
@@ -34,72 +88,70 @@ export default function HomePage() {
             justifyContent: "center",
             justifyItems: "center",
             display: "flex",
-            flexDirection: { xs: "column", lg: "row" },
+            flexDirection: "column",
             alignContent: "center",
             alignItems: "center",
+            paddingTop: 5,
+            paddingBottom: { xs: 30, lg: 42 },
+            backgroundImage: 'url("/background-tela-smarphone.png")',
+            backgroundPosition: "bottom",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: { xs: "200%", lg: "contain" },
           }}
+          component="section"
         >
-          <Box sx={{ width: { xs: "100%", lg: "70%" } }}>
-            <H1Auto />
-            <Typography
-              component="p"
-              variant="h5"
-              sx={{
-                // fontWeight: "700",
-                mb: 5,
-              }}
-            >
-              ⚛ Controle sua loja, na palma da sua mão. 👇
-            </Typography>
-            <Box
-              sx={{
-                padding: 3,
-                backgroundColor: colors.red[400],
-                color: "#fff",
-                borderRadius: { xs: "9px", lg: 3 },
-                borderTopLeftRadius: { xs: "9px", lg: 0 },
-                borderBottomLeftRadius: { xs: "9px", lg: 0 },
-                mb: 5,
-              }}
-            >
-              <Typography component="p" variant="h6" gutterBottom>
-                Está com problemas no fluxo de caixa? Suas campanhas não geram
-                bons leads? Seus clientes conversam, mas não compram? Vendeu
-                produtos que já não estão no estoque?
-              </Typography>
-            </Box>
-            <Typography component="p" variant="h5" gutterBottom>
-              Chegou o aplicativo que irá solucionar estes e seus demais
-              problemas
-            </Typography>
-            <Typography sx={{ mb: 3 }}>
-              Nós da Difusão Web estamos construindo um poderoso assistente para
-              você lojista. Você poderá acompanhar suas transações, os pedidos
-              dos clientes, visualização fácil dos clientes recorrentes,
-              verificar suas campanhas e controlar o estoque da sua loja... Tudo
-              isso e muito mais.
-            </Typography>
-            <Box sx={{ textAlign: { xs: "center", lg: "left" } }}>
-              <ButtonOpenModal />
-            </Box>
-          </Box>
-          <Box
+          <Typography
+            component="h2"
+            variant="h4"
+            gutterBottom
             sx={{
-              width: { xs: "100%", lg: "30%" },
-              paddingLeft: { xs: 0, lg: 5 },
+              textAlign: "center",
+              fontSize: { xs: "2rem", lg: "3rem" },
+              fontWeight: { lg: 400 },
+              lineHeight: { lg: 1.167 },
+              letterSpacing: { lg: "0em" },
             }}
           >
-            <Image
-              src="/tela-smarphone.png"
-              width={1080}
-              height={2340}
-              alt="Tela do aplicativo da Difusão Web"
-              style={{ width: "100%", height: "auto", borderRadius: 9 }}
-            />
+            Difusão Store
+          </Typography>
+          <Typography
+            sx={{
+              mb: 2,
+              textAlign: "center",
+              fontSize: { lg: "1.25rem" },
+              fontWeight: { lg: 500 },
+              lineHeight: { lg: 1.6 },
+              letterSpacing: { lg: "0.0075em" },
+            }}
+            component="p"
+            variant="body1"
+          >
+            Controle financeiro, marketing, comercial e operacional da sua loja,
+            na palma da sua mão.
+          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{ boxShadow: "none !important", textTransform: "none" }}
+            >
+              Saiba mais
+            </Button>
+            <Link href="https://store.difusaoweb.com" passHref legacyBehavior>
+              <Button
+                variant="outlined"
+                sx={{ boxShadow: "none !important", textTransform: "none" }}
+              >
+                Testar agora
+              </Button>
+            </Link>
           </Box>
         </Container>
-      </Box>
-      <ModalGetLed />
+      </Link>
     </>
   );
 }

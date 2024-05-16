@@ -279,19 +279,6 @@
   dependencies:
     "@babel/runtime" "^7.23.9"
 
-"@mui/lab@^5.0.0-alpha.165":
-  version "5.0.0-alpha.165"
-  resolved "https://registry.yarnpkg.com/@mui/lab/-/lab-5.0.0-alpha.165.tgz#7fd60d26597f60b1dbf7d3ddbd646fcece276385"
-  integrity sha512-8/zJStT10nh9yrAzLOPTICGhpf5YiGp/JpM0bdTP7u5AE+YT+X2u6QwMxuCrVeW8/WVLAPFg0vtzyfgPcN5T7g==
-  dependencies:
-    "@babel/runtime" "^7.23.9"
-    "@mui/base" "5.0.0-beta.36"
-    "@mui/system" "^5.15.9"
-    "@mui/types" "^7.2.13"
-    "@mui/utils" "^5.15.9"
-    clsx "^2.1.0"
-    prop-types "^15.8.1"
-
 "@mui/material@^5.15.10":
   version "5.15.10"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.15.10.tgz#6533ba53edbd0790dbc5bb7e9e173f6069ffd7e6"
@@ -2262,11 +2249,6 @@ react-transition-group@^4.4.5:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
-
-react-type-animation@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-type-animation/-/react-type-animation-3.2.0.tgz#6863d5d60e3beb237f2bd690cceb585402c47e6a"
-  integrity sha512-WXTe0i3rRNKjmggPvT5ntye1QBt0ATGbijeW6V3cQe2W0jaMABXXlPPEdtofnS9tM7wSRHchEvI9SUw+0kUohw==
 
 react@^18:
   version "18.2.0"
