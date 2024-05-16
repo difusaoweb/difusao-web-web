@@ -83,7 +83,14 @@ export default function HomePage() {
           </Typography>
         </Container>
       </Box>
-      <Link href="/store" style={{ textDecoration: "none", color: "unset" }}>
+      <Link
+        href="/store"
+        style={{
+          textDecoration: "none",
+          color: "unset",
+          // backgroundImage: "url(/tela-smarphone.png)",
+        }}
+      >
         <Container
           maxWidth="xxl"
           sx={{
@@ -94,7 +101,11 @@ export default function HomePage() {
             alignContent: "center",
             alignItems: "center",
             paddingTop: 5,
-            paddingBottom: 5,
+            paddingBottom: { xs: 30, lg: 42 },
+            backgroundImage: 'url("/background-tela-smarphone.png")',
+            backgroundPosition: "bottom",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: { xs: "200%", lg: "contain" },
           }}
           component="section"
         >
@@ -114,7 +125,7 @@ export default function HomePage() {
           </Typography>
           <Typography
             sx={{
-              mb: 3,
+              mb: 2,
               textAlign: "center",
               fontSize: { lg: "1.25rem" },
               fontWeight: { lg: 500 },
@@ -127,7 +138,12 @@ export default function HomePage() {
             Controle financeiro, marketing, comercial e operacional da sua loja,
             na palma da sua mão.
           </Typography>
-          <Box sx={{ display: "flex", gap: 2, mb: 5 }}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: 2,
+            }}
+          >
             <Button
               variant="contained"
               sx={{ boxShadow: "none !important", textTransform: "none" }}
@@ -143,13 +159,6 @@ export default function HomePage() {
               </Button>
             </Link>
           </Box>
-          <CardMedia
-            component="img"
-            height="300"
-            image="tela-smarphone.png"
-            alt="Tela do aplicativo da Difusão Store"
-            sx={{ objectFit: "contain", backgroundSize: "contain" }}
-          />
         </Container>
       </Link>
     </>
