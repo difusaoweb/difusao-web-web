@@ -79,7 +79,11 @@ export default function StorePage() {
               verificar suas campanhas e controlar o estoque da sua loja... Tudo
               isso e muito mais.
             </Typography>
-            <Link href="https://store.difusaoweb.com" passHref legacyBehavior>
+            <Link
+              href="https://store.difusaoweb.com/login"
+              passHref
+              legacyBehavior
+            >
               <Button
                 variant="contained"
                 size="large"
