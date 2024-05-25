@@ -141,7 +141,7 @@ export default function HomePage() {
             >
               Saiba mais
             </Button>
-            <Link href="https://store.difusaoweb.com/login" passHref legacyBehavior>
+            <Link href="https://store.difusaoweb.com" passHref legacyBehavior>
               <Button
                 variant="outlined"
                 sx={{ boxShadow: "none !important", textTransform: "none" }}
