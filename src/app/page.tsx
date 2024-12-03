@@ -79,7 +79,6 @@ export default function HomePage() {
         style={{
           textDecoration: "none",
           color: "unset",
-          // backgroundImage: "url(/tela-smarphone.png)",
         }}
       >
         <Container
@@ -98,7 +97,6 @@ export default function HomePage() {
             backgroundRepeat: "no-repeat",
             backgroundSize: { xs: "200%", lg: "contain" },
           }}
-          component="section"
         >
           <Typography
             component="h2"

@@ -1,21 +1,6 @@
 "use client";
 import * as React from "react";
-import {
-  AppBar,
-  Box,
-  Container,
-  CssBaseline,
-  IconButton,
-  ThemeProvider,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
-  Button,
-  Tooltip,
-  Avatar,
-} from "@mui/material";
-import { Adb as AdbIcon, Menu as MenuIcon } from "@mui/icons-material";
+import { AppBar, Box, Container, Toolbar, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
