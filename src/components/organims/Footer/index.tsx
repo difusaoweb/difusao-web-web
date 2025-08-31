@@ -14,6 +14,17 @@ import Link from "next/link";
 
 const links = [
   {
+    link: "/legal/privacy-policy",
+    title: "Política de privacidade",
+  },
+  {
+    link: "/legal/cloud-terms-of-service",
+    title: "Termos",
+  },
+];
+
+const linksSocial = [
+  {
     link: "https://www.instagram.com/difusaoweb",
     src: "/instagram-icon.png",
     alt: "Difusão Web no Instagram",
@@ -39,8 +50,8 @@ export const Footer = () => {
         display: "flex",
         alignContent: "center",
         alignItems: "center",
-        paddingTop: 1,
-        paddingBottom: 1,
+        paddingTop: 4,
+        paddingBottom: 6,
         backgroundColor: "#f5f5f7",
       }}
       component="footer"
@@ -51,8 +62,12 @@ export const Footer = () => {
           justifyItems: "center",
           display: "flex",
           alignContent: "center",
-          justifyContent: "space-between",
+          // justifyContent: "space-between",
           alignItems: "center",
+          flexDirection: {
+            xs: "column",
+            lg: "row",
+          },
         }}
         component="section"
       >
@@ -60,11 +75,54 @@ export const Footer = () => {
           component="small"
           variant="body2"
           color="rgba(0, 0, 0, 0.56)"
+          sx={{
+            fontWeight: 400,
+            marginRight: "auto",
+          }}
         >
-          Copyright © 2024 Difusão Web. Todos os direitos reservados.
+          Copyright © {new Date().getFullYear()} Difusão Web
         </Typography>
+        <Box
+          component="nav"
+          sx={{
+            marginRight: 4,
+          }}
+        >
+          <Box
+            component="ul"
+            sx={{
+              display: "flex",
+              padding: 0,
+              margin: 0,
+              listStyleType: "none",
+              gap: { xs: 1, lg: 3 },
+              flexDirection: {
+                xs: "column",
+                lg: "row",
+              },
+            }}
+          >
+            {links.map((link) => (
+              <Box component="li" key={link.link}>
+                <Link href={link.link} passHref legacyBehavior target="_blank">
+                  <LinkMui
+                    sx={{
+                      color: "unset",
+                      textDecoration: "none",
+                      "&:hover": {
+                        textDecoration: "underline",
+                      },
+                    }}
+                  >
+                    {link.title}
+                  </LinkMui>
+                </Link>
+              </Box>
+            ))}
+          </Box>
+        </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          {links.map(({ link, src, alt }) => (
+          {linksSocial.map(({ link, src, alt }) => (
             <Link
               target="_blank"
               href={link}
