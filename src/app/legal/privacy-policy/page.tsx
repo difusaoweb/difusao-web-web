@@ -1,7 +1,5 @@
 import * as React from "react";
-import { Box, Button, Container, Typography } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
+import { Box, Container, Typography } from "@mui/material";
 
 import type { Metadata } from "next";
 
@@ -188,6 +186,55 @@ export default function LegalPrivacyPolicyPage() {
                 </li>
               </ol>
             </Box>
+            {/* * Esse acesso é **limitado às imagens escolhidas por você**;
+* O aplicativo **não acessa automaticamente** todas as suas fotos;
+* Nenhuma imagem é utilizada sem o seu consentimento.
+
+---
+
+## 4. Compartilhamento de informações
+
+O **Difusão Aracoiaba** não vende nem compartilha suas informações pessoais com terceiros, exceto:
+
+* Quando necessário para cumprir **obrigações legais**;
+* Quando for necessário para o funcionamento do aplicativo (ex.: serviços de hospedagem e armazenamento em nuvem).
+
+---
+
+## 5. Armazenamento e segurança
+
+* Suas informações são armazenadas em servidores seguros;
+* Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou uso indevido;
+* Apesar dos nossos esforços, nenhum sistema é 100% seguro, e não podemos garantir segurança absoluta.
+
+---
+
+## 6. Direitos do usuário
+
+Você pode, a qualquer momento:
+
+* Acessar, corrigir ou atualizar seus dados pessoais;
+* Solicitar a exclusão de sua conta e dados relacionados;
+* Revogar a permissão de acesso à galeria diretamente nas configurações do dispositivo.
+
+---
+
+## 7. Alterações nesta política
+
+Esta Política de Privacidade pode ser atualizada periodicamente. Recomendamos que você a consulte regularmente para estar informado sobre como protegemos suas informações.
+
+---
+
+## 8. Contato
+
+Se tiver dúvidas ou solicitações relacionadas a esta Política de Privacidade, entre em contato pelo e-mail:
+📧 **\[coloque o e-mail de suporte aqui]**
+
+---
+
+👉 Essa versão está em conformidade com boas práticas de apps que usam **permissão de fotos** no Expo e com **LGPD (Lei Geral de Proteção de Dados do Brasil)**.
+
+Quer que eu prepare também uma **versão curta** dessa política para enviar à **Play Aracoiaba/App Aracoiaba**, já que elas exigem um resumo objetivo? */}
           </Box>
         </Container>
       </Box>

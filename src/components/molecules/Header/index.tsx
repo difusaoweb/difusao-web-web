@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const pages = [{ slug: "store", title: "Difusão Store" }];
+const pages = [{ slug: "aracoiaba", title: "Difusão Aracoiaba" }];
 
 export const Header = () => {
   const pathname = usePathname();
