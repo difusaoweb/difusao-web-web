@@ -50,8 +50,7 @@ export const Footer = () => {
         display: "flex",
         alignContent: "center",
         alignItems: "center",
-        paddingTop: 4,
-        paddingBottom: 6,
+        paddingY: 4,
         backgroundColor: "#f5f5f7",
       }}
       component="footer"
