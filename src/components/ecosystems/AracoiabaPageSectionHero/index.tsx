@@ -71,7 +71,7 @@ export const AracoiabaPageSectionHero = () => {
             fácil e rápida de valorizar o comércio local, receber produtos de
             qualidade e apoiar a economia da nossa cidade.
           </Typography>
-          <Link href="https://aracoiaba.difusaoweb.com" passHref legacyBehavior>
+          <Link href="https://difusaoaracoiaba.com.br" passHref legacyBehavior>
             <Button
               variant="contained"
               size="large"

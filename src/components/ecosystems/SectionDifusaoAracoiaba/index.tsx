@@ -68,7 +68,7 @@ export const SectionDifusaoAracoiaba = () => {
           >
             Saiba mais
           </Button>
-          <Link href="https://aracoiaba.difusaoweb.com" passHref legacyBehavior>
+          <Link href="https://difusaoaracoiaba.com.br" passHref legacyBehavior>
             <Button
               variant="outlined"
               sx={{ boxShadow: "none !important", textTransform: "none" }}
