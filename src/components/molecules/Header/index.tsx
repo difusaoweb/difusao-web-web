@@ -5,7 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
-const pages = [{ slug: "aracoiaba", title: "Difusão Aracoiaba" }];
+const pages = [
+  { slug: "blog", title: "Blog" },
+  { slug: "operations", title: "Difusão Operations" },
+];
 
 export const Header = () => {
   const pathname = usePathname();
@@ -19,7 +22,7 @@ export const Header = () => {
         <Toolbar disableGutters sx={{ gap: 5 }}>
           <Link href="/" style={{ display: "flex" }}>
             <Image
-              src="/logo-white-difusão-web.png"
+              src="/logo-white-difusao-web.png"
               width={150}
               height={39}
               alt="Logo da Difusão Web"
@@ -35,9 +38,13 @@ export const Header = () => {
               >
                 <Button
                   sx={{
-                    color: pathname === `/${page.slug}` ? "#fff" : "#eee",
+                    color: pathname.startsWith(`/${page.slug}`)
+                      ? "#fff"
+                      : "#eee",
                     textTransform: "none",
-                    fontWeight: pathname === `/${page.slug}` ? 900 : undefined,
+                    fontWeight: pathname.startsWith(`/${page.slug}`)
+                      ? 900
+                      : undefined,
                   }}
                 >
                   {page.title}

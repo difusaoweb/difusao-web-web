@@ -2,10 +2,10 @@ import * as React from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
 import Link from "next/link";
 
-export const SectionDifusaoAracoiaba = () => {
+export const SectionDifusaoOperations = () => {
   return (
     <Link
-      href="/aracoiaba"
+      href="/operations"
       style={{
         textDecoration: "none",
         color: "unset",
@@ -40,7 +40,7 @@ export const SectionDifusaoAracoiaba = () => {
             letterSpacing: { lg: "0em" },
           }}
         >
-          Difusão Aracoiaba
+          Difusão Operations
         </Typography>
         <Typography
           sx={{
@@ -54,7 +54,8 @@ export const SectionDifusaoAracoiaba = () => {
           component="p"
           variant="body1"
         >
-          Aplicativo de shopping em Aracoiaba.
+          Um sistema de gestão simples, intuitivo e poderoso para pequenos
+          lojistas.
         </Typography>
         <Box
           sx={{
@@ -68,7 +69,11 @@ export const SectionDifusaoAracoiaba = () => {
           >
             Saiba mais
           </Button>
-          <Link href="https://difusaoaracoiaba.com.br" passHref legacyBehavior>
+          <Link
+            href="https://operations.difusaoweb.com"
+            passHref
+            legacyBehavior
+          >
             <Button
               variant="outlined"
               sx={{ boxShadow: "none !important", textTransform: "none" }}
