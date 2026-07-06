@@ -292,18 +292,19 @@ export const BlogPostPage = () => {
               Quanto mais recente a interação, melhor e mais barato
             </Typography>
             <Typography sx={{ color: colors.text, mt: 2, lineHeight: 1.8 }}>
-              Uma pessoa que enviou mensagem há 7 dias está "quentíssima" —
-              muito engajada e próxima de fazer uma compra. O custo para
+              Uma pessoa que enviou mensagem há 7 dias está {'\"quentíssima\"'}{" "}
+              — muito engajada e próxima de fazer uma compra. O custo para
               alcançá-la (CPM) é significativamente menor. Ao contrário, alguém
-              que interagiu há 1 ano é um público "frio" e vai custar bem mais
-              caro para tentar trazer de volta.
+              que interagiu há 1 ano é um público {'\"frio\"'} e vai custar bem
+              mais caro para tentar trazer de volta.
             </Typography>
           </Paper>
 
           <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 2 }}>
             <strong>Por quê?</strong> Imagine que é uma questão de distância.
             Quando alguém está longe de você (tempo distante), você precisa
-            "gritar" para ser ouvido. Essa distância custa dinheiro ao Meta.
+            {'\"gritar\"'} para ser ouvido. Essa distância custa dinheiro ao
+            Meta.
           </Typography>
 
           <Card
@@ -543,9 +544,9 @@ export const BlogPostPage = () => {
 
           <Alert severity="warning" icon={<LightbulbIcon />}>
             <strong>Por que variar o tempo?</strong> Você está isolando a
-            variável "recência" para medir sua verdadeira importância. Se uma
-            pessoa viu 95% mas há muito tempo, pode ser que não tenha gostado
-            (apenas terminou de ver). Pessoas que veem menos mas mais
+            variável {'\"recência\"'} para medir sua verdadeira importância. Se
+            uma pessoa viu 95% mas há muito tempo, pode ser que não tenha
+            gostado (apenas terminou de ver). Pessoas que veem menos mas mais
             recentemente podem converter melhor.
           </Alert>
         </Box>
