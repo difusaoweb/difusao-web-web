@@ -47,6 +47,7 @@ export async function updatePost(id: string, formData: FormData) {
   revalidateTag(`post-slug-${slug}`);
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
+  revalidatePath("/");
 
   redirect("/admin/posts");
 }
