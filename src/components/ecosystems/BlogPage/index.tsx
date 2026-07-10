@@ -145,7 +145,7 @@ export const BlogPage = ({ posts }: BlogPageProps) => (
                   <Stack direction="row" spacing={0.5} alignItems="center">
                     <AccessTime fontSize="small" />
                     <Typography variant="caption">
-                      {post.readingTime}
+                      {post.readingTime} minutos
                     </Typography>
                   </Stack>
                 </Stack>
