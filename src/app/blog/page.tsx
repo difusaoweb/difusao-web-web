@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import { BlogPage } from "@/components/ecosystems/BlogPage";
+import { getPosts } from "@/services/Post/getPosts";
 
 import type { Metadata } from "next";
-//public
 
 export const metadata: Metadata = {
   title: "Blog | Difusão Web",
@@ -48,10 +48,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export const revalidate = false;
+
+export default async function Page() {
+  const posts = await getPosts();
+
   return (
     <>
-      <BlogPage />
+      <BlogPage posts={posts} />
     </>
   );
 }
