@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 import { Difficulty } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
@@ -23,9 +23,14 @@ export async function createPost(formData: FormData) {
       difficulty,
       thumbnail,
       content,
+      published: true,
+      publishedAt: new Date(),
     },
   });
+
   revalidateTag("blog-posts");
+  revalidatePath("/blog");
+  revalidatePath(`/blog/${slug}`);
 
   redirect("/admin");
 }

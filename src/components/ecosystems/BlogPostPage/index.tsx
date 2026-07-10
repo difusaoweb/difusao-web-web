@@ -16,6 +16,7 @@ import {
   Divider,
   Alert,
   Chip,
+  Link,
 } from "@mui/material";
 import {
   CheckCircle as CheckCircleIcon,
@@ -26,8 +27,17 @@ import {
   Schedule as ScheduleIcon,
   Check as CheckIcon,
 } from "@mui/icons-material";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import NextLink from "next/link";
 
-export const BlogPostPage = () => {
+import { Difficulty, Post } from "@/generated/prisma";
+
+interface BlogPostPageProps {
+  post: Post;
+}
+
+export function BlogPostPage({ post }: BlogPostPageProps) {
   const colors = {
     primary: "#667eea",
     secondary: "#764ba2",
@@ -62,7 +72,7 @@ export const BlogPostPage = () => {
         }}
       >
         <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-          <Chip
+          {/* <Chip
             label="Meta Ads • Estratégia Digital"
             size="small"
             sx={{
@@ -71,7 +81,7 @@ export const BlogPostPage = () => {
               mb: 2,
               fontWeight: 600,
             }}
-          />
+          /> */}
           <Typography
             variant="h2"
             component="h1"
@@ -81,7 +91,7 @@ export const BlogPostPage = () => {
               fontSize: { xs: "2rem", md: "2.8rem" },
             }}
           >
-            Públicos Personalizados no Meta Ads
+            {post.title}
           </Typography>
           <Typography
             variant="h5"
@@ -92,8 +102,7 @@ export const BlogPostPage = () => {
               fontSize: { xs: "1rem", md: "1.2rem" },
             }}
           >
-            Aprenda a segmentar seus públicos corretamente e multiplique seus
-            resultados em vendas
+            {post.subtitle}
           </Typography>
         </Container>
       </Box>
@@ -110,7 +119,7 @@ export const BlogPostPage = () => {
               Tempo de leitura
             </Typography>
             <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              8 minutos
+              {post.readingTime} minutos
             </Typography>
           </Box>
           <Box>
@@ -121,7 +130,11 @@ export const BlogPostPage = () => {
               Data
             </Typography>
             <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              04 de julho 2026
+              {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
             </Typography>
           </Box>
           <Box>
@@ -132,557 +145,153 @@ export const BlogPostPage = () => {
               Nível
             </Typography>
             <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              Intermediário
+              {post.difficulty === Difficulty.BEGINNER
+                ? "Fácil"
+                : post.difficulty === Difficulty.INTERMEDIATE
+                  ? "Intermediário"
+                  : "Avançado"}
             </Typography>
           </Box>
         </Box>
-
         <Divider sx={{ mb: 4 }} />
 
-        {/* INTRODUCÃO */}
-        <Paper
-          elevation={0}
-          sx={{
-            p: 3,
-            mb: 4,
-            backgroundColor: "rgba(102, 126, 234, 0.05)",
-            borderLeft: `4px solid ${colors.primary}`,
-          }}
-        >
-          <Typography
-            sx={{ color: colors.text, lineHeight: 1.8, fontSize: "1.05rem" }}
-          >
-            Se você está rodando anúncios no Meta Ads (Facebook e Instagram) e
-            não está utilizando públicos personalizados de forma estratégica,
-            está deixando dinheiro na mesa. Neste artigo, vamos explorar como
-            criar, segmentar e utilizar públicos personalizados para maximizar
-            suas conversões e reduzir custos de campanha.
-          </Typography>
-        </Paper>
-
-        {/* ÍNDICE */}
-        <Paper elevation={2} sx={{ p: 3, mb: 4, borderRadius: 2 }}>
-          <Typography
-            variant="h6"
-            sx={{ fontWeight: 700, mb: 2, color: colors.primary }}
-          >
-            Neste artigo:
-          </Typography>
-          <List sx={{ pl: 0 }}>
-            <ListItem sx={{ pl: 0 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}>
-                <CheckCircleIcon sx={{ color: colors.primary }} />
-              </ListItemIcon>
-              <ListItemText primary="O que é um público personalizado" />
-            </ListItem>
-            <ListItem sx={{ pl: 0 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}>
-                <CheckCircleIcon sx={{ color: colors.primary }} />
-              </ListItemIcon>
-              <ListItemText primary="A importância do fator tempo" />
-            </ListItem>
-            <ListItem sx={{ pl: 0 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}>
-                <CheckCircleIcon sx={{ color: colors.primary }} />
-              </ListItemIcon>
-              <ListItemText primary="Estratégia por tipo de interação" />
-            </ListItem>
-            <ListItem sx={{ pl: 0 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}>
-                <CheckCircleIcon sx={{ color: colors.primary }} />
-              </ListItemIcon>
-              <ListItemText primary="Erros comuns e como evitá-los" />
-            </ListItem>
-          </List>
-        </Paper>
-
-        {/* SEÇÃO 1 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            O que é um Público Personalizado?
-          </Typography>
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 2 }}>
-            Um público personalizado é como uma caixa digital onde você coloca
-            pessoas que interagiram de alguma forma com seu perfil ou conteúdo
-            no Instagram ou Facebook. Essas pessoas:
-          </Typography>
-          <List>
-            <ListItem>
-              <ListItemIcon sx={{ color: colors.primary, minWidth: 40 }}>
-                <CheckIcon />
-              </ListItemIcon>
-              <ListItemText primary="Enviaram mensagem para sua conta" />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon sx={{ color: colors.primary, minWidth: 40 }}>
-                <CheckIcon />
-              </ListItemIcon>
-              <ListItemText primary="Salvaram seus posts" />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon sx={{ color: colors.primary, minWidth: 40 }}>
-                <CheckIcon />
-              </ListItemIcon>
-              <ListItemText primary="Curtiram, comentaram ou compartilharam seu conteúdo" />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon sx={{ color: colors.primary, minWidth: 40 }}>
-                <CheckIcon />
-              </ListItemIcon>
-              <ListItemText primary="Visitaram seu perfil" />
-            </ListItem>
-            <ListItem>
-              <ListItemIcon sx={{ color: colors.primary, minWidth: 40 }}>
-                <CheckIcon />
-              </ListItemIcon>
-              <ListItemText primary="Assistiram seus vídeos" />
-            </ListItem>
-          </List>
-
-          <Alert severity="info" sx={{ mt: 3 }}>
-            <strong>Dica:</strong> Você pode usar esses públicos como referência
-            para encontrar pessoas semelhantes (público semelhante) ou
-            direcioná-los diretamente em campanhas de vendas e remarketing.
-          </Alert>
-        </Box>
-
-        {/* SEÇÃO 2 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            A Importância do Fator Tempo
-          </Typography>
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 3 }}>
-            <strong>Esta é a lição mais importante do artigo:</strong> Os
-            públicos personalizados não são algo estático. A recência da
-            interação faz uma diferença ENORME nos resultados e custos de sua
-            campanha.
-          </Typography>
-
-          <Paper
-            elevation={0}
-            sx={{
-              p: 3,
-              backgroundColor: "rgba(233, 212, 96, 0.1)",
-              borderLeft: `4px solid ${colors.warning}`,
-              mb: 3,
-            }}
-          >
-            <Typography sx={{ fontWeight: 700, color: colors.warning, mb: 1 }}>
-              <WarningIcon
-                sx={{ fontSize: 18, mr: 1, verticalAlign: "middle" }}
-              />
-              Quanto mais recente a interação, melhor e mais barato
-            </Typography>
-            <Typography sx={{ color: colors.text, mt: 2, lineHeight: 1.8 }}>
-              Uma pessoa que enviou mensagem há 7 dias está {'\"quentíssima\"'}{" "}
-              — muito engajada e próxima de fazer uma compra. O custo para
-              alcançá-la (CPM) é significativamente menor. Ao contrário, alguém
-              que interagiu há 1 ano é um público {'\"frio\"'} e vai custar bem
-              mais caro para tentar trazer de volta.
-            </Typography>
-          </Paper>
-
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 2 }}>
-            <strong>Por quê?</strong> Imagine que é uma questão de distância.
-            Quando alguém está longe de você (tempo distante), você precisa
-            {'\"gritar\"'} para ser ouvido. Essa distância custa dinheiro ao
-            Meta.
-          </Typography>
-
-          <Card
-            sx={{
-              borderLeft: `4px solid ${colors.primary}`,
-              boxShadow: "none",
-              mb: 3,
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontWeight: 700, color: colors.primary, mb: 2 }}
-              >
-                Estratégia: Segmentação por Tempo
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            h1: ({ children }) => (
+              <Typography variant="h3" fontWeight={700} gutterBottom mt={5}>
+                {children}
               </Typography>
-              <Stack spacing={1.5}>
-                <Box>
-                  <Typography sx={{ fontWeight: 600, color: colors.text }}>
-                    7-30 dias: Público Muito Quente
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Alta propensão a comprar. Menor CPM. Prioridade máxima.
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 600, color: colors.text }}>
-                    30-90 dias: Público Morno
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Moderada propensão. CPM moderado. Boa oportunidade.
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 600, color: colors.text }}>
-                    90-180 dias: Público Frio
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Bom para remarketing. CPM mais alto. Menos eficiente.
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 600, color: colors.text }}>
-                    180-365 dias: Público Muito Frio
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Apenas para campanhas específicas. Evitar se possível.
-                  </Typography>
-                </Box>
-              </Stack>
-            </CardContent>
-          </Card>
-        </Box>
+            ),
 
-        {/* SEÇÃO 3 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            Estratégia por Tipo de Interação
-          </Typography>
+            h2: ({ children }) => (
+              <Typography variant="h4" fontWeight={700} gutterBottom mt={4}>
+                {children}
+              </Typography>
+            ),
 
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 3 }}>
-            Diferentes tipos de interação indicam diferentes níveis de
-            engajamento. Aqui está como categorizar cada uma:
-          </Typography>
+            h3: ({ children }) => (
+              <Typography variant="h5" fontWeight={700} gutterBottom mt={3}>
+                {children}
+              </Typography>
+            ),
 
-          {[
-            {
-              title: "1. Quem Enviou Mensagem",
-              icon: <CheckCircleIcon />,
-              importance: "MÁXIMA",
-              description:
-                "A interação mais valiosa. Essa pessoa demonstrou interesse específico e está pronta para converter.",
-              timeframe: "Recomendado: 7-30 dias",
-              color: colors.success,
-            },
-            {
-              title: "2. Quem Salvou Seu Post",
-              icon: <CheckCircleIcon />,
-              importance: "ALTA",
-              description:
-                "Salvou o post para ver depois. Demonstra interesse real, mas menor que mensagem.",
-              timeframe: "Recomendado: 30-120 dias",
-              color: colors.primary,
-            },
-            {
-              title:
-                "3. Quem Interagiu (Curtida, Comentário, Compartilhamento)",
-              icon: <TrendingUpIcon />,
-              importance: "MÉDIA",
-              description:
-                "Interação básica. Pode ser genuína ou apenas por hábito. Menos preditiva de venda.",
-              timeframe: "Recomendado: 30-90 dias",
-              color: colors.primary,
-            },
-            {
-              title: "4. Quem Visitou Seu Perfil",
-              icon: <WarningIcon />,
-              importance: "BAIXA",
-              description:
-                "Pode ter visitado por acidente ou curiosidade. Muito menos preditivo de venda.",
-              timeframe: "Recomendado: 30 dias ou menos",
-              color: colors.warning,
-            },
-          ].map((item, idx) => (
-            <Card
-              key={idx}
-              sx={{
-                borderLeft: `4px solid ${item.color}`,
-                boxShadow: "none",
-                mb: 2,
-              }}
-            >
-              <CardContent>
+            p: ({ children }) => (
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 2,
+                  lineHeight: 1.9,
+                }}
+              >
+                {children}
+              </Typography>
+            ),
+
+            ul: ({ children }) => (
+              <Box component="ul" sx={{ pl: 3, mb: 2 }}>
+                {children}
+              </Box>
+            ),
+
+            ol: ({ children }) => (
+              <Box component="ol" sx={{ pl: 3, mb: 2 }}>
+                {children}
+              </Box>
+            ),
+
+            li: ({ children }) => (
+              <Typography
+                component="li"
+                sx={{
+                  mb: 1,
+                }}
+              >
+                {children}
+              </Typography>
+            ),
+
+            blockquote: ({ children }) => (
+              <Box
+                sx={{
+                  borderLeft: 4,
+                  borderColor: "primary.main",
+                  bgcolor: "grey.100",
+                  py: 1,
+                  px: 3,
+                  my: 3,
+                  fontStyle: "italic",
+                }}
+              >
+                {children}
+              </Box>
+            ),
+
+            code({ children }) {
+              return (
                 <Box
+                  component="code"
                   sx={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 2,
-                    mb: 2,
+                    bgcolor: "grey.100",
+                    px: 0.5,
+                    py: 0.2,
+                    borderRadius: 1,
+                    fontFamily: "monospace",
                   }}
                 >
-                  <Box sx={{ color: item.color, flexShrink: 0 }}>
-                    {item.icon}
-                  </Box>
-                  <Box sx={{ flex: 1 }}>
-                    <Typography
-                      sx={{ fontWeight: 700, color: colors.text, mb: 0.5 }}
-                    >
-                      {item.title}
-                    </Typography>
-                    <Chip
-                      label={`Importância: ${item.importance}`}
-                      size="small"
-                      sx={{
-                        backgroundColor: item.color,
-                        color: "white",
-                        fontWeight: 600,
-                        mb: 1,
-                      }}
-                    />
-                  </Box>
+                  {children}
                 </Box>
-                <Typography sx={{ color: "#666", mb: 1, lineHeight: 1.6 }}>
-                  {item.description}
-                </Typography>
-                <Typography sx={{ color: "#999", fontSize: "0.9rem" }}>
-                  <strong>Janela de Tempo:</strong> {item.timeframe}
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
+              );
+            },
 
-        {/* SEÇÃO 4 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            Estratégia Avançada: Segmentação por Visualização de Vídeo
-          </Typography>
+            pre({ children }) {
+              return (
+                <Box
+                  component="pre"
+                  sx={{
+                    bgcolor: "#1e1e1e",
+                    color: "#fff",
+                    p: 2,
+                    borderRadius: 2,
+                    overflowX: "auto",
+                    my: 3,
+                  }}
+                >
+                  {children}
+                </Box>
+              );
+            },
 
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mb: 3 }}>
-            Se você usa vídeos em suas campanhas, pode criar públicos ainda mais
-            específicos baseado na porcentagem do vídeo que a pessoa assistiu:
-          </Typography>
-
-          <Card
-            sx={{
-              borderLeft: `4px solid ${colors.primary}`,
-              boxShadow: "none",
-              mb: 3,
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontWeight: 700, color: colors.primary, mb: 2 }}
+            a: ({ href, children }) => (
+              <Link
+                href={href ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+                component={NextLink}
               >
-                Lógica: Quanto Viu vs. Quando Viu
-              </Typography>
-              <Stack spacing={2}>
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    Viu 95% do vídeo (7-30 dias)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Muito quente. Viu tudo, estava altamente engajado e é
-                    recente.
-                  </Typography>
-                </Box>
-                <Divider />
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    Viu 75% do vídeo (45-60 dias)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Quente. Viu bastante mas pode estar um pouco mais distante
-                    no tempo.
-                  </Typography>
-                </Box>
-                <Divider />
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    Viu 50% do vídeo (60-75 dias)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Morno. Interesse moderado, dê mais tempo para o Meta
-                    encontrá-los.
-                  </Typography>
-                </Box>
-                <Divider />
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    Viu 25% do vídeo (75+ dias)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Frio. Interesse baixo, use apenas para remarketing.
-                  </Typography>
-                </Box>
-              </Stack>
-            </CardContent>
-          </Card>
+                {children}
+              </Link>
+            ),
 
-          <Alert severity="warning" icon={<LightbulbIcon />}>
-            <strong>Por que variar o tempo?</strong> Você está isolando a
-            variável {'\"recência\"'} para medir sua verdadeira importância. Se
-            uma pessoa viu 95% mas há muito tempo, pode ser que não tenha
-            gostado (apenas terminou de ver). Pessoas que veem menos mas mais
-            recentemente podem converter melhor.
-          </Alert>
-        </Box>
+            img: ({ src, alt }) => (
+              <Box
+                component="img"
+                src={src}
+                alt={alt}
+                sx={{
+                  width: "100%",
+                  borderRadius: 2,
+                  my: 3,
+                }}
+              />
+            ),
 
-        {/* SEÇÃO 5 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            Erros Comuns a Evitar
-          </Typography>
+            hr: () => <Divider sx={{ my: 4 }} />,
+          }}
+        >
+          {post.content}
+        </ReactMarkdown>
 
-          <Stack spacing={2}>
-            {[
-              {
-                error: 'Usar "Qualquer Um" sem segmentação',
-                consequence:
-                  "Mistura públicos quentes e frios, resultando em CPM alto e conversão baixa.",
-                solution: "Sempre segmente por tipo de interação e tempo.",
-              },
-              {
-                error: 'Ficar preso ao público "Interagiram"',
-                consequence:
-                  "Meta oferece isso pronto, mas agrupa demais sem diferenciação clara.",
-                solution:
-                  "Crie públicos específicos com critérios bem definidos.",
-              },
-              {
-                error: "Janelas de tempo muito longas para públicos quentes",
-                consequence:
-                  "Perde a oportunidade de converter enquanto o interesse é alto.",
-                solution:
-                  "Use 7-30 dias para mensagens, 30-60 para interações.",
-              },
-              {
-                error: 'Usar público "Visitaram o Perfil" como primário',
-                consequence:
-                  "Muitas dessas visitas são acidentais, com baixíssima conversão.",
-                solution: "Use apenas como complemento, nunca como foco.",
-              },
-              {
-                error: "Não revisar e otimizar seus públicos",
-                consequence:
-                  "Segue a mesma estratégia indefinidamente, mesmo que não funcione.",
-                solution:
-                  "Teste diferentes segmentações e meça resultados (ROAS).",
-              },
-            ].map((item, idx) => (
-              <Card key={idx} sx={{ borderLeft: `4px solid ${colors.danger}` }}>
-                <CardContent>
-                  <Typography
-                    sx={{ fontWeight: 700, color: colors.danger, mb: 1 }}
-                  >
-                    ❌ {item.error}
-                  </Typography>
-                  <Typography
-                    sx={{ color: "#666", mb: 1.5, fontSize: "0.95rem" }}
-                  >
-                    <strong>Consequência:</strong> {item.consequence}
-                  </Typography>
-                  <Typography
-                    sx={{ color: colors.success, fontSize: "0.95rem" }}
-                  >
-                    <strong>✓ Solução:</strong> {item.solution}
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
-          </Stack>
-        </Box>
-
-        {/* SEÇÃO 6 */}
-        <Box sx={{ mb: 5 }}>
-          <Typography
-            variant="h4"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-              pb: 1,
-              borderBottom: `2px solid ${colors.primary}`,
-            }}
-          >
-            Resumo: Sua Estratégia de Públicos
-          </Typography>
-
-          <Card
-            sx={{
-              backgroundColor: "rgba(102, 126, 234, 0.05)",
-              borderLeft: `4px solid ${colors.primary}`,
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{ fontWeight: 700, color: colors.primary, mb: 2 }}
-              >
-                Públicos Essenciais para Vendas:
-              </Typography>
-              <Stack spacing={2}>
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    1. Enviaram Mensagem (7, 30, 90 dias)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Prioridade #1. Use sempre para campanha de vendas.
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    2. Visualização de Vídeo (segmentada por %)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Use para entender engajamento real com seu conteúdo.
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 600 }}>
-                    3. Interação Geral (salvou + interagiu + visitou)
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "#666" }}>
-                    Público complementar, 180 dias (mais abrangente).
-                  </Typography>
-                </Box>
-              </Stack>
-            </CardContent>
-          </Card>
-        </Box>
-
-        {/* CONCLUSÃO */}
         <Paper
           elevation={0}
           sx={{
@@ -690,33 +299,12 @@ export const BlogPostPage = () => {
             backgroundColor: "rgba(102, 126, 234, 0.05)",
             borderRadius: 2,
             border: `2px solid ${colors.primary}`,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
           }}
         >
-          <Typography
-            variant="h5"
-            sx={{
-              fontWeight: 700,
-              color: colors.primary,
-              mb: 2,
-            }}
-          >
-            Conclusão
-          </Typography>
-          <Typography sx={{ color: colors.text, lineHeight: 1.8 }}>
-            Públicos personalizados bem segmentados são o diferencial entre
-            campanhas que queimam dinheiro e campanhas que geram ROI
-            consistente. O fator tempo é a chave: quanto mais recente a
-            interação, melhor e mais barato alcançar. Implemente as estratégias
-            acima, teste, meça seus resultados (ROAS) e otimize continuamente.
-          </Typography>
-          <Typography sx={{ color: colors.text, lineHeight: 1.8, mt: 2 }}>
-            Se você está rodando anúncios sem considerar tudo isso, comece hoje.
-            A diferença pode ser de 2x a 5x no seu retorno.
-          </Typography>
-        </Paper>
-
-        {/* CTA */}
-        <Box sx={{ mt: 6, textAlign: "center" }}>
           <Typography sx={{ color: "#999", mb: 2 }}>
             Gostou deste conteúdo?
           </Typography>
@@ -740,8 +328,8 @@ export const BlogPostPage = () => {
           >
             Compartilhe este Artigo
           </Button>
-        </Box>
+        </Paper>
       </Container>
     </Box>
   );
-};
+}

@@ -135,7 +135,11 @@ export const BlogPage = ({ posts }: BlogPageProps) => (
                   <Stack direction="row" spacing={0.5} alignItems="center">
                     <CalendarMonth fontSize="small" />
                     <Typography variant="caption">
-                      {post.publishedAt.toISOString()}
+                      {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                      })}
                     </Typography>
                   </Stack>
                   <Stack direction="row" spacing={0.5} alignItems="center">

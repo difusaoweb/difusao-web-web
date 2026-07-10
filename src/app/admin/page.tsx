@@ -1,9 +1,10 @@
 import Link from "next/link";
 import {
-  AccessTime,
   Add,
-  CalendarMonth,
-  Edit,
+  Article,
+  Drafts,
+  Language,
+  Launch,
   Visibility,
 } from "@mui/icons-material";
 import {
@@ -13,158 +14,239 @@ import {
   CardContent,
   Chip,
   Container,
-  IconButton,
-  Paper,
+  Grid,
   Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TextField,
   Typography,
 } from "@mui/material";
 
 import { prisma } from "@/lib/prisma";
 
-const difficultyLabel = {
-  BEGINNER: "Iniciante",
-  INTERMEDIATE: "Intermediário",
-  ADVANCED: "Avançado",
-};
+export default async function AdminPage() {
+  const [totalPosts, publishedPosts, draftPosts, latestPosts] =
+    await Promise.all([
+      prisma.post.count(),
 
-const difficultyColor = {
-  BEGINNER: "success",
-  INTERMEDIATE: "warning",
-  ADVANCED: "error",
-} as const;
+      prisma.post.count({
+        where: {
+          published: true,
+        },
+      }),
 
-export default async function AdminPostsPage() {
-  const posts = await prisma.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+      prisma.post.count({
+        where: {
+          published: false,
+        },
+      }),
+
+      prisma.post.findMany({
+        orderBy: {
+          updatedAt: "desc",
+        },
+        take: 5,
+      }),
+    ]);
 
   return (
     <Container maxWidth="xl" sx={{ py: 5 }}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={4}
-      >
-        <Box>
-          <Typography variant="h4" fontWeight={700}>
-            Posts
-          </Typography>
+      <Typography variant="h3" fontWeight={700}>
+        Dashboard
+      </Typography>
 
-          <Typography color="text.secondary">
-            Gerencie os artigos do blog.
-          </Typography>
-        </Box>
+      <Typography color="text.secondary" mb={4}>
+        Bem-vindo ao painel administrativo da Difusão Web.
+      </Typography>
 
-        <Button
-          component={Link}
-          href="/admin/new"
-          variant="contained"
-          startIcon={<Add />}
-        >
-          Novo Post
-        </Button>
+      <Grid container spacing={3} mb={5}>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography color="text.secondary">Total de posts</Typography>
+
+                  <Typography variant="h3" fontWeight={700}>
+                    {totalPosts}
+                  </Typography>
+                </Box>
+
+                <Article color="primary" fontSize="large" />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography color="text.secondary">Publicados</Typography>
+
+                  <Typography variant="h3" fontWeight={700}>
+                    {publishedPosts}
+                  </Typography>
+                </Box>
+
+                <Language color="success" fontSize="large" />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography color="text.secondary">Rascunhos</Typography>
+
+                  <Typography variant="h3" fontWeight={700}>
+                    {draftPosts}
+                  </Typography>
+                </Box>
+
+                <Drafts color="warning" fontSize="large" />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Card>
+            <CardContent>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography color="text.secondary">Visualizações</Typography>
+
+                  <Typography variant="h3" fontWeight={700}>
+                    —
+                  </Typography>
+                </Box>
+
+                <Visibility color="action" fontSize="large" />
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      <Typography variant="h5" fontWeight={700} mb={2}>
+        Ações rápidas
+      </Typography>
+
+      <Grid container spacing={2} mb={5}>
+        <Grid item xs={12} sm={6} md={3}>
+          <Button
+            component={Link}
+            href="/admin/posts/add"
+            variant="contained"
+            startIcon={<Add />}
+            fullWidth
+            size="large"
+            sx={{ py: 2 }}
+          >
+            Novo Post
+          </Button>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={3}>
+          <Button
+            component={Link}
+            href="/admin/posts"
+            variant="outlined"
+            startIcon={<Article />}
+            fullWidth
+            size="large"
+            sx={{ py: 2, backgroundColor: "#fff" }}
+          >
+            Gerenciar Posts
+          </Button>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={3}>
+          <Button
+            component={Link}
+            href="/blog"
+            variant="outlined"
+            startIcon={<Visibility />}
+            fullWidth
+            size="large"
+            sx={{ py: 2, backgroundColor: "#fff" }}
+          >
+            Ver Blog
+          </Button>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={3}>
+          <Button
+            component={Link}
+            href="/"
+            variant="outlined"
+            startIcon={<Launch />}
+            fullWidth
+            size="large"
+            sx={{ py: 2, backgroundColor: "#fff" }}
+          >
+            Ver Site
+          </Button>
+        </Grid>
+      </Grid>
+
+      <Typography variant="h5" fontWeight={700} mb={2}>
+        Últimos posts
+      </Typography>
+
+      <Stack spacing={2}>
+        {latestPosts.map((post) => (
+          <Card
+            key={post.id}
+            component={Link}
+            href={`/admin/posts/${post.id}`}
+            sx={{
+              textDecoration: "none",
+              color: "inherit",
+              transition: ".2s",
+              "&:hover": {
+                boxShadow: 4,
+              },
+            }}
+          >
+            <CardContent>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box>
+                  <Typography fontWeight={700}>{post.title}</Typography>
+
+                  <Typography variant="body2" color="text.secondary">
+                    /blog/{post.slug}
+                  </Typography>
+                </Box>
+
+                <Chip
+                  label={post.published ? "Publicado" : "Rascunho"}
+                  color={post.published ? "success" : "warning"}
+                />
+              </Stack>
+            </CardContent>
+          </Card>
+        ))}
       </Stack>
-
-      <Paper sx={{ p: 3, mb: 3 }}>
-        <TextField fullWidth placeholder="Pesquisar..." disabled />
-      </Paper>
-
-      <Card>
-        <CardContent sx={{ p: 0 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Título</TableCell>
-                <TableCell>Slug</TableCell>
-                <TableCell>Leitura</TableCell>
-                <TableCell>Dificuldade</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Publicação</TableCell>
-                <TableCell align="center">Ações</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {posts.map((post) => (
-                <TableRow key={post.id} hover>
-                  <TableCell>
-                    <Typography fontWeight={600}>{post.title}</Typography>
-
-                    <Typography variant="body2" color="text.secondary">
-                      {post.subtitle}
-                    </Typography>
-                  </TableCell>
-
-                  <TableCell>{post.slug}</TableCell>
-
-                  <TableCell>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
-                      <AccessTime fontSize="small" />
-                      {post.readingTime} min
-                    </Stack>
-                  </TableCell>
-
-                  <TableCell>
-                    <Chip
-                      size="small"
-                      color={difficultyColor[post.difficulty]}
-                      label={difficultyLabel[post.difficulty]}
-                    />
-                  </TableCell>
-
-                  <TableCell>
-                    <Chip
-                      size="small"
-                      color={post.published ? "success" : "default"}
-                      label={post.published ? "Publicado" : "Rascunho"}
-                    />
-                  </TableCell>
-
-                  <TableCell>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
-                      <CalendarMonth fontSize="small" />
-
-                      {post.publishedAt?.toLocaleDateString("pt-BR")}
-                    </Stack>
-                  </TableCell>
-
-                  <TableCell align="center">
-                    <IconButton component={Link} href={`/blog/${post.slug}`}>
-                      <Visibility />
-                    </IconButton>
-
-                    <IconButton
-                      component={Link}
-                      href={`/admin/posts/${post.id}`}
-                    >
-                      <Edit />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-
-              {posts.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={7} align="center" sx={{ py: 6 }}>
-                    <Typography color="text.secondary">
-                      Nenhum post cadastrado.
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
     </Container>
   );
 }
