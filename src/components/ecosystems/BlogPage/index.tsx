@@ -1,4 +1,3 @@
-"use client";
 import * as React from "react";
 import Link from "next/link";
 import {
@@ -22,6 +21,8 @@ import {
   WhatsApp as WhatsAppIcon,
 } from "@mui/icons-material";
 
+import { Post } from "@/generated/prisma";
+
 const colors = {
   primary: "#667eea",
   secondary: "#764ba2",
@@ -29,60 +30,10 @@ const colors = {
   text: "#333333",
 };
 
-const posts = [
-  {
-    slug: "publicos-personalizados-no-meta-ads",
-    title: "Públicos personalizados no Meta Ads",
-    excerpt:
-      "Aprenda a utilizar públicos personalizados para aumentar as vendas.",
-    category: "Marketing",
-    date: "04 de julho de 2026",
-    readingTime: "8 min",
-    thumb: "/posts/publicos-personalizados-no-meta-ads-thumbnail.png",
-  },
-  // {
-  //   slug: "controle-de-estoque",
-  //   title: "Como controlar o estoque sem planilhas",
-  //   excerpt: "Boas práticas para reduzir perdas e manter o estoque organizado.",
-  //   category: "Operações",
-  //   date: "05 Jul 2026",
-  //   readingTime: "6 min",
-  // },
-  // {
-  //   slug: "fluxo-de-caixa",
-  //   title: "Fluxo de caixa para pequenos lojistas",
-  //   excerpt: "Entenda como acompanhar entradas e saídas corretamente.",
-  //   category: "Financeiro",
-  //   date: "28 Jun 2026",
-  //   readingTime: "7 min",
-  // },
-  // {
-  //   slug: "precificacao",
-  //   title: "Como definir o preço de venda",
-  //   excerpt: "Evite vender sem lucro utilizando uma precificação consistente.",
-  //   category: "Gestão",
-  //   date: "25 Jun 2026",
-  //   readingTime: "5 min",
-  // },
-  // {
-  //   slug: "pdv",
-  //   title: "Organizando seu PDV",
-  //   excerpt: "Boas práticas para acelerar o atendimento.",
-  //   category: "Operações",
-  //   date: "20 Jun 2026",
-  //   readingTime: "4 min",
-  // },
-  // {
-  //   slug: "instagram-lojistas",
-  //   title: "Instagram para pequenos lojistas",
-  //   excerpt: "Como transformar conteúdo em vendas.",
-  //   category: "Marketing",
-  //   date: "18 Jun 2026",
-  //   readingTime: "9 min",
-  // },
-];
-
-export const BlogPage = () => (
+interface BlogPageProps {
+  posts: Post[];
+}
+export const BlogPage = ({ posts }: BlogPageProps) => (
   <Box sx={{ backgroundColor: colors.background, minHeight: "100vh" }}>
     <Box
       sx={{
@@ -151,15 +102,15 @@ export const BlogPage = () => (
               <Box
                 sx={{
                   height: 180,
-                  background: post.thumb
-                    ? `url(${post.thumb})`
+                  background: post.thumbnail
+                    ? `url(${post.thumbnail})`
                     : "linear-gradient(135deg,#667eea,#764ba2)",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               />
               <CardContent sx={{ flex: 1 }}>
-                <Chip
+                {/* <Chip
                   label={post.category}
                   size="small"
                   color="primary"
@@ -175,20 +126,26 @@ export const BlogPage = () => (
                             : "#0e664e",
                     color: "#fff",
                   }}
-                />
+                /> */}
                 <Typography variant="h6" fontWeight={700} gutterBottom>
                   {post.title}
                 </Typography>
-                <Typography color="text.secondary">{post.excerpt}</Typography>
+                <Typography color="text.secondary">{post.subtitle}</Typography>
                 <Stack direction="row" spacing={2} mt={3}>
                   <Stack direction="row" spacing={0.5} alignItems="center">
                     <CalendarMonth fontSize="small" />
-                    <Typography variant="caption">{post.date}</Typography>
+                    <Typography variant="caption">
+                      {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </Typography>
                   </Stack>
                   <Stack direction="row" spacing={0.5} alignItems="center">
                     <AccessTime fontSize="small" />
                     <Typography variant="caption">
-                      {post.readingTime}
+                      {post.readingTime} minutos
                     </Typography>
                   </Stack>
                 </Stack>
@@ -250,5 +207,3 @@ export const BlogPage = () => (
     </Container>
   </Box>
 );
-
-export default BlogPage;

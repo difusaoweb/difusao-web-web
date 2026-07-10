@@ -5,13 +5,13 @@ export const SectionHero = () => {
   return (
     <Box
       sx={{
-        background: "#333",
+        background: "#101010",
         color: "#fff",
         justifyContent: "center",
         justifyItems: "center",
         display: "flex",
-        paddingTop: { xs: 8, lg: 25 },
-        paddingBottom: { xs: 8, lg: 25 },
+        paddingTop: { xs: 4, lg: 8 },
+        paddingBottom: { xs: 4, lg: 8 },
       }}
       component="section"
     >
@@ -27,15 +27,31 @@ export const SectionHero = () => {
         }}
       >
         <Typography
+          component="h3"
+          variant="h5"
+          sx={{
+            textAlign: "center",
+            fontSize: { xs: "1rem", lg: "1.3rem" },
+            fontWeight: 600,
+            textTransform: "uppercase",
+            mb: 2.5,
+          }}
+          color="primary.main"
+        >
+          Difusão Web é tecnologia e conhecimento
+        </Typography>
+        <Typography
           component="h1"
           variant="h4"
           sx={{
             textAlign: "center",
             mb: 5,
-            fontSize: { xs: "2.5rem", lg: "3.75rem" },
+            fontSize: { xs: "2.5rem", lg: "4rem" },
+            fontWeight: 600,
+            textTransform: "uppercase",
           }}
         >
-          Ferramentas para lojistas
+          Tecnologia e conhecimento são vendas
         </Typography>
         <Typography
           sx={{
