@@ -1,13 +1,14 @@
 import { Inter } from "next/font/google";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import Image from "next/image";
 
 import { theme } from "@/styles/theme";
 import { Header } from "@/components/molecules/Header";
 import { Footer } from "@/components/organims/Footer";
 
 import type { Metadata } from "next";
-import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,10 +42,11 @@ fbq('track', 'PageView');`}
       </head>
       <body className={inter.className}>
         <noscript>
-          <img
+          <Image
             height="1"
             width="1"
             style={{ display: "none" }}
+            alt="Meta Pixel"
             src="https://www.facebook.com/tr?id=2179093299356861&ev=PageView&noscript=1"
           />
         </noscript>

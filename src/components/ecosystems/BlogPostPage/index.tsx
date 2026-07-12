@@ -38,7 +38,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
       content_name: post.title,
       content_category: "Marketing",
     });
-  }, []);
+  }, [post.title]);
 
   return (
     <Box sx={{ backgroundColor: colors.background, minHeight: "100vh" }}>
