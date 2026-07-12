@@ -7,17 +7,14 @@ import {
   Button,
   Stack,
   Paper,
-  Grid,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Card,
   CardContent,
-  LinearProgress,
 } from "@mui/material";
 import {
-  CheckCircle as CheckCircleIcon,
   WarningAmber as WarningIcon,
   WhatsApp as WhatsAppIcon,
   TrendingUp as TrendingUpIcon,
@@ -26,6 +23,8 @@ import {
   People as PeopleIcon,
   Smartphone as SmartphoneIcon,
 } from "@mui/icons-material";
+
+import { fbq } from "@/lib/metaPixel";
 
 export const OperationsPage = () => {
   // Design tokens
@@ -37,6 +36,12 @@ export const OperationsPage = () => {
     background: "#f9f9f9",
     text: "#333333",
   };
+
+  React.useEffect(() => {
+    fbq("track", "ViewContent", {
+      content_name: "Difusão Operations",
+    });
+  }, []);
 
   return (
     <Box sx={{ backgroundColor: colors.background, minHeight: "100vh" }}>

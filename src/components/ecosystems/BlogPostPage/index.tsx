@@ -5,33 +5,16 @@ import {
   Box,
   Typography,
   Button,
-  Stack,
   Paper,
-  Card,
-  CardContent,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Divider,
-  Alert,
-  Chip,
   Link,
 } from "@mui/material";
-import {
-  CheckCircle as CheckCircleIcon,
-  TrendingUp as TrendingUpIcon,
-  Warning as WarningIcon,
-  Lightbulb as LightbulbIcon,
-  VisibilityOff as VisibilityOffIcon,
-  Schedule as ScheduleIcon,
-  Check as CheckIcon,
-} from "@mui/icons-material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NextLink from "next/link";
 
 import { Difficulty, Post } from "@/generated/prisma";
+import { fbq } from "@/lib/metaPixel";
 
 interface BlogPostPageProps {
   post: Post;
@@ -47,6 +30,15 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
     background: "#f9f9f9",
     text: "#333333",
   };
+
+  React.useEffect(() => {
+    fbq("track", "PageView");
+    fbq("track", "ViewContent", {
+      content_type: "article",
+      content_name: post.title,
+      content_category: "Marketing",
+    });
+  }, [post.title]);
 
   return (
     <Box sx={{ backgroundColor: colors.background, minHeight: "100vh" }}>
