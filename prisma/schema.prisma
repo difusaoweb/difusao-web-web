@@ -23,6 +23,8 @@ model Post {
 
   thumbnail String
 
+  thumbnailFull String
+
   content String @db.Text
 
   published Boolean @default(false)

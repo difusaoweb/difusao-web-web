@@ -11,7 +11,8 @@ export async function updatePost(id: string, formData: FormData) {
   const subtitle = String(formData.get("subtitle"));
   const readingTime = Number(formData.get("readingTime"));
   const difficulty = String(formData.get("difficulty")) as Difficulty;
-  const thumbnail = String(formData.get("thumbnail"));
+  const thumbnail = String(formData.get("thumbnail") ?? "").trim();
+  const thumbnailFull = String(formData.get("thumbnailFull") ?? "").trim();
   const content = String(formData.get("content"));
   const published = formData.get("published") === "true";
 
@@ -35,6 +36,7 @@ export async function updatePost(id: string, formData: FormData) {
       readingTime,
       difficulty,
       thumbnail,
+      thumbnailFull: thumbnailFull || thumbnail,
       content,
       published,
       publishedAt: currentPost.publishedAt ?? new Date(),

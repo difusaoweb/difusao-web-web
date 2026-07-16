@@ -8,10 +8,12 @@ import {
   Paper,
   Divider,
   Link,
+  Chip,
 } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NextLink from "next/link";
+import NextImage from "next/image";
 
 import { Difficulty, Post } from "@/generated/prisma";
 import { fbq } from "@/lib/metaPixel";
@@ -41,37 +43,51 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
   }, [post.title]);
 
   return (
-    <Box sx={{ backgroundColor: colors.background, minHeight: "100vh" }}>
-      {/* HEADER */}
+    <Box
+      component="article"
+      sx={{ backgroundColor: "#fff", minHeight: "100vh" }}
+    >
       <Box
+        component="header"
         sx={{
-          background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
-          color: "white",
-          py: { xs: 6, md: 8 },
+          py: { xs: 6, md: 4 },
           position: "relative",
           overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage:
-              'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-            zIndex: 0,
-          },
+          backgroundColor: "#fafbfc",
+          borderBottom: "1px solid #dfe2e6",
         }}
       >
-        <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
+        <Container
+          maxWidth="lg"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            zIndex: 1,
+            "& > img": {
+              width: "80%",
+              height: "auto",
+              mb: 3,
+            },
+          }}
+        >
+          <NextImage
+            src={post.thumbnailFull ?? post.thumbnail}
+            width={1280}
+            height={720}
+            alt={`Header dedicado do Blog Difusão Web sobre ${post.title}`}
+            style={{
+              objectFit: "cover",
+            }}
+          />
           {/* <Chip
             label="Meta Ads • Estratégia Digital"
             size="small"
             sx={{
-              backgroundColor: "rgba(255,255,255,0.2)",
+              backgroundColor: "rgba(0,0,0,0.8)",
               color: "white",
               mb: 2,
               fontWeight: 600,
+              width: "min-content",
             }}
           /> */}
           <Typography
@@ -87,66 +103,72 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
           </Typography>
           <Typography
             variant="h5"
+            component="p"
             sx={{
               fontWeight: 300,
               opacity: 0.95,
               maxWidth: "600px",
               fontSize: { xs: "1rem", md: "1.2rem" },
+              mb: 2,
             }}
           >
             {post.subtitle}
           </Typography>
+          {/* META INFO */}
+          <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
+            <Box>
+              <Typography
+                variant="caption"
+                sx={{ color: "#999", display: "block" }}
+              >
+                Tempo de leitura
+              </Typography>
+              <Typography sx={{ fontWeight: 600, color: colors.text }}>
+                {post.readingTime} minutos
+              </Typography>
+            </Box>
+            <Box>
+              <Typography
+                variant="caption"
+                sx={{ color: "#999", display: "block" }}
+              >
+                Data
+              </Typography>
+              <Typography
+                component="time"
+                sx={{ fontWeight: 600, color: colors.text }}
+              >
+                {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}
+              </Typography>
+            </Box>
+            <Box>
+              <Typography
+                variant="caption"
+                sx={{ color: "#999", display: "block" }}
+              >
+                Nível
+              </Typography>
+              <Typography sx={{ fontWeight: 600, color: colors.text }}>
+                {post.difficulty === Difficulty.BEGINNER
+                  ? "Fácil"
+                  : post.difficulty === Difficulty.INTERMEDIATE
+                    ? "Intermediário"
+                    : "Avançado"}
+              </Typography>
+            </Box>
+          </Box>
         </Container>
       </Box>
 
-      {/* MAIN CONTENT */}
-      <Container maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
-        {/* META INFO */}
-        <Box sx={{ mb: 4, display: "flex", gap: 3, flexWrap: "wrap" }}>
-          <Box>
-            <Typography
-              variant="caption"
-              sx={{ color: "#999", display: "block" }}
-            >
-              Tempo de leitura
-            </Typography>
-            <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              {post.readingTime} minutos
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="caption"
-              sx={{ color: "#999", display: "block" }}
-            >
-              Data
-            </Typography>
-            <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
-                day: "2-digit",
-                month: "long",
-                year: "numeric",
-              })}
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant="caption"
-              sx={{ color: "#999", display: "block" }}
-            >
-              Nível
-            </Typography>
-            <Typography sx={{ fontWeight: 600, color: colors.text }}>
-              {post.difficulty === Difficulty.BEGINNER
-                ? "Fácil"
-                : post.difficulty === Difficulty.INTERMEDIATE
-                  ? "Intermediário"
-                  : "Avançado"}
-            </Typography>
-          </Box>
-        </Box>
-        <Divider sx={{ mb: 4 }} />
-
+      <Container
+        component="section"
+        maxWidth="lg"
+        sx={{ py: { xs: 4, md: 4 } }}
+      >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
@@ -283,7 +305,9 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
         >
           {post.content}
         </ReactMarkdown>
+      </Container>
 
+      <Container component="footer" maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
         <Paper
           elevation={0}
           sx={{
