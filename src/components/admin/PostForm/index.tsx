@@ -21,6 +21,7 @@ export interface PostFormValues {
   readingTime: number;
   difficulty: "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
   thumbnail: string;
+  thumbnailFull: string;
   content: string;
   published: boolean;
 }
@@ -149,6 +150,16 @@ export function PostForm({
             required
             fullWidth
             defaultValue={defaultValues?.thumbnail}
+          />
+
+          <TextField
+            label="Thumbnail Full"
+            name="thumbnailFull"
+            fullWidth
+            defaultValue={
+              defaultValues?.thumbnailFull ?? defaultValues?.thumbnail
+            }
+            helperText="Opcional. Se vazio, será usado o thumbnail principal."
           />
 
           <TextField
