@@ -50,7 +50,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
       <Box
         component="header"
         sx={{
-          py: { xs: 6, md: 4 },
+          py: { xs: 3, md: 4 },
           position: "relative",
           overflow: "hidden",
           backgroundColor: "#fafbfc",
@@ -64,7 +64,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
             flexDirection: "column",
             zIndex: 1,
             "& > img": {
-              width: "80%",
+              width: { xs: "100%", md: "80%" },
               height: "auto",
               mb: 3,
             },
@@ -167,7 +167,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
       <Container
         component="section"
         maxWidth="lg"
-        sx={{ py: { xs: 4, md: 4 } }}
+        sx={{ py: { xs: 3, md: 4 } }}
       >
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
