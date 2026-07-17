@@ -6,7 +6,7 @@ import { SectionDifusaoOperations } from "@/components/ecosystems/SectionDifusao
 import { getPosts } from "@/services/Post/getPosts";
 
 export default async function HomePage() {
-  const posts = await getPosts();
+  const posts = await getPosts(3);
 
   return (
     <>

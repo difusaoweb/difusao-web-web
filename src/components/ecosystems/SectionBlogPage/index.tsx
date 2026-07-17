@@ -22,6 +22,9 @@ export const SectionBlogPage = ({ posts }: BlogPageProps) => (
   <Container
     maxWidth="xxl"
     sx={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
       py: { xs: 5, md: 7 },
     }}
   >
@@ -39,7 +42,13 @@ export const SectionBlogPage = ({ posts }: BlogPageProps) => (
     >
       Últimos conteúdos
     </Typography>
-    <Grid container spacing={3}>
+    <Grid
+      container
+      spacing={3}
+      sx={{
+        mb: 3,
+      }}
+    >
       {posts.map((post) => (
         <Grid item xs={12} sm={6} md={4} key={post.slug}>
           <Card
@@ -86,7 +95,12 @@ export const SectionBlogPage = ({ posts }: BlogPageProps) => (
                     color: "#fff",
                   }}
                 /> */}
-              <Typography variant="h6" fontWeight={700} gutterBottom>
+              <Typography
+                variant="h6"
+                component="h3"
+                fontWeight={700}
+                gutterBottom
+              >
                 {post.title}
               </Typography>
               <Typography color="text.secondary">{post.subtitle}</Typography>
@@ -124,5 +138,8 @@ export const SectionBlogPage = ({ posts }: BlogPageProps) => (
         </Grid>
       ))}
     </Grid>
+    <Button component={Link} variant="contained" href="/blog" size="large">
+      Ver todos
+    </Button>
   </Container>
 );
