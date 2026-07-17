@@ -62,7 +62,7 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
         </Container>
       </Box>
 
-      <Container maxWidth="lg" sx={{ py: 6 }}>
+      <Container maxWidth="xl" sx={{ py: 6 }}>
         {/* <Paper sx={{ p: 3, mb: 4 }}>
         <Stack spacing={2}>
           <TextField

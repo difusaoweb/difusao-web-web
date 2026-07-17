@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 export const revalidate = false;
 
 export default async function Page() {
-  const posts = await getPosts();
+  const posts = await getPosts(-1);
 
   return (
     <>
