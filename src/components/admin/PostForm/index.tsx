@@ -289,9 +289,11 @@ export function PostForm({
                     opacity: schedule ? 0 : 1,
                   }}
                 >
-                  {publishedAt === publishedAtDefault
-                    ? "Imediatamente"
-                    : publishedAt}
+                  {defaultValues
+                    ? publishedAt
+                    : publishedAt === publishedAtDefault
+                      ? "Imediatamente"
+                      : publishedAt}
                 </Button>
               </Grid>
             </Grid>
