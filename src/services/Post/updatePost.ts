@@ -16,12 +16,16 @@ export async function updatePost(id: string, formData: FormData) {
   const content = String(formData.get("content"));
   const status = String(formData.get("status") ?? "draft") as PostStatus;
   const publishedAtValue = String(formData.get("publishedAt") ?? "").trim();
+  const publishedAt = publishedAtValue
+    ? new Date(publishedAtValue)
+    : new Date();
 
   const currentPost = await prisma.post.findUniqueOrThrow({
     where: {
       id,
     },
     select: {
+      slug: true,
       publishedAt: true,
     },
   });
@@ -40,15 +44,13 @@ export async function updatePost(id: string, formData: FormData) {
       thumbnailFull: thumbnailFull || thumbnail,
       content,
       status,
-      publishedAt: publishedAtValue
-        ? new Date(publishedAtValue)
-        : (currentPost.publishedAt ?? new Date()),
+      publishedAt,
     },
   });
 
   revalidateTag("blog-posts");
   revalidateTag(`post-${id}`);
-  // revalidateTag(`post-slug-${oldSlug}`);
+  revalidateTag(`post-slug-${currentPost.slug}`);
   revalidateTag(`post-slug-${slug}`);
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);

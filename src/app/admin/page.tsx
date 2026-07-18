@@ -53,7 +53,7 @@ export default async function AdminPage() {
     ]);
 
   return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
+    <Container maxWidth="xxl" sx={{ py: 5 }}>
       <Typography variant="h3" fontWeight={700}>
         Dashboard
       </Typography>

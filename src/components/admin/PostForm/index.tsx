@@ -95,6 +95,9 @@ export function PostForm({
   };
 
   function handleScheduleOk() {
+    if (publishedAt === publishedAtTemp) {
+      setStatus("future");
+    }
     setPublishedAt(publishedAtTemp);
     setSchedule(false);
   }
@@ -239,72 +242,90 @@ export function PostForm({
               Publicar
             </Typography>
             <Divider sx={{ my: 2 }} />
-            <TextField
-              label="Status"
-              name="status"
-              select
-              required
-              fullWidth
-              value={status}
-              onChange={(e) => setStatus(e.target.value as PostStatus)}
+            <Grid
+              container
+              spacing={3}
               sx={{
-                mb: 2,
+                alignItems: "center",
+                mb: 1,
               }}
             >
-              <MenuItem value="publish">Publicado</MenuItem>
-              <MenuItem value="draft">Rascunho</MenuItem>
-              <MenuItem value="future">Futuro</MenuItem>
-            </TextField>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
-                <Typography>
-                  Publicar{" "}
+              <Grid item xs={12} sm={6} md={4}>
+                <Typography>Status</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <TextField
+                  name="status"
+                  select
+                  required
+                  size="small"
+                  variant="outlined"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value as PostStatus)}
+                >
+                  <MenuItem value="draft">Rascunho</MenuItem>
+                  <MenuItem value="future">Futuro</MenuItem>
+                  <MenuItem value="publish">Publicado</MenuItem>
+                </TextField>
+              </Grid>
+            </Grid>
+            <Grid
+              container
+              spacing={3}
+              sx={{
+                alignItems: "center",
+              }}
+            >
+              <Grid item xs={12} sm={6} md={4}>
+                <Typography>Publicar</Typography>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4}>
+                <Button
+                  variant="outlined"
+                  onClick={handleScheduleOpen}
+                  size="small"
+                  sx={{
+                    textTransform: "unset",
+                    opacity: schedule ? 0 : 1,
+                  }}
+                >
                   {publishedAt === publishedAtDefault
-                    ? "imediatamente"
-                    : `em ${publishedAt}`}
-                </Typography>
-                {!schedule && (
+                    ? "Imediatamente"
+                    : publishedAt}
+                </Button>
+              </Grid>
+            </Grid>
+            {schedule && (
+              <>
+                <TextField
+                  name="publishedAt"
+                  type="datetime-local"
+                  fullWidth
+                  value={publishedAtTemp}
+                  onChange={(event) => setPublishedAtTemp(event.target.value)}
+                  sx={{
+                    mt: 0.5,
+                    mb: 1,
+                  }}
+                />
+                <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={handleScheduleOk}
+                  >
+                    OK
+                  </Button>
                   <Button
                     variant="text"
                     size="small"
-                    onClick={handleScheduleOpen}
+                    onClick={handleScheduleCancel}
                   >
-                    Editar
+                    Cancelar
                   </Button>
-                )}
-              </Box>
-              {schedule && (
-                <>
-                  <TextField
-                    name="publishedAt"
-                    type="datetime-local"
-                    fullWidth
-                    value={publishedAtTemp}
-                    onChange={(event) => setPublishedAtTemp(event.target.value)}
-                    sx={{
-                      mt: 0.5,
-                      mb: 1,
-                    }}
-                  />
-                  <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      onClick={handleScheduleOk}
-                    >
-                      OK
-                    </Button>
-                    <Button
-                      variant="text"
-                      size="small"
-                      onClick={handleScheduleCancel}
-                    >
-                      Cancelar
-                    </Button>
-                  </Box>
-                </>
-              )}
-            </Box>
+                </Box>
+              </>
+            )}
             <Divider
               sx={{
                 my: 2,

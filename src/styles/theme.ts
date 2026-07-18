@@ -28,7 +28,7 @@ export let theme = createTheme(
       },
     },
   },
-  {} satisfies ThemeOptions
+  {} satisfies ThemeOptions,
 );
 
 theme = createTheme(
@@ -172,7 +172,7 @@ theme = createTheme(
       },
     },
   },
-  {} satisfies ThemeOptions
+  {} satisfies ThemeOptions,
 );
 
 // #333F48

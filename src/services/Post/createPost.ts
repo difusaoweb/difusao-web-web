@@ -38,6 +38,7 @@ export async function createPost(formData: FormData) {
   revalidateTag("blog-posts");
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
+  revalidatePath("/");
 
   redirect("/admin");
 }
