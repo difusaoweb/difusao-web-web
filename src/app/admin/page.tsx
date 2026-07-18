@@ -22,19 +22,25 @@ import {
 import { prisma } from "@/lib/prisma";
 
 export default async function AdminPage() {
-  const [totalPosts, publishedPosts, draftPosts, latestPosts] =
+  const [totalPosts, publishedPosts, draftPosts, futurePosts, latestPosts] =
     await Promise.all([
       prisma.post.count(),
 
       prisma.post.count({
         where: {
-          published: true,
+          status: "publish",
         },
       }),
 
       prisma.post.count({
         where: {
-          published: false,
+          status: "draft",
+        },
+      }),
+
+      prisma.post.count({
+        where: {
+          status: "future",
         },
       }),
 
@@ -108,14 +114,14 @@ export default async function AdminPage() {
                 alignItems="center"
               >
                 <Box>
-                  <Typography color="text.secondary">Rascunhos</Typography>
+                  <Typography color="text.secondary">Futuros</Typography>
 
                   <Typography variant="h3" fontWeight={700}>
-                    {draftPosts}
+                    {futurePosts}
                   </Typography>
                 </Box>
 
-                <Drafts color="warning" fontSize="large" />
+                <Drafts color="info" fontSize="large" />
               </Stack>
             </CardContent>
           </Card>
@@ -239,8 +245,20 @@ export default async function AdminPage() {
                 </Box>
 
                 <Chip
-                  label={post.published ? "Publicado" : "Rascunho"}
-                  color={post.published ? "success" : "warning"}
+                  label={
+                    post.status === "publish"
+                      ? "Publicado"
+                      : post.status === "future"
+                        ? "Futuro"
+                        : "Rascunho"
+                  }
+                  color={
+                    post.status === "publish"
+                      ? "success"
+                      : post.status === "future"
+                        ? "info"
+                        : "warning"
+                  }
                 />
               </Stack>
             </CardContent>

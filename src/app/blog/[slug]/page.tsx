@@ -52,7 +52,7 @@ export default async function Page({ params }: Props) {
 
   const post = await getPostBySlug(slug);
 
-  if (!post || !post.published) {
+  if (!post || post.status !== "publish") {
     notFound();
   }
 

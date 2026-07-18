@@ -3,7 +3,7 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { prisma } from "@/lib/prisma";
-import { Difficulty } from "@/generated/prisma";
+import { Difficulty, PostStatus } from "@/generated/prisma";
 
 export async function updatePost(id: string, formData: FormData) {
   const slug = String(formData.get("slug"));
@@ -14,7 +14,7 @@ export async function updatePost(id: string, formData: FormData) {
   const thumbnail = String(formData.get("thumbnail") ?? "").trim();
   const thumbnailFull = String(formData.get("thumbnailFull") ?? "").trim();
   const content = String(formData.get("content"));
-  const published = formData.get("published") === "true";
+  const status = String(formData.get("status") ?? "draft") as PostStatus;
   const publishedAtValue = String(formData.get("publishedAt") ?? "").trim();
 
   const currentPost = await prisma.post.findUniqueOrThrow({
@@ -39,7 +39,7 @@ export async function updatePost(id: string, formData: FormData) {
       thumbnail,
       thumbnailFull: thumbnailFull || thumbnail,
       content,
-      published,
+      status,
       publishedAt: publishedAtValue
         ? new Date(publishedAtValue)
         : (currentPost.publishedAt ?? new Date()),

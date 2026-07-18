@@ -14,6 +14,8 @@ import {
 
 import { slugify } from "@/utils/slugify";
 
+export type PostStatus = "publish" | "draft" | "future";
+
 export interface PostFormValues {
   id?: string;
   title: string;
@@ -24,7 +26,7 @@ export interface PostFormValues {
   thumbnail: string;
   thumbnailFull: string;
   content: string;
-  published: boolean;
+  status: PostStatus;
   publishedAt?: string | Date | null;
 }
 
@@ -74,8 +76,8 @@ export function PostForm({
   const [publishedAtTemp, setPublishedAtTemp] =
     React.useState(publishedAtDefault);
   const [publishedAt, setPublishedAt] = React.useState(publishedAtDefault);
-  const [published, setPublished] = React.useState(
-    String(defaultValues?.published ?? true),
+  const [status, setStatus] = React.useState<PostStatus>(
+    defaultValues?.status ?? "draft",
   );
 
   const handleScheduleOpen = () => {
@@ -93,7 +95,6 @@ export function PostForm({
   };
 
   function handleScheduleOk() {
-    setPublished(String(publishedAt === publishedAtTemp));
     setPublishedAt(publishedAtTemp);
     setSchedule(false);
   }
@@ -102,7 +103,6 @@ export function PostForm({
     setPublishedAtTemp(publishedAtDefault);
     setPublishedAt(publishedAtDefault);
     setSchedule(false);
-    setPublished("true");
   }
 
   React.useEffect(() => {
@@ -241,18 +241,19 @@ export function PostForm({
             <Divider sx={{ my: 2 }} />
             <TextField
               label="Status"
-              name="published"
+              name="status"
               select
               required
               fullWidth
-              value={published}
-              onChange={(e) => setPublished(e.target.value)}
+              value={status}
+              onChange={(e) => setStatus(e.target.value as PostStatus)}
               sx={{
                 mb: 2,
               }}
             >
-              <MenuItem value="true">Publicado</MenuItem>
-              <MenuItem value="false">Rascunho</MenuItem>
+              <MenuItem value="publish">Publicado</MenuItem>
+              <MenuItem value="draft">Rascunho</MenuItem>
+              <MenuItem value="future">Futuro</MenuItem>
             </TextField>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>

@@ -7,7 +7,7 @@ export const getPosts = unstable_cache(
 
     return prisma.post.findMany({
       where: {
-        published: true,
+        status: "publish",
       },
       orderBy: {
         publishedAt: "desc",

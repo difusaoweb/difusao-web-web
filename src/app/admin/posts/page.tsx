@@ -124,8 +124,20 @@ export default async function AdminPostsPage() {
                   <TableCell>
                     <Chip
                       size="small"
-                      color={post.published ? "success" : "default"}
-                      label={post.published ? "Publicado" : "Rascunho"}
+                      color={
+                        post.status === "publish"
+                          ? "success"
+                          : post.status === "future"
+                            ? "info"
+                            : "default"
+                      }
+                      label={
+                        post.status === "publish"
+                          ? "Publicado"
+                          : post.status === "future"
+                            ? "Futuro"
+                            : "Rascunho"
+                      }
                     />
                   </TableCell>
 

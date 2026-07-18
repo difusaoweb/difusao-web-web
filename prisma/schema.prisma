@@ -27,7 +27,7 @@ model Post {
 
   content String @db.Text
 
-  published Boolean @default(false)
+  status PostStatus @default(draft)
 
   /// data em que deve ser publicado
   publishedAt DateTime?
@@ -41,4 +41,10 @@ enum Difficulty {
   BEGINNER
   INTERMEDIATE
   ADVANCED
+}
+
+enum PostStatus {
+  publish
+  draft
+  future
 }
