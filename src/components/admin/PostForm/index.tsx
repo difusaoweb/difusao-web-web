@@ -280,6 +280,7 @@ export function PostForm({
                 <Typography>Publicar</Typography>
               </Grid>
               <Grid item xs={12} sm={6} md={4}>
+                <input type="hidden" name="publishedAt" value={publishedAt} />
                 <Button
                   variant="outlined"
                   onClick={handleScheduleOpen}
@@ -300,7 +301,6 @@ export function PostForm({
             {schedule && (
               <>
                 <TextField
-                  name="publishedAt"
                   type="datetime-local"
                   fullWidth
                   value={publishedAtTemp}
