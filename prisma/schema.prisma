@@ -29,7 +29,8 @@ model Post {
 
   published Boolean @default(false)
 
-  publishedAt DateTime @default(now())
+  /// data em que deve ser publicado
+  publishedAt DateTime?
 
   createdAt DateTime @default(now())
 

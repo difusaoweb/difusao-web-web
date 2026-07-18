@@ -15,6 +15,7 @@ export async function updatePost(id: string, formData: FormData) {
   const thumbnailFull = String(formData.get("thumbnailFull") ?? "").trim();
   const content = String(formData.get("content"));
   const published = formData.get("published") === "true";
+  const publishedAtValue = String(formData.get("publishedAt") ?? "").trim();
 
   const currentPost = await prisma.post.findUniqueOrThrow({
     where: {
@@ -39,7 +40,9 @@ export async function updatePost(id: string, formData: FormData) {
       thumbnailFull: thumbnailFull || thumbnail,
       content,
       published,
-      publishedAt: currentPost.publishedAt ?? new Date(),
+      publishedAt: publishedAtValue
+        ? new Date(publishedAtValue)
+        : (currentPost.publishedAt ?? new Date()),
     },
   });
 

@@ -14,6 +14,11 @@ export async function createPost(formData: FormData) {
   const thumbnail = String(formData.get("thumbnail") ?? "").trim();
   const thumbnailFull = String(formData.get("thumbnailFull") ?? "").trim();
   const content = String(formData.get("content"));
+  const published = formData.get("published") === "true";
+  const publishedAtValue = String(formData.get("publishedAt") ?? "").trim();
+  const publishedAt = publishedAtValue
+    ? new Date(publishedAtValue)
+    : new Date();
 
   await prisma.post.create({
     data: {
@@ -25,8 +30,8 @@ export async function createPost(formData: FormData) {
       thumbnail,
       thumbnailFull: thumbnailFull || thumbnail,
       content,
-      published: true,
-      publishedAt: new Date(),
+      published,
+      publishedAt,
     },
   });
 
