@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath, revalidateTag } from "next/cache";
 
-import { Difficulty } from "@/generated/prisma";
+import { Difficulty, PostStatus } from "@/generated/prisma";
 import { prisma } from "@/lib/prisma";
 
 export async function createPost(formData: FormData) {
@@ -14,6 +14,11 @@ export async function createPost(formData: FormData) {
   const thumbnail = String(formData.get("thumbnail") ?? "").trim();
   const thumbnailFull = String(formData.get("thumbnailFull") ?? "").trim();
   const content = String(formData.get("content"));
+  const status = String(formData.get("status") ?? "draft") as PostStatus;
+  const publishedAtValue = String(formData.get("publishedAt") ?? "").trim();
+  const publishedAt = publishedAtValue
+    ? new Date(publishedAtValue)
+    : new Date();
 
   await prisma.post.create({
     data: {
@@ -25,14 +30,15 @@ export async function createPost(formData: FormData) {
       thumbnail,
       thumbnailFull: thumbnailFull || thumbnail,
       content,
-      published: true,
-      publishedAt: new Date(),
+      status,
+      publishedAt,
     },
   });
 
   revalidateTag("blog-posts");
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
+  revalidatePath("/");
 
   redirect("/admin");
 }

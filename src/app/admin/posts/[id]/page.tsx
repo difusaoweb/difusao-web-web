@@ -13,7 +13,7 @@ export default async function Page({
   const post = await getPost(id);
 
   return (
-    <Container maxWidth="md" sx={{ py: 6 }}>
+    <Container maxWidth="xxl" sx={{ py: 6 }}>
       <PostForm
         title="Editar Post"
         submitText="Salvar alterações"

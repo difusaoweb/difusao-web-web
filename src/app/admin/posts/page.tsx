@@ -47,7 +47,7 @@ export default async function AdminPostsPage() {
   });
 
   return (
-    <Container maxWidth="xl" sx={{ py: 5 }}>
+    <Container maxWidth="xxl" sx={{ py: 5 }}>
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -98,10 +98,6 @@ export default async function AdminPostsPage() {
                 <TableRow key={post.id} hover>
                   <TableCell>
                     <Typography fontWeight={600}>{post.title}</Typography>
-
-                    <Typography variant="body2" color="text.secondary">
-                      {post.subtitle}
-                    </Typography>
                   </TableCell>
 
                   <TableCell>{post.slug}</TableCell>
@@ -124,8 +120,20 @@ export default async function AdminPostsPage() {
                   <TableCell>
                     <Chip
                       size="small"
-                      color={post.published ? "success" : "default"}
-                      label={post.published ? "Publicado" : "Rascunho"}
+                      color={
+                        post.status === "publish"
+                          ? "success"
+                          : post.status === "future"
+                            ? "info"
+                            : "default"
+                      }
+                      label={
+                        post.status === "publish"
+                          ? "Publicado"
+                          : post.status === "future"
+                            ? "Futuro"
+                            : "Rascunho"
+                      }
                     />
                   </TableCell>
 

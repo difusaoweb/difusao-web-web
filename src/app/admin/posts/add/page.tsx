@@ -4,7 +4,7 @@ import { createPost } from "@/services/Post/createPost";
 
 export default function Page() {
   return (
-    <Container maxWidth="md" sx={{ py: 6 }}>
+    <Container maxWidth="xxl" sx={{ py: 6 }}>
       <PostForm title="Novo Post" submitText="Publicar" action={createPost} />
     </Container>
   );

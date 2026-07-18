@@ -138,11 +138,13 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                 component="time"
                 sx={{ fontWeight: 600, color: colors.text }}
               >
-                {new Date(post.publishedAt).toLocaleDateString("pt-BR", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric",
-                })}
+                {post.publishedAt
+                  ? new Date(post.publishedAt).toLocaleDateString("pt-BR", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })
+                  : "Data indisponível"}
               </Typography>
             </Box>
             <Box>
