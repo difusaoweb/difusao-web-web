@@ -301,7 +301,6 @@ export function PostForm({
             {schedule && (
               <>
                 <TextField
-                  name="publishedAt"
                   type="datetime-local"
                   fullWidth
                   value={publishedAtTemp}
