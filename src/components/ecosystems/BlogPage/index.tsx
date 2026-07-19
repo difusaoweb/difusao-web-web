@@ -1,6 +1,7 @@
 "use client";
 import * as React from "react";
 import Link from "next/link";
+import NextImage from "next/image";
 import {
   Box,
   Button,
@@ -17,11 +18,13 @@ import {
 import {
   AccessTime,
   CalendarMonth,
+  Speed,
   WhatsApp as WhatsAppIcon,
 } from "@mui/icons-material";
 
 import { Post } from "@/generated/prisma";
 import { fbq } from "@/lib/metaPixel";
+import { difficultyColor, difficultyLabel } from "@/constants/difficulty";
 
 const colors = {
   primary: "#667eea",
@@ -62,7 +65,7 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
         </Container>
       </Box>
 
-      <Container maxWidth="xl" sx={{ py: 6 }}>
+      <Container maxWidth="xxl" sx={{ py: 6 }}>
         {/* <Paper sx={{ p: 3, mb: 4 }}>
         <Stack spacing={2}>
           <TextField
@@ -104,14 +107,18 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
                   },
                 }}
               >
-                <Box
-                  sx={{
-                    height: 180,
-                    background: post.thumbnail
-                      ? `url(${post.thumbnail})`
-                      : "linear-gradient(135deg,#667eea,#764ba2)",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
+                <NextImage
+                  src={post.thumbnail}
+                  width={480}
+                  height={270}
+                  alt={`Thumbnail dedicado do Blog Difusão Web sobre ${post.title}`}
+                  quality={100}
+                  style={{
+                    objectFit: "cover",
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    objectPosition: "center",
+                    height: "auto",
                   }}
                 />
                 <CardContent sx={{ flex: 1 }}>
@@ -141,13 +148,13 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
                   <Stack direction="row" spacing={2} mt={3}>
                     <Stack direction="row" spacing={0.5} alignItems="center">
                       <CalendarMonth fontSize="small" />
-                      <Typography variant="caption">
+                      <Typography variant="caption" sx={{ lineHeight: 1 }}>
                         {post.publishedAt
                           ? new Date(post.publishedAt).toLocaleDateString(
                               "pt-BR",
                               {
                                 day: "2-digit",
-                                month: "long",
+                                month: "short",
                                 year: "numeric",
                               },
                             )
@@ -156,23 +163,20 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
                     </Stack>
                     <Stack direction="row" spacing={0.5} alignItems="center">
                       <AccessTime fontSize="small" />
-                      <Typography variant="caption">
+                      <Typography variant="caption" sx={{ lineHeight: 1 }}>
                         {post.readingTime} minutos
                       </Typography>
                     </Stack>
+                    <Stack direction="row" spacing={0.5} alignItems="center">
+                      <Speed fontSize="small" />
+                      <Chip
+                        size="small"
+                        color={difficultyColor[post.difficulty]}
+                        label={difficultyLabel[post.difficulty]}
+                      />
+                    </Stack>
                   </Stack>
                 </CardContent>
-                <CardActions sx={{ p: 2 }}>
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    tabIndex={-1}
-                    disableRipple
-                    sx={{ pointerEvents: "none" }}
-                  >
-                    Ler artigo
-                  </Button>
-                </CardActions>
               </Card>
             </Grid>
           ))}
