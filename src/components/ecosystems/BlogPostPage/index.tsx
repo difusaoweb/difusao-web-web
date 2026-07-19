@@ -9,6 +9,7 @@ import {
   Divider,
   Link,
   Chip,
+  Stack,
 } from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -17,6 +18,8 @@ import NextImage from "next/image";
 
 import { Difficulty, Post } from "@/generated/prisma";
 import { fbq } from "@/lib/metaPixel";
+import { difficultyColor, difficultyLabel } from "@/constants/difficulty";
+import { AccessTime, CalendarMonth, Speed } from "@mui/icons-material";
 
 interface BlogPostPageProps {
   post: Post;
@@ -117,23 +120,29 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
           {/* META INFO */}
           <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
             <Box>
-              <Typography
-                variant="caption"
-                sx={{ color: "#999", display: "block" }}
-              >
-                Tempo de leitura
-              </Typography>
+              <Stack direction="row" spacing={0.5} alignItems="center">
+                <CalendarMonth fontSize="small" sx={{ color: "#555" }} />
+                <Typography
+                  variant="caption"
+                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
+                >
+                  Tempo de leitura
+                </Typography>
+              </Stack>
               <Typography sx={{ fontWeight: 600, color: colors.text }}>
                 {post.readingTime} minutos
               </Typography>
             </Box>
             <Box>
-              <Typography
-                variant="caption"
-                sx={{ color: "#999", display: "block" }}
-              >
-                Data
-              </Typography>
+              <Stack direction="row" spacing={0.5} alignItems="center">
+                <AccessTime fontSize="small" sx={{ color: "#555" }} />
+                <Typography
+                  variant="caption"
+                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
+                >
+                  Data
+                </Typography>
+              </Stack>
               <Typography
                 component="time"
                 sx={{ fontWeight: 600, color: colors.text }}
@@ -148,19 +157,20 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
               </Typography>
             </Box>
             <Box>
-              <Typography
-                variant="caption"
-                sx={{ color: "#999", display: "block" }}
-              >
-                Nível
-              </Typography>
-              <Typography sx={{ fontWeight: 600, color: colors.text }}>
-                {post.difficulty === Difficulty.BEGINNER
-                  ? "Fácil"
-                  : post.difficulty === Difficulty.INTERMEDIATE
-                    ? "Intermediário"
-                    : "Avançado"}
-              </Typography>
+              <Stack direction="row" spacing={0.5} alignItems="center">
+                <Speed fontSize="small" sx={{ color: "#555" }} />
+                <Typography
+                  variant="caption"
+                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
+                >
+                  Nível
+                </Typography>
+              </Stack>
+              <Chip
+                size="small"
+                color={difficultyColor[post.difficulty]}
+                label={difficultyLabel[post.difficulty]}
+              />
             </Box>
           </Box>
         </Container>

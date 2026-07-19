@@ -26,23 +26,12 @@ import {
 } from "@mui/material";
 
 import { prisma } from "@/lib/prisma";
-
-const difficultyLabel = {
-  BEGINNER: "Iniciante",
-  INTERMEDIATE: "Intermediário",
-  ADVANCED: "Avançado",
-};
-
-const difficultyColor = {
-  BEGINNER: "success",
-  INTERMEDIATE: "warning",
-  ADVANCED: "error",
-} as const;
+import { difficultyColor, difficultyLabel } from "@/constants/difficulty";
 
 export default async function AdminPostsPage() {
   const posts = await prisma.post.findMany({
     orderBy: {
-      createdAt: "desc",
+      publishedAt: "desc",
     },
   });
 
