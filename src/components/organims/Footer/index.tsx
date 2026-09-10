@@ -25,7 +25,7 @@ const links = [
 
 const linksSocial = [
   {
-    link: "https://www.instagram.com/difusao.web",
+    link: "https://www.instagram.com/di.fusaoweb",
     src: "/instagram-icon.png",
     alt: "Difusão Web no Instagram",
   },
