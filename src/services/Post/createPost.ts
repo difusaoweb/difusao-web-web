@@ -35,7 +35,7 @@ export async function createPost(formData: FormData) {
     },
   });
 
-  revalidateTag("blog-posts");
+  revalidateTag("blog-posts", { expire: 0 });
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
   revalidatePath("/");

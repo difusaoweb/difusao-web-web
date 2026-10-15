@@ -42,11 +42,11 @@ export async function GET(request: Request) {
     },
   });
 
-  revalidateTag("blog-posts");
+  revalidateTag("blog-posts", { expire: 0 });
 
   for (const post of posts) {
-    revalidateTag(`post-${post.id}`);
-    revalidateTag(`post-slug-${post.slug}`);
+    revalidateTag(`post-${post.id}`, { expire: 0 });
+    revalidateTag(`post-slug-${post.slug}`, { expire: 0 });
 
     revalidatePath(`/blog/${post.slug}`);
   }
