@@ -1,14 +1,4 @@
 import * as React from "react";
-import {
-  Box,
-  Container,
-  IconButton,
-  Typography,
-  SvgIcon,
-  Avatar,
-  Link as LinkMui,
-  Button,
-} from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -43,112 +33,40 @@ const linksSocial = [
 
 export const Footer = () => {
   return (
-    <Box
-      sx={{
-        justifyContent: "center",
-        justifyItems: "center",
-        display: "flex",
-        alignContent: "center",
-        alignItems: "center",
-        paddingY: 4,
-        backgroundColor: "#f5f5f7",
-      }}
-      component="footer"
-    >
-      <Container
-        maxWidth="xxl"
-        sx={{
-          justifyItems: "center",
-          display: "flex",
-          alignContent: "center",
-          // justifyContent: "space-between",
-          alignItems: "center",
-          flexDirection: {
-            xs: "column",
-            lg: "row",
-          },
-        }}
-        component="section"
-      >
-        <Typography
-          component="small"
-          variant="body2"
-          color="rgba(0, 0, 0, 0.56)"
-          sx={{
-            fontWeight: 400,
-            marginRight: "auto",
-          }}
-        >
+    <footer className="flex justify-center items-center py-8 bg-[#f5f5f7]">
+      <section className="container-xxl flex flex-col lg:flex-row items-center justify-center">
+        <small className="text-sm font-normal text-black/56 mr-auto mb-4 lg:mb-0">
           Copyright © {new Date().getFullYear()} Difusão Web
-        </Typography>
-        <Box
-          component="nav"
-          sx={{
-            marginRight: 4,
-          }}
-        >
-          <Box
-            component="ul"
-            sx={{
-              display: "flex",
-              padding: 0,
-              margin: 0,
-              listStyleType: "none",
-              gap: { xs: 1, lg: 3 },
-              flexDirection: {
-                xs: "column",
-                lg: "row",
-              },
-            }}
-          >
+        </small>
+        <nav className="mr-4 mb-4 lg:mb-0">
+          <ul className="flex flex-col lg:flex-row list-none p-0 m-0 gap-1 lg:gap-3">
             {links.map((link) => (
-              <Box component="li" key={link.link}>
-                <Link href={link.link} passHref legacyBehavior target="_blank">
-                  <LinkMui
-                    sx={{
-                      color: "unset",
-                      textDecoration: "none",
-                      "&:hover": {
-                        textDecoration: "underline",
-                      },
-                    }}
-                  >
-                    {link.title}
-                  </LinkMui>
+              <li key={link.link}>
+                <Link
+                  href={link.link}
+                  target="_blank"
+                  className="text-inherit no-underline hover:underline"
+                >
+                  {link.title}
                 </Link>
-              </Box>
+              </li>
             ))}
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", gap: 1 }}>
+          </ul>
+        </nav>
+        <div className="flex gap-1">
           {linksSocial.map(({ link, src, alt }) => (
-            <Link
-              target="_blank"
-              href={link}
-              passHref
-              legacyBehavior
+            <a
               key={link}
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-primary hover:bg-[#333333] transition-colors inline-flex items-center justify-center min-w-0 shadow-none"
             >
-              <Button
-                sx={{
-                  padding: 1,
-                  borderRadius: 50,
-                  minWidth: "unset",
-                  boxShadow: "none !important",
-                  "&:hover": {
-                    backgroundColor: "#333333",
-                  },
-                }}
-                variant="contained"
-                target="_blank"
-                href={link}
-              >
-                <Image src={src} width={24} height={24} alt={alt} />
-              </Button>
-            </Link>
+              <Image src={src} width={24} height={24} alt={alt} />
+            </a>
           ))}
-        </Box>
-      </Container>
-    </Box>
+        </div>
+      </section>
+    </footer>
   );
 };

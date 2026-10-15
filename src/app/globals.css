@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Examina os arquivos de aplicação e componentes dentro de src. */
+@source "../";
+
+@theme {
+  --font-sans: "Roboto", system-ui, sans-serif;
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1400px;
+
+  --color-primary: #9300d1;
+  --color-primary-light: #9300d1;
+  --color-primary-dark: #9300d1;
+}
+
+/* Classes próprias usadas no projeto. */
+@utility container-xl {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@utility container-xxl {
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}

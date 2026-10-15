@@ -1,95 +1,35 @@
 import * as React from "react";
-import { Box, Button, Container, Typography } from "@mui/material";
 import Link from "next/link";
 
 export const SectionDifusaoOperations = () => {
   return (
-    <Link
-      href="/operations"
-      style={{
-        textDecoration: "none",
-        color: "unset",
-      }}
-    >
-      <Box
-        sx={{
-          backgroundColor: "#fafbfc",
-          borderTop: "1px solid #dfe2e6",
-        }}
+    <div className="bg-[#fafbfc] border-t border-[#dfe2e6]">
+      <div
+        className="container-xxl flex flex-col items-center justify-center pt-10 pb-60 lg:pb-90 bg-no-repeat bg-bottom bg-[length:200%] lg:bg-contain"
+        style={{ backgroundImage: 'url("/background-tela-smarphone.png")' }}
       >
-        <Container
-          maxWidth="xxl"
-          sx={{
-            justifyContent: "center",
-            justifyItems: "center",
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-            alignItems: "center",
-            paddingTop: 5,
-            paddingBottom: { xs: 30, lg: 42 },
-            backgroundImage: 'url("/background-tela-smarphone.png")',
-            backgroundPosition: "bottom",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: { xs: "200%", lg: "contain" },
-          }}
-        >
-          <Typography
-            component="h2"
-            variant="h4"
-            gutterBottom
-            sx={{
-              textAlign: "center",
-              fontSize: { xs: "2rem", lg: "3rem" },
-              fontWeight: { lg: 400 },
-              lineHeight: { lg: 1.167 },
-              letterSpacing: { lg: "0em" },
-            }}
+        <h2 className="text-center text-3xl lg:text-5xl font-normal lg:leading-tight mb-2">
+          Difusão Operations
+        </h2>
+        <p className="mb-4 text-center lg:text-xl lg:font-medium lg:leading-relaxed lg:tracking-wide">
+          Um sistema de gestão simples, intuitivo e poderoso para pequenos
+          lojistas.
+        </p>
+        <div className="flex gap-4">
+          <Link
+            href="/operations"
+            className="inline-flex items-center justify-center px-4 py-2 rounded bg-primary text-white text-sm font-medium shadow-none hover:opacity-90 transition-opacity"
           >
-            Difusão Operations
-          </Typography>
-          <Typography
-            sx={{
-              mb: 2,
-              textAlign: "center",
-              fontSize: { lg: "1.25rem" },
-              fontWeight: { lg: 500 },
-              lineHeight: { lg: 1.6 },
-              letterSpacing: { lg: "0.0075em" },
-            }}
-            component="p"
-            variant="body1"
+            Saiba mais
+          </Link>
+          <a
+            href="https://operations.difusaoweb.com"
+            className="inline-flex items-center justify-center px-4 py-2 rounded border border-primary text-primary text-sm font-medium shadow-none hover:bg-primary/5 transition-colors"
           >
-            Um sistema de gestão simples, intuitivo e poderoso para pequenos
-            lojistas.
-          </Typography>
-          <Box
-            sx={{
-              display: "flex",
-              gap: 2,
-            }}
-          >
-            <Button
-              variant="contained"
-              sx={{ boxShadow: "none !important", textTransform: "none" }}
-            >
-              Saiba mais
-            </Button>
-            <Link
-              href="https://operations.difusaoweb.com"
-              passHref
-              legacyBehavior
-            >
-              <Button
-                variant="outlined"
-                sx={{ boxShadow: "none !important", textTransform: "none" }}
-              >
-                Testar agora
-              </Button>
-            </Link>
-          </Box>
-        </Container>
-      </Box>
-    </Link>
+            Testar agora
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };

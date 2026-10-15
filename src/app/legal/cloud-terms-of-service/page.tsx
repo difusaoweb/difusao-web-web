@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Box, Container, Typography } from "@mui/material";
-
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -11,84 +9,29 @@ export const metadata: Metadata = {
 export default function LegalCloudTermsOfServicePage() {
   return (
     <>
-      <Box
-        sx={{
-          justifyContent: "center",
-          justifyItems: "center",
-          display: "flex",
-          paddingTop: 5,
-          paddingBottom: 5,
-        }}
-        component="section"
-      >
-        <Container
-          maxWidth="xxl"
-          sx={{
-            justifyContent: "center",
-            justifyItems: "center",
-            display: "flex",
-            flexDirection: { xs: "column", lg: "row" },
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              width: { xs: "100%", lg: "70%" },
-              justifContent: "center",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: { xs: "center", lg: "start" },
-            }}
-          >
-            <Box
-              sx={{
-                mb: "60px",
-              }}
-            >
-              <Typography
-                component="h1"
-                variant="h4"
-                sx={{
-                  fontSize: { lg: "3rem" },
-                  lineHeight: { lg: 1.167 },
-                  letterSpacing: { lg: "0em" },
-                  textAlign: { xs: "center", lg: "left" },
-                  mb: 2,
-                }}
-              >
+      <div>
+        <div className="container-xxl">
+          <div>
+            <div>
+              <h1 className="text-3xl font-bold mb-4">
                 Termos de Uso
-              </Typography>
-              <Typography component="p" variant="subtitle1">
+              </h1>
+              <p className="mb-3 leading-relaxed text-gray-700">
                 <b>Última atualização:</b> 29 de setembro de 2025
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                mb: "60px",
-              }}
-            >
-              <Typography>
+              </p>
+            </div>
+            <div>
+              <p className="mb-3 leading-relaxed text-gray-700">
                 Bem-vindo ao aplicativo <b>Difusão Web</b>, um marketplace de
                 vendas de produtos locais da cidade de Aracoiaba. Ao utilizar
                 nosso aplicativo, você concorda com os seguintes termos e
                 condições.
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                mb: 2,
-              }}
-            >
-              <Typography
-                component="h2"
-                variant="h5"
-                sx={{
-                  mb: 2,
-                }}
-              >
+              </p>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mt-8 mb-3">
                 1. Cadastro e Acesso
-              </Typography>
+              </h2>
               <ol>
                 <li>
                   Para utilizar o aplicativo, o usuário deve realizar o cadastro
@@ -109,21 +52,11 @@ export default function LegalCloudTermsOfServicePage() {
                   por não compartilhar o código de verificação com terceiros.
                 </li>
               </ol>
-            </Box>
-            <Box
-              sx={{
-                mb: 2,
-              }}
-            >
-              <Typography
-                component="h2"
-                variant="h5"
-                sx={{
-                  mb: 2,
-                }}
-              >
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mt-8 mb-3">
                 2. Produtos Disponíveis
-              </Typography>
+              </h2>
               <ol>
                 <li>
                   Todos os produtos anunciados no aplicativo são <b>novos</b> e
@@ -138,21 +71,11 @@ export default function LegalCloudTermsOfServicePage() {
                   ofertas, mas não garante que não ocorram erros de informação.
                 </li>
               </ol>
-            </Box>
-            <Box
-              sx={{
-                mb: 2,
-              }}
-            >
-              <Typography
-                component="h2"
-                variant="h5"
-                sx={{
-                  mb: 2,
-                }}
-              >
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mt-8 mb-3">
                 3. Compras e Pagamentos
-              </Typography>
+              </h2>
               <ol>
                 <li>
                   O usuário poderá selecionar produtos, adicioná-los ao carrinho
@@ -167,21 +90,11 @@ export default function LegalCloudTermsOfServicePage() {
                   contato com nosso suporte oficial.
                 </li>
               </ol>
-            </Box>
-            <Box
-              sx={{
-                mb: 2,
-              }}
-            >
-              <Typography
-                component="h2"
-                variant="h5"
-                sx={{
-                  mb: 2,
-                }}
-              >
+            </div>
+            <div>
+              <h2 className="text-xl font-bold mt-8 mb-3">
                 4. Entrega dos Produtos
-              </Typography>
+              </h2>
               <ol>
                 <li>
                   A <b>entrega é de responsabilidade da Difusão Web</b>, que
@@ -198,8 +111,8 @@ export default function LegalCloudTermsOfServicePage() {
                   ser cobrada taxa adicional de reentrega.
                 </li>
               </ol>
-            </Box>
-          </Box>
+            </div>
+          </div>
           {/* ## 5. Trocas e Devoluções
 
 * Produtos com defeito de fabricação ou em desacordo com o pedido poderão ser devolvidos ou trocados, respeitando o prazo legal previsto no Código de Defesa do Consumidor.
@@ -241,8 +154,8 @@ A Difusão Web poderá modificar estes Termos de Uso a qualquer momento, mediant
 ## 9. Contato
 
 Em caso de dúvidas ou solicitações, entre em contato pelo WhatsApp oficial do suporte da Difusão Web: \[inserir número]. */}
-        </Container>
-      </Box>
+        </div>
+      </div>
     </>
   );
 }

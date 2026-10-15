@@ -1,25 +1,18 @@
 "use client";
 import * as React from "react";
-import {
-  Container,
-  Box,
-  Typography,
-  Button,
-  Paper,
-  Divider,
-  Link,
-  Chip,
-  Stack,
-} from "@mui/material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NextLink from "next/link";
 import NextImage from "next/image";
+import {
+  IconCalendar,
+  IconClock,
+  IconGauge,
+} from "@tabler/icons-react";
 
-import { Difficulty, Post } from "@/generated/prisma";
+import { Post } from "@/generated/prisma";
 import { fbq } from "@/lib/metaPixel";
-import { difficultyColor, difficultyLabel } from "@/constants/difficulty";
-import { AccessTime, CalendarMonth, Speed } from "@mui/icons-material";
+import { difficultyChipClass, difficultyLabel } from "@/constants/difficulty";
 
 interface BlogPostPageProps {
   post: Post;
@@ -46,107 +39,42 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
   }, [post.title]);
 
   return (
-    <Box
-      component="article"
-      sx={{ backgroundColor: "#fff", minHeight: "100vh" }}
-    >
-      <Box
-        component="header"
-        sx={{
-          py: { xs: 3, md: 4 },
-          position: "relative",
-          overflow: "hidden",
-          backgroundColor: "#fafbfc",
-          borderBottom: "1px solid #dfe2e6",
-        }}
-      >
-        <Container
-          maxWidth="lg"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            zIndex: 1,
-            "& > img": {
-              width: { xs: "100%", md: "80%" },
-              height: "auto",
-              mb: 3,
-            },
-          }}
-        >
+    <article className="bg-white min-h-screen">
+      <header className="py-6 md:py-8 relative overflow-hidden bg-[#fafbfc] border-b border-[#dfe2e6]">
+        <div className="container-lg flex flex-col z-10">
           <NextImage
             src={post.thumbnailFull ?? post.thumbnail}
             width={1280}
             height={720}
             alt={`Header dedicado do Blog Difusão Web sobre ${post.title}`}
-            style={{
-              objectFit: "cover",
-            }}
+            className="object-cover w-full md:w-4/5 h-auto mb-6 rounded"
           />
-          {/* <Chip
-            label="Meta Ads • Estratégia Digital"
-            size="small"
-            sx={{
-              backgroundColor: "rgba(0,0,0,0.8)",
-              color: "white",
-              mb: 2,
-              fontWeight: 600,
-              width: "min-content",
-            }}
-          /> */}
-          <Typography
-            variant="h2"
-            component="h1"
-            sx={{
-              fontWeight: 700,
-              mb: 2,
-              fontSize: { xs: "2rem", md: "2.8rem" },
-            }}
-          >
+          <h1 className="font-bold mb-4 text-3xl md:text-[2.8rem] leading-tight">
             {post.title}
-          </Typography>
-          <Typography
-            variant="h5"
-            component="p"
-            sx={{
-              fontWeight: 300,
-              opacity: 0.95,
-              maxWidth: "600px",
-              fontSize: { xs: "1rem", md: "1.2rem" },
-              mb: 2,
-            }}
-          >
+          </h1>
+          <p className="font-light opacity-95 max-w-xl text-base md:text-xl mb-4">
             {post.subtitle}
-          </Typography>
-          {/* META INFO */}
-          <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
-            <Box>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <CalendarMonth fontSize="small" sx={{ color: "#555" }} />
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
-                >
+          </p>
+          <div className="flex gap-6 flex-wrap">
+            <div>
+              <div className="flex items-center gap-1">
+                <IconClock size={16} stroke={1.5} className="text-[#555]" />
+                <span className="text-xs text-[#555] block leading-none">
                   Tempo de leitura
-                </Typography>
-              </Stack>
-              <Typography sx={{ fontWeight: 600, color: colors.text }}>
+                </span>
+              </div>
+              <p className="font-semibold text-[#333333]">
                 {post.readingTime} minutos
-              </Typography>
-            </Box>
-            <Box>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <AccessTime fontSize="small" sx={{ color: "#555" }} />
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
-                >
+              </p>
+            </div>
+            <div>
+              <div className="flex items-center gap-1">
+                <IconCalendar size={16} stroke={1.5} className="text-[#555]" />
+                <span className="text-xs text-[#555] block leading-none">
                   Data
-                </Typography>
-              </Stack>
-              <Typography
-                component="time"
-                sx={{ fontWeight: 600, color: colors.text }}
-              >
+                </span>
+              </div>
+              <time className="font-semibold text-[#333333]">
                 {post.publishedAt
                   ? new Date(post.publishedAt).toLocaleDateString("pt-BR", {
                       day: "2-digit",
@@ -154,210 +82,115 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
                       year: "numeric",
                     })
                   : "Data indisponível"}
-              </Typography>
-            </Box>
-            <Box>
-              <Stack direction="row" spacing={0.5} alignItems="center">
-                <Speed fontSize="small" sx={{ color: "#555" }} />
-                <Typography
-                  variant="caption"
-                  sx={{ color: "#555", display: "block", lineHeight: 1 }}
-                >
+              </time>
+            </div>
+            <div>
+              <div className="flex items-center gap-1">
+                <IconGauge size={16} stroke={1.5} className="text-[#555]" />
+                <span className="text-xs text-[#555] block leading-none">
                   Nível
-                </Typography>
-              </Stack>
-              <Chip
-                size="small"
-                color={difficultyColor[post.difficulty]}
-                label={difficultyLabel[post.difficulty]}
-              />
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+                </span>
+              </div>
+              <span
+                className={`inline-block text-xs px-2 py-0.5 rounded-full font-medium mt-0.5 ${
+                  difficultyChipClass[post.difficulty] ??
+                  "bg-gray-100 text-gray-800"
+                }`}
+              >
+                {difficultyLabel[post.difficulty]}
+              </span>
+            </div>
+          </div>
+        </div>
+      </header>
 
-      <Container
-        component="section"
-        maxWidth="lg"
-        sx={{ py: { xs: 3, md: 4 } }}
-      >
+      <section className="container-lg py-6 md:py-8 prose-content">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
             h1: ({ children }) => (
-              <Typography variant="h3" fontWeight={700} gutterBottom mt={5}>
-                {children}
-              </Typography>
+              <h1 className="text-3xl font-bold mb-4 mt-10">{children}</h1>
             ),
-
             h2: ({ children }) => (
-              <Typography variant="h4" fontWeight={700} gutterBottom mt={4}>
-                {children}
-              </Typography>
+              <h2 className="text-2xl font-bold mb-3 mt-8">{children}</h2>
             ),
-
             h3: ({ children }) => (
-              <Typography variant="h5" fontWeight={700} gutterBottom mt={3}>
-                {children}
-              </Typography>
+              <h3 className="text-xl font-bold mb-2 mt-6">{children}</h3>
             ),
-
             p: ({ children }) => (
-              <Typography
-                variant="body1"
-                sx={{
-                  mb: 2,
-                  lineHeight: 1.9,
-                }}
-              >
-                {children}
-              </Typography>
+              <p className="mb-4 leading-[1.9] text-base">{children}</p>
             ),
-
             ul: ({ children }) => (
-              <Box component="ul" sx={{ pl: 3, mb: 2 }}>
-                {children}
-              </Box>
+              <ul className="pl-6 mb-4 list-disc">{children}</ul>
             ),
-
             ol: ({ children }) => (
-              <Box component="ol" sx={{ pl: 3, mb: 2 }}>
-                {children}
-              </Box>
+              <ol className="pl-6 mb-4 list-decimal">{children}</ol>
             ),
-
-            li: ({ children }) => (
-              <Typography
-                component="li"
-                sx={{
-                  mb: 1,
-                }}
-              >
-                {children}
-              </Typography>
-            ),
-
+            li: ({ children }) => <li className="mb-2">{children}</li>,
             blockquote: ({ children }) => (
-              <Box
-                sx={{
-                  borderLeft: 4,
-                  borderColor: "primary.main",
-                  bgcolor: "grey.100",
-                  py: 1,
-                  px: 3,
-                  my: 3,
-                  fontStyle: "italic",
-                }}
-              >
+              <blockquote className="border-l-4 border-primary bg-gray-100 py-2 px-6 my-6 italic">
                 {children}
-              </Box>
+              </blockquote>
             ),
-
             code({ children }) {
               return (
-                <Box
-                  component="code"
-                  sx={{
-                    bgcolor: "grey.100",
-                    px: 0.5,
-                    py: 0.2,
-                    borderRadius: 1,
-                    fontFamily: "monospace",
-                  }}
-                >
+                <code className="bg-gray-100 px-1.5 py-0.5 rounded font-mono text-sm">
                   {children}
-                </Box>
+                </code>
               );
             },
-
             pre({ children }) {
               return (
-                <Box
-                  component="pre"
-                  sx={{
-                    bgcolor: "#1e1e1e",
-                    color: "#fff",
-                    p: 2,
-                    borderRadius: 2,
-                    overflowX: "auto",
-                    my: 3,
-                  }}
-                >
+                <pre className="bg-[#1e1e1e] text-white p-4 rounded-lg overflow-x-auto my-6">
                   {children}
-                </Box>
+                </pre>
               );
             },
-
             a: ({ href, children }) => (
-              <Link
+              <NextLink
                 href={href ?? "#"}
                 target="_blank"
                 rel="noopener noreferrer"
-                component={NextLink}
+                className="text-primary underline hover:opacity-80"
               >
                 {children}
-              </Link>
+              </NextLink>
             ),
-
             img: ({ src, alt }) => (
-              <Box
-                component="img"
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
                 src={src}
-                alt={alt}
-                sx={{
-                  width: "100%",
-                  borderRadius: 2,
-                  my: 3,
-                }}
+                alt={alt ?? ""}
+                className="w-full rounded-lg my-6"
               />
             ),
-
-            hr: () => <Divider sx={{ my: 4 }} />,
+            hr: () => <hr className="my-8 border-gray-200" />,
           }}
         >
           {post.content}
         </ReactMarkdown>
-      </Container>
+      </section>
 
-      <Container component="footer" maxWidth="md" sx={{ py: { xs: 4, md: 6 } }}>
-        <Paper
-          elevation={0}
-          sx={{
-            p: 4,
+      <footer className="container-md py-8 md:py-12">
+        <div
+          className="p-8 rounded-lg border-2 flex flex-col items-center text-center"
+          style={{
             backgroundColor: "rgba(102, 126, 234, 0.05)",
-            borderRadius: 2,
-            border: `2px solid ${colors.primary}`,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            textAlign: "center",
+            borderColor: colors.primary,
           }}
         >
-          <Typography sx={{ color: "#999", mb: 2 }}>
-            Gostou deste conteúdo?
-          </Typography>
-          <Button
-            variant="contained"
-            size="large"
+          <p className="text-[#999] mb-4">Gostou deste conteúdo?</p>
+          <a
             href="https://wa.me/5585992910554?text=Ol%C3%A1%2C%20gostaria%20de%20testar%20o%20Difus%C3%A3o%20Core%20por%2014%20dias%20gr%C3%A1tis!"
-            sx={{
+            className="inline-flex items-center justify-center px-8 py-3 rounded text-white font-bold text-base hover:-translate-y-0.5 transition-all shadow-md"
+            style={{
               background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
-              color: "white",
-              fontWeight: 700,
-              py: 1.5,
-              px: 5,
-              fontSize: "1rem",
-              "&:hover": {
-                transform: "translateY(-2px)",
-                boxShadow: "0 8px 20px rgba(0,0,0,0.15)",
-              },
-              transition: "all 0.3s ease",
             }}
           >
             Compartilhe este Artigo
-          </Button>
-        </Paper>
-      </Container>
-    </Box>
+          </a>
+        </div>
+      </footer>
+    </article>
   );
 }

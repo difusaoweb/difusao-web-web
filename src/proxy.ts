@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import { AUTH_COOKIE } from "@/lib/auth";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/admin/login")) {
     return NextResponse.next();
   }

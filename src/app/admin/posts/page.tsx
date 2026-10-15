@@ -1,32 +1,14 @@
 import Link from "next/link";
 import {
-  AccessTime,
-  Add,
-  CalendarMonth,
-  Edit,
-  Visibility,
-} from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Container,
-  IconButton,
-  Paper,
-  Stack,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TextField,
-  Typography,
-} from "@mui/material";
+  IconClock,
+  IconPlus,
+  IconCalendar,
+  IconEdit,
+  IconEye,
+} from "@tabler/icons-react";
 
 import { prisma } from "@/lib/prisma";
-import { difficultyColor, difficultyLabel } from "@/constants/difficulty";
+import { difficultyChipClass, difficultyLabel } from "@/constants/difficulty";
 
 export default async function AdminPostsPage() {
   const posts = await prisma.post.findMany({
@@ -35,137 +17,143 @@ export default async function AdminPostsPage() {
     },
   });
 
+  const statusLabel = {
+    publish: "Publicado",
+    future: "Futuro",
+    draft: "Rascunho",
+  } as const;
+
+  const statusClass = {
+    publish: "bg-green-100 text-green-800",
+    future: "bg-blue-100 text-blue-800",
+    draft: "bg-gray-100 text-gray-800",
+  } as const;
+
   return (
-    <Container maxWidth="xxl" sx={{ py: 5 }}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={4}
-      >
-        <Box>
-          <Typography variant="h4" fontWeight={700}>
-            Posts
-          </Typography>
-
-          <Typography color="text.secondary">
-            Gerencie os artigos do blog.
-          </Typography>
-        </Box>
-
-        <Button
-          component={Link}
+    <div className="container-xxl py-10">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+        <div>
+          <h1 className="text-2xl font-bold">Posts</h1>
+          <p className="text-gray-600">Gerencie os artigos do blog.</p>
+        </div>
+        <Link
           href="/admin/posts/add"
-          variant="contained"
-          startIcon={<Add />}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-white font-medium hover:opacity-90 transition-opacity"
         >
+          <IconPlus size={18} />
           Novo Post
-        </Button>
-      </Stack>
+        </Link>
+      </div>
 
-      <Paper sx={{ p: 3, mb: 3 }}>
-        <TextField fullWidth placeholder="Pesquisar..." disabled />
-      </Paper>
+      <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
+        <input
+          type="text"
+          placeholder="Pesquisar..."
+          disabled
+          className="w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500 cursor-not-allowed"
+        />
+      </div>
 
-      <Card>
-        <CardContent sx={{ p: 0 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Título</TableCell>
-                <TableCell>Slug</TableCell>
-                <TableCell>Leitura</TableCell>
-                <TableCell>Dificuldade</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Publicação</TableCell>
-                <TableCell align="center">Ações</TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {posts.map((post) => (
-                <TableRow key={post.id} hover>
-                  <TableCell>
-                    <Typography fontWeight={600}>{post.title}</Typography>
-                  </TableCell>
-
-                  <TableCell>{post.slug}</TableCell>
-
-                  <TableCell>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
-                      <AccessTime fontSize="small" />
-                      {post.readingTime} min
-                    </Stack>
-                  </TableCell>
-
-                  <TableCell>
-                    <Chip
-                      size="small"
-                      color={difficultyColor[post.difficulty]}
-                      label={difficultyLabel[post.difficulty]}
-                    />
-                  </TableCell>
-
-                  <TableCell>
-                    <Chip
-                      size="small"
-                      color={
-                        post.status === "publish"
-                          ? "success"
-                          : post.status === "future"
-                            ? "info"
-                            : "default"
-                      }
-                      label={
-                        post.status === "publish"
-                          ? "Publicado"
-                          : post.status === "future"
-                            ? "Futuro"
-                            : "Rascunho"
-                      }
-                    />
-                  </TableCell>
-
-                  <TableCell>
-                    <Stack direction="row" spacing={0.5} alignItems="center">
-                      <CalendarMonth fontSize="small" />
-
-                      {post.publishedAt?.toLocaleDateString("pt-BR")}
-                    </Stack>
-                  </TableCell>
-
-                  <TableCell align="center">
-                    <IconButton
-                      component={Link}
-                      href={`/blog/${post.slug}`}
-                      target="_blank"
-                    >
-                      <Visibility />
-                    </IconButton>
-
-                    <IconButton
-                      component={Link}
-                      href={`/admin/posts/${post.id}`}
-                    >
-                      <Edit />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              ))}
-
-              {posts.length === 0 && (
-                <TableRow>
-                  <TableCell colSpan={7} align="center" sx={{ py: 6 }}>
-                    <Typography color="text.secondary">
-                      Nenhum post cadastrado.
-                    </Typography>
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </Container>
+      <div className="bg-white rounded-lg shadow-sm overflow-x-auto">
+        <table className="w-full text-left">
+          <thead>
+            <tr className="border-b border-gray-200">
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Título
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Slug
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Leitura
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Dificuldade
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Status
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700">
+                Publicação
+              </th>
+              <th className="px-4 py-3 text-sm font-semibold text-gray-700 text-center">
+                Ações
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post) => (
+              <tr
+                key={post.id}
+                className="border-b border-gray-100 hover:bg-gray-50"
+              >
+                <td className="px-4 py-3 font-semibold">{post.title}</td>
+                <td className="px-4 py-3 text-sm text-gray-600">{post.slug}</td>
+                <td className="px-4 py-3">
+                  <span className="inline-flex items-center gap-1 text-sm">
+                    <IconClock size={16} stroke={1.5} />
+                    {post.readingTime} min
+                  </span>
+                </td>
+                <td className="px-4 py-3">
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                      difficultyChipClass[post.difficulty] ??
+                      "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {difficultyLabel[post.difficulty]}
+                  </span>
+                </td>
+                <td className="px-4 py-3">
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                      statusClass[post.status as keyof typeof statusClass] ??
+                      "bg-gray-100 text-gray-800"
+                    }`}
+                  >
+                    {statusLabel[post.status as keyof typeof statusLabel] ??
+                      post.status}
+                  </span>
+                </td>
+                <td className="px-4 py-3">
+                  <span className="inline-flex items-center gap-1 text-sm">
+                    <IconCalendar size={16} stroke={1.5} />
+                    {post.publishedAt?.toLocaleDateString("pt-BR") ?? "—"}
+                  </span>
+                </td>
+                <td className="px-4 py-3 text-center">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    target="_blank"
+                    className="inline-flex p-1.5 rounded hover:bg-gray-100 text-gray-600"
+                    title="Ver"
+                  >
+                    <IconEye size={18} />
+                  </Link>
+                  <Link
+                    href={`/admin/posts/${post.id}`}
+                    className="inline-flex p-1.5 rounded hover:bg-gray-100 text-gray-600"
+                    title="Editar"
+                  >
+                    <IconEdit size={18} />
+                  </Link>
+                </td>
+              </tr>
+            ))}
+            {posts.length === 0 && (
+              <tr>
+                <td
+                  colSpan={7}
+                  className="px-4 py-12 text-center text-gray-500"
+                >
+                  Nenhum post cadastrado.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
