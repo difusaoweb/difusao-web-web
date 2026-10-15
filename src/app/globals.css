@@ -4,7 +4,8 @@
 @source "../";
 
 @theme {
-  --font-sans: "Roboto", system-ui, sans-serif;
+  --font-sans: "Roboto", sans-serif;
+  --default-font-family: "Roboto", sans-serif;
 
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -18,16 +19,38 @@
 }
 
 /* Classes próprias usadas no projeto. */
-@utility container-xl {
-  width: 100%;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: 1rem;
-}
 
 @utility container-xxl {
   width: 100%;
-  max-width: 1400px;
   margin-inline: auto;
   padding-inline: 1rem;
+  max-width: 1320px;
+}
+
+@utility container-xl {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 1140px;
+}
+
+@utility container-lg {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 960px;
+}
+
+@utility container-md {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 720px;
+}
+
+@utility container-sm {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 540px;
 }

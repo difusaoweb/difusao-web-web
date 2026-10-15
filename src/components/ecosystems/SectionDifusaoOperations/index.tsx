@@ -6,7 +6,7 @@ export const SectionDifusaoOperations = () => {
     <div className="bg-[#fafbfc] border-t border-[#dfe2e6]">
       <div
         className="container-xxl flex flex-col items-center justify-center pt-10 pb-60 lg:pb-90 bg-no-repeat bg-bottom bg-[length:200%] lg:bg-contain"
-        style={{ backgroundImage: 'url("/background-tela-smarphone.png")' }}
+        style={{ backgroundImage: 'url("/background-tela-smarphone.webp")' }}
       >
         <h2 className="text-center text-3xl lg:text-5xl font-normal lg:leading-tight mb-2">
           Difusão Operations

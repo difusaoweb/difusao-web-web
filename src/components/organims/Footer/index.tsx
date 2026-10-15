@@ -44,7 +44,6 @@ export const Footer = () => {
               <li key={link.link}>
                 <Link
                   href={link.link}
-                  target="_blank"
                   className="text-inherit no-underline hover:underline"
                 >
                   {link.title}
@@ -58,7 +57,6 @@ export const Footer = () => {
             <a
               key={link}
               href={link}
-              target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-full bg-primary hover:bg-[#333333] transition-colors inline-flex items-center justify-center min-w-0 shadow-none"
             >

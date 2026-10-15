@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const pages = [
   { slug: "blog", title: "Blog" },
-  { slug: "aracoiaba", title: "Difusão Aracoiaba", blank: true },
+  { slug: "aracoiaba", title: "Difusão Aracoiaba" },
   { slug: "operations", title: "Difusão Operations" },
 ];
 
@@ -33,8 +33,6 @@ export const Header = () => {
                 <Link
                   key={page.slug}
                   href={`/${page.slug}`}
-                  target={page.blank ? "_blank" : undefined}
-                  rel={page.blank ? "noopener noreferrer" : undefined}
                   className={`px-3 py-2 text-sm rounded transition-colors ${
                     isActive
                       ? "text-white font-black"
