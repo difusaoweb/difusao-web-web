@@ -48,10 +48,10 @@ export async function updatePost(id: string, formData: FormData) {
     },
   });
 
-  revalidateTag("blog-posts");
-  revalidateTag(`post-${id}`);
-  revalidateTag(`post-slug-${currentPost.slug}`);
-  revalidateTag(`post-slug-${slug}`);
+  revalidateTag("blog-posts", { expire: 0 });
+  revalidateTag(`post-${id}`, { expire: 0 });
+  revalidateTag(`post-slug-${currentPost.slug}`, { expire: 0 });
+  revalidateTag(`post-slug-${slug}`, { expire: 0 });
   revalidatePath("/blog");
   revalidatePath(`/blog/${slug}`);
   revalidatePath("/");

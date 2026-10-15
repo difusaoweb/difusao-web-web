@@ -9,9 +9,7 @@ export async function login(formData: FormData) {
   const password = String(formData.get("password"));
 
   if (password !== ADMIN_PASSWORD) {
-    return {
-      error: "Senha inválida.",
-    };
+    redirect("/admin/login?error=invalid");
   }
 
   (await cookies()).set(AUTH_COOKIE, "1", {
@@ -19,7 +17,6 @@ export async function login(formData: FormData) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",
     path: "/",
-    // sem maxAge -> session cookie
   });
 
   redirect("/admin");

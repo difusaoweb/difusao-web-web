@@ -1,16 +1,5 @@
 "use client";
 import * as React from "react";
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  MenuItem,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
 
 import { slugify } from "@/utils/slugify";
 
@@ -57,6 +46,10 @@ interface PostFormProps {
   defaultValues?: Partial<PostFormValues>;
   showPublished?: boolean;
 }
+
+const inputClass =
+  "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-sm";
+const labelClass = "block text-sm font-medium text-gray-700 mb-1";
 
 export function PostForm({
   title,
@@ -115,263 +108,225 @@ export function PostForm({
   }, [postTitle, slugEdited]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 3,
-      }}
-    >
-      <Typography variant="h5" fontWeight={700}>
-        {title}
-      </Typography>
-      <Grid container spacing={3} component="form" action={action}>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={8}
-          sx={{ display: "flex", flexDirection: "column", gap: 3 }}
-        >
-          <Paper
-            sx={{ p: 2, gap: 2, display: "flex", flexDirection: "column" }}
-          >
-            <TextField
-              label="Título"
-              name="title"
-              required
-              fullWidth
-              value={postTitle}
-              onChange={(e) => setPostTitle(e.target.value)}
-              inputProps={{
-                minLength: 5,
-                maxLength: 150,
-              }}
-            />
-            <TextField
-              label="Slug"
-              name="slug"
-              required
-              fullWidth
-              value={slug}
-              onChange={(e) => {
-                setSlug(e.target.value);
-                setSlugEdited(true);
-              }}
-              helperText="Ex.: publicos-personalizados-no-meta-ads"
-              inputProps={{
-                pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$",
-              }}
-            />
-          </Paper>
-          <Paper sx={{ p: 2 }}>
-            <TextField
-              label="Conteúdo"
+    <div className="flex flex-col gap-6">
+      <h1 className="text-xl font-bold">{title}</h1>
+      <form action={action} className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* Left column */}
+        <div className="md:col-span-8 flex flex-col gap-6">
+          <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col gap-4">
+            <div>
+              <label htmlFor="title" className={labelClass}>
+                Título
+              </label>
+              <input
+                id="title"
+                name="title"
+                required
+                value={postTitle}
+                onChange={(e) => setPostTitle(e.target.value)}
+                minLength={5}
+                maxLength={150}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="slug" className={labelClass}>
+                Slug
+              </label>
+              <input
+                id="slug"
+                name="slug"
+                required
+                value={slug}
+                onChange={(e) => {
+                  setSlug(e.target.value);
+                  setSlugEdited(true);
+                }}
+                pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                className={inputClass}
+              />
+              <p className="mt-1 text-xs text-gray-500">
+                Ex.: publicos-personalizados-no-meta-ads
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-4">
+            <label htmlFor="content" className={labelClass}>
+              Conteúdo
+            </label>
+            <textarea
+              id="content"
               name="content"
               required
-              multiline
               rows={15}
-              fullWidth
               defaultValue={defaultValues?.content}
-              inputProps={{
-                minLength: 100,
-              }}
+              minLength={100}
+              className={inputClass}
             />
-          </Paper>
-          <Paper sx={{ p: 2 }}>
-            <Box>
-              <Stack spacing={3}>
-                <TextField
-                  label="Subtítulo"
-                  name="subtitle"
-                  required
-                  fullWidth
-                  defaultValue={defaultValues?.subtitle}
-                  inputProps={{
-                    minLength: 10,
-                    maxLength: 250,
-                  }}
-                />
+          </div>
 
-                <TextField
-                  label="Tempo de leitura (min)"
-                  name="readingTime"
-                  type="number"
-                  required
-                  fullWidth
-                  defaultValue={defaultValues?.readingTime}
-                  inputProps={{
-                    min: 1,
-                    max: 120,
-                  }}
-                />
+          <div className="bg-white rounded-lg shadow-sm p-4 space-y-4">
+            <div>
+              <label htmlFor="subtitle" className={labelClass}>
+                Subtítulo
+              </label>
+              <input
+                id="subtitle"
+                name="subtitle"
+                required
+                defaultValue={defaultValues?.subtitle}
+                minLength={10}
+                maxLength={250}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="readingTime" className={labelClass}>
+                Tempo de leitura (min)
+              </label>
+              <input
+                id="readingTime"
+                name="readingTime"
+                type="number"
+                required
+                defaultValue={defaultValues?.readingTime}
+                min={1}
+                max={120}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="difficulty" className={labelClass}>
+                Dificuldade
+              </label>
+              <select
+                id="difficulty"
+                name="difficulty"
+                required
+                defaultValue={defaultValues?.difficulty ?? ""}
+                className={inputClass}
+              >
+                <option value="">Selecione...</option>
+                <option value="BEGINNER">Iniciante</option>
+                <option value="INTERMEDIATE">Intermediário</option>
+                <option value="ADVANCED">Avançado</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-                <TextField
-                  label="Dificuldade"
-                  name="difficulty"
-                  select
-                  required
-                  fullWidth
-                  defaultValue={defaultValues?.difficulty ?? ""}
-                >
-                  <MenuItem value="">Selecione...</MenuItem>
+        {/* Right column */}
+        <div className="md:col-span-4 flex flex-col gap-6">
+          <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col">
+            <h2 className="text-lg font-semibold leading-none">Publicar</h2>
+            <hr className="my-4 border-gray-200" />
 
-                  <MenuItem value="BEGINNER">Iniciante</MenuItem>
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <span className="text-sm w-20">Status</span>
+              <select
+                name="status"
+                required
+                value={status}
+                onChange={(e) => setStatus(e.target.value as PostStatus)}
+                className="px-2 py-1.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option value="draft">Rascunho</option>
+                <option value="future">Futuro</option>
+                <option value="publish">Publicado</option>
+              </select>
+            </div>
 
-                  <MenuItem value="INTERMEDIATE">Intermediário</MenuItem>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-sm w-20">Publicar</span>
+              <input type="hidden" name="publishedAt" value={publishedAt} />
+              <button
+                type="button"
+                onClick={handleScheduleOpen}
+                className={`px-3 py-1.5 text-sm border border-gray-300 rounded-md hover:bg-gray-50 transition-colors ${
+                  schedule ? "opacity-0 pointer-events-none" : ""
+                }`}
+              >
+                {defaultValues
+                  ? publishedAt || "Imediatamente"
+                  : publishedAt === publishedAtDefault
+                    ? "Imediatamente"
+                    : publishedAt}
+              </button>
+            </div>
 
-                  <MenuItem value="ADVANCED">Avançado</MenuItem>
-                </TextField>
-              </Stack>
-            </Box>
-          </Paper>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={4}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 3,
-          }}
-        >
-          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-            <Typography variant="h6" sx={{ lineHeight: 1 }}>
-              Publicar
-            </Typography>
-            <Divider sx={{ my: 2 }} />
-            <Grid
-              container
-              spacing={3}
-              sx={{
-                alignItems: "center",
-                mb: 1,
-              }}
-            >
-              <Grid item xs={12} sm={6} md={4}>
-                <Typography>Status</Typography>
-              </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <TextField
-                  name="status"
-                  select
-                  required
-                  size="small"
-                  variant="outlined"
-                  value={status}
-                  onChange={(e) => setStatus(e.target.value as PostStatus)}
-                >
-                  <MenuItem value="draft">Rascunho</MenuItem>
-                  <MenuItem value="future">Futuro</MenuItem>
-                  <MenuItem value="publish">Publicado</MenuItem>
-                </TextField>
-              </Grid>
-            </Grid>
-            <Grid
-              container
-              spacing={3}
-              sx={{
-                alignItems: "center",
-              }}
-            >
-              <Grid item xs={12} sm={6} md={4}>
-                <Typography>Publicar</Typography>
-              </Grid>
-              <Grid item xs={12} sm={6} md={4}>
-                <input type="hidden" name="publishedAt" value={publishedAt} />
-                <Button
-                  variant="outlined"
-                  onClick={handleScheduleOpen}
-                  size="small"
-                  sx={{
-                    textTransform: "unset",
-                    opacity: schedule ? 0 : 1,
-                  }}
-                >
-                  {defaultValues
-                    ? publishedAt
-                    : publishedAt === publishedAtDefault
-                      ? "Imediatamente"
-                      : publishedAt}
-                </Button>
-              </Grid>
-            </Grid>
             {schedule && (
-              <>
-                <TextField
+              <div className="mt-2 space-y-2">
+                <input
                   type="datetime-local"
-                  fullWidth
                   value={publishedAtTemp}
                   onChange={(event) => setPublishedAtTemp(event.target.value)}
-                  sx={{
-                    mt: 0.5,
-                    mb: 1,
-                  }}
+                  className={inputClass}
                 />
-                <Box sx={{ display: "flex", flexDirection: "row", gap: 1 }}>
-                  <Button
-                    variant="outlined"
-                    size="small"
+                <div className="flex gap-2">
+                  <button
+                    type="button"
                     onClick={handleScheduleOk}
+                    className="px-3 py-1.5 text-sm border border-gray-300 rounded-md hover:bg-gray-50"
                   >
                     OK
-                  </Button>
-                  <Button
-                    variant="text"
-                    size="small"
+                  </button>
+                  <button
+                    type="button"
                     onClick={handleScheduleCancel}
+                    className="px-3 py-1.5 text-sm text-gray-600 hover:text-gray-900"
                   >
                     Cancelar
-                  </Button>
-                </Box>
-              </>
+                  </button>
+                </div>
+              </div>
             )}
-            <Divider
-              sx={{
-                my: 2,
-              }}
-            />
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-              }}
-            >
-              <Button type="submit" variant="contained">
+
+            <hr className="my-4 border-gray-200" />
+            <div className="flex justify-end">
+              <button
+                type="submit"
+                className="px-4 py-2 rounded-md bg-primary text-white font-medium hover:opacity-90 transition-opacity"
+              >
                 {submitText}
-              </Button>
-            </Box>
-          </Paper>
-          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-            <Typography variant="h6" sx={{ lineHeight: 1 }}>
-              Imagem
-            </Typography>
-            <Divider sx={{ my: 2 }} />
-            <TextField
-              label="Thumbnail"
-              name="thumbnail"
-              required
-              fullWidth
-              defaultValue={defaultValues?.thumbnail}
-              sx={{
-                mb: 2,
-              }}
-            />
-            <TextField
-              label="Thumbnail Full"
-              name="thumbnailFull"
-              fullWidth
-              defaultValue={
-                defaultValues?.thumbnailFull ?? defaultValues?.thumbnail
-              }
-              helperText="Opcional. Se vazio, será usado o thumbnail principal."
-            />
-          </Paper>
-        </Grid>
-      </Grid>
-    </Box>
+              </button>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-sm p-4 flex flex-col">
+            <h2 className="text-lg font-semibold leading-none">Imagem</h2>
+            <hr className="my-4 border-gray-200" />
+            <div className="mb-4">
+              <label htmlFor="thumbnail" className={labelClass}>
+                Thumbnail
+              </label>
+              <input
+                id="thumbnail"
+                name="thumbnail"
+                required
+                defaultValue={defaultValues?.thumbnail}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="thumbnailFull" className={labelClass}>
+                Thumbnail Full
+              </label>
+              <input
+                id="thumbnailFull"
+                name="thumbnailFull"
+                defaultValue={
+                  defaultValues?.thumbnailFull ?? defaultValues?.thumbnail
+                }
+                className={inputClass}
+              />
+              <p className="mt-1 text-xs text-gray-500">
+                Opcional. Se vazio, será usado o thumbnail principal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   );
 }

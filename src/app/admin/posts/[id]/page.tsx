@@ -1,4 +1,3 @@
-import { Container } from "@mui/material";
 import { PostForm } from "@/components/admin/PostForm";
 import { getPost } from "@/services/Post/getPost";
 import { updatePost } from "@/services/Post/updatePost";
@@ -13,7 +12,7 @@ export default async function Page({
   const post = await getPost(id);
 
   return (
-    <Container maxWidth="xxl" sx={{ py: 6 }}>
+    <div className="container-xxl py-12">
       <PostForm
         title="Editar Post"
         submitText="Salvar alterações"
@@ -21,6 +20,6 @@ export default async function Page({
         defaultValues={post}
         showPublished
       />
-    </Container>
+    </div>
   );
 }
