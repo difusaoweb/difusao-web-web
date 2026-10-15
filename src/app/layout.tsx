@@ -1,16 +1,19 @@
-import { Inter } from "next/font/google";
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import Image from "next/image";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "@fontsource/roboto/900.css";
+import "../styles/globals.css";
 
 import { theme } from "@/styles/theme";
 import { Header } from "@/components/molecules/Header";
 import { Footer } from "@/components/organims/Footer";
 
 import type { Metadata } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Difusão Web",
@@ -40,7 +43,7 @@ fbq('init', '2179093299356861');
 fbq('track', 'PageView');`}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body>
         <noscript>
           <Image
             height="1"

@@ -1,0 +1,12 @@
+@theme {
+  --font-sans: "Roboto", sans-serif;
+  --default-font-family: "Roboto", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}

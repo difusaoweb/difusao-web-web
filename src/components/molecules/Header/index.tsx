@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 
 const pages = [
   { slug: "blog", title: "Blog" },
+  { slug: "aracoiaba", title: "Difusão Aracoiaba", blank: true },
   { slug: "operations", title: "Difusão Operations" },
 ];
 
@@ -28,28 +29,25 @@ export const Header = () => {
               alt="Logo da Difusão Web"
             />
           </Link>
+
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             {pages.map((page) => (
-              <Link
-                href={`/${page.slug}`}
-                passHref
-                legacyBehavior
+              <Button
                 key={page.slug}
+                component={Link}
+                href={`/${page.slug}`}
+                target={page.blank ? "_blank" : undefined}
+                rel={page.blank ? "noopener noreferrer" : undefined}
+                sx={{
+                  color: pathname.startsWith(`/${page.slug}`) ? "#fff" : "#eee",
+                  textTransform: "none",
+                  fontWeight: pathname.startsWith(`/${page.slug}`)
+                    ? 900
+                    : undefined,
+                }}
               >
-                <Button
-                  sx={{
-                    color: pathname.startsWith(`/${page.slug}`)
-                      ? "#fff"
-                      : "#eee",
-                    textTransform: "none",
-                    fontWeight: pathname.startsWith(`/${page.slug}`)
-                      ? 900
-                      : undefined,
-                  }}
-                >
-                  {page.title}
-                </Button>
-              </Link>
+                {page.title}
+              </Button>
             ))}
           </Box>
         </Toolbar>
