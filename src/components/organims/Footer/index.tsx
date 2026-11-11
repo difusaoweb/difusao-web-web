@@ -54,14 +54,14 @@ export const Footer = () => {
         </nav>
         <div className="flex gap-1">
           {linksSocial.map(({ link, src, alt }) => (
-            <a
+            <Link
               key={link}
               href={link}
               rel="noopener noreferrer"
               className="p-2 rounded-full bg-primary hover:bg-[#333333] transition-colors inline-flex items-center justify-center min-w-0 shadow-none"
             >
               <Image src={src} width={24} height={24} alt={alt} />
-            </a>
+            </Link>
           ))}
         </div>
       </section>

@@ -8,9 +8,16 @@ import {
   IconReceipt,
   IconUsers,
   IconDeviceMobile,
+  IconExternalLink,
 } from "@tabler/icons-react";
+import Link from "next/link";
 
 import { fbq } from "@/lib/metaPixel";
+
+const phoneNumber = "+5585992910554"; // Replace with your WhatsApp number
+const message =
+  "Olá! Tenho dúvida sobre o Difusão Operations, vim do site da Difusão Web.";
+const WHATSAPP_URL = `https://wa.me/${phoneNumber.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`;
 
 export const OperationsPage = () => {
   const colors = {
@@ -265,14 +272,22 @@ export const OperationsPage = () => {
           <p className="mb-6 opacity-95">
             Acompanhe seu negócio crescer com clareza.
           </p>
-          <a
-            href="https://wa.me/5585992910554?text=Ol%C3%A1%2C%20gostaria%20de%20testar%20o%20Difus%C3%A3o%20Core%20por%2014%20dias%20gr%C3%A1tis!"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded bg-white font-bold text-base hover:bg-gray-100 hover:-translate-y-0.5 transition-all shadow-md"
-            style={{ color: colors.primary }}
-          >
-            <IconBrandWhatsapp size={22} stroke={1.5} />
-            Comece Agora no WhatsApp
-          </a>
+          <div className="flex justify-center gap-4">
+            <Link
+              href="https://difusaooperations.com/signup?utm_source=difusaoweb&utm_medium=site&utm_campaign=institucional&utm_content=botao_teste"
+              className="w-[calc(50%-8px)] text-center justify-center inline-flex items-center gap-2 px-8 py-3 rounded bg-[#9300d3] font-bold text-base text-white transition-all shadow-md hover:bg-[#9300d3]/90 hover:-translate-y-0.5"
+            >
+              <IconExternalLink size={22} stroke={1.5} />
+              Testar agora
+            </Link>
+            <Link
+              href={WHATSAPP_URL}
+              className="w-[calc(50%-8px)] text-center justify-center inline-flex items-center gap-2 px-8 py-3 rounded bg-[rgb(37,211,102)] font-bold text-base transition-all shadow-md hover:bg-[rgb(37,211,102)]/90 hover:-translate-y-0.5"
+            >
+              <IconBrandWhatsapp size={22} stroke={1.5} />
+              Tirar dúvida no WhatsApp
+            </Link>
+          </div>
         </div>
       </div>
     </div>

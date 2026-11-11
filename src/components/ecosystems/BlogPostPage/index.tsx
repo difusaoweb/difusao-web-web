@@ -4,15 +4,12 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import NextLink from "next/link";
 import NextImage from "next/image";
-import {
-  IconCalendar,
-  IconClock,
-  IconGauge,
-} from "@tabler/icons-react";
+import { IconCalendar, IconClock, IconGauge } from "@tabler/icons-react";
 
 import { Post } from "@/generated/prisma";
 import { fbq } from "@/lib/metaPixel";
 import { difficultyChipClass, difficultyLabel } from "@/constants/difficulty";
+import Link from "next/link";
 
 interface BlogPostPageProps {
   post: Post;
@@ -180,7 +177,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
           }}
         >
           <p className="text-[#999] mb-4">Gostou deste conteúdo?</p>
-          <a
+          <Link
             href="https://wa.me/5585992910554?text=Ol%C3%A1%2C%20gostaria%20de%20testar%20o%20Difus%C3%A3o%20Core%20por%2014%20dias%20gr%C3%A1tis!"
             className="inline-flex items-center justify-center px-8 py-3 rounded text-white font-bold text-base hover:-translate-y-0.5 transition-all shadow-md"
             style={{
@@ -188,7 +185,7 @@ export function BlogPostPage({ post }: BlogPostPageProps) {
             }}
           >
             Compartilhe este Artigo
-          </a>
+          </Link>
         </div>
       </footer>
     </article>

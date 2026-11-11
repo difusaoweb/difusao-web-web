@@ -13,9 +13,7 @@ export default function LegalCloudTermsOfServicePage() {
         <div className="container-xxl">
           <div>
             <div>
-              <h1 className="text-3xl font-bold mb-4">
-                Termos de Uso
-              </h1>
+              <h1 className="text-3xl font-bold mb-4">Termos de Uso</h1>
               <p className="mb-3 leading-relaxed text-gray-700">
                 <b>Última atualização:</b> 29 de setembro de 2025
               </p>
@@ -23,9 +21,8 @@ export default function LegalCloudTermsOfServicePage() {
             <div>
               <p className="mb-3 leading-relaxed text-gray-700">
                 Bem-vindo ao aplicativo <b>Difusão Web</b>, um marketplace de
-                vendas de produtos locais da cidade de Aracoiaba. Ao utilizar
-                nosso aplicativo, você concorda com os seguintes termos e
-                condições.
+                vendas de produtos locais da cidade de Social. Ao utilizar nosso
+                aplicativo, você concorda com os seguintes termos e condições.
               </p>
             </div>
             <div>

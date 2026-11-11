@@ -6,7 +6,7 @@ export const SectionDifusaoOperations = () => {
     <div className="bg-[#fafbfc] border-t border-[#dfe2e6]">
       <div
         className="container-xxl flex flex-col items-center justify-center pt-10 pb-60 lg:pb-90 bg-no-repeat bg-bottom bg-[length:200%] lg:bg-contain"
-        style={{ backgroundImage: 'url("/background-tela-smarphone.webp")' }}
+        style={{ backgroundImage: 'url("/background-operations.webp")' }}
       >
         <h2 className="text-center text-3xl lg:text-5xl font-normal lg:leading-tight mb-2">
           Difusão Operations
@@ -22,12 +22,12 @@ export const SectionDifusaoOperations = () => {
           >
             Saiba mais
           </Link>
-          <a
-            href="https://operations.difusaoweb.com"
+          <Link
+            href="https://difusaooperations.com"
             className="inline-flex items-center justify-center px-4 py-2 rounded border border-primary text-primary text-sm font-medium shadow-none hover:bg-primary/5 transition-colors"
           >
             Testar agora
-          </a>
+          </Link>
         </div>
       </div>
     </div>

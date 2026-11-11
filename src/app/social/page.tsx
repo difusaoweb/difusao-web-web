@@ -1,4 +1,6 @@
-export default function DifusaoAracoiabaPage() {
+import Link from "next/link";
+
+export default function DifusaoSocialPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
       <section className="relative flex min-h-screen items-center justify-center px-6 py-20">
@@ -10,46 +12,46 @@ export default function DifusaoAracoiabaPage() {
               D
             </div>
             <span className="text-lg font-bold tracking-tight">
-              Difusão Aracoiaba
+              Difusão Social
             </span>
           </header>
 
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2 text-sm font-medium text-blue-300">
               <span className="h-2 w-2 rounded-full bg-blue-400" />
-              Uma rede social para Aracoiaba
+              Uma rede social para Social
             </span>
 
             <h1 className="mt-8 text-4xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl">
-              Aracoiaba tem
+              Social tem
               <span className="block text-blue-400">muito a compartilhar.</span>
             </h1>
 
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              O Difusão Aracoiaba é um espaço para as pessoas da nossa cidade
+              O Difusão Social é um espaço para as pessoas da nossa cidade
               compartilharem ideias, publicações e momentos do dia a dia,
               conectando a comunidade em um só lugar.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="https://difusaoaracoiaba.com.br"
+              <Link
+                href="https://difusaosocial.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-7 py-4 font-bold text-white transition hover:bg-blue-400"
               >
                 Conheça a rede social
                 <span aria-hidden="true">↗</span>
-              </a>
+              </Link>
 
-              <a
-                href="https://difusaoaracoiaba.com.br"
+              <Link
+                href="https://difusaosocial.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-xl border border-slate-700 px-7 py-4 font-semibold text-slate-200 transition hover:border-slate-500 hover:bg-white/5"
               >
                 Quero fazer parte
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -84,18 +86,6 @@ export default function DifusaoAracoiabaPage() {
               </p>
             </div>
           </div>
-
-          <footer className="mt-16 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-sm text-slate-500 sm:flex-row">
-            <span>Feito para quem vive Aracoiaba.</span>
-            <a
-              href="https://difusaoaracoiaba.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-white"
-            >
-              difusaoaracoiaba.com.br
-            </a>
-          </footer>
         </div>
       </section>
     </main>

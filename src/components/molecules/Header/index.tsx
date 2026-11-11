@@ -1,13 +1,12 @@
 "use client";
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const pages = [
-  { slug: "blog", title: "Blog" },
-  { slug: "aracoiaba", title: "Difusão Aracoiaba" },
   { slug: "operations", title: "Difusão Operations" },
+  { slug: "social", title: "Difusão Social" },
+  { slug: "blog", title: "Blog" },
 ];
 
 export const Header = () => {
