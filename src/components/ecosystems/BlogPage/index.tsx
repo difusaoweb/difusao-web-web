@@ -117,13 +117,13 @@ export const BlogPage = ({ posts }: BlogPageProps) => {
             Receba novos conteúdos
           </h2>
           <p className="mb-6">Em breve você poderá assinar nossa newsletter.</p>
-          <a
+          <Link
             href="https://wa.me/5585992910554?text=Ol%C3%A1%2C%20gostaria%20de%20testar%20o%20Difus%C3%A3o%20Core%20por%2014%20dias%20gr%C3%A1tis!"
             className="inline-flex items-center gap-2 px-8 py-3 rounded bg-white text-[#667eea] font-bold text-base hover:bg-gray-100 hover:-translate-y-0.5 transition-all shadow-md"
           >
             <IconBrandWhatsapp size={22} stroke={1.5} />
             Inscrever-se
-          </a>
+          </Link>
         </div>
       </div>
     </div>

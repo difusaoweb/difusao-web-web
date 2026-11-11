@@ -1,10 +1,8 @@
-import * as React from "react";
-
 import { SectionHero } from "@/components/ecosystems/SectionHero";
 import { SectionBlogPage } from "@/components/ecosystems/SectionBlogPage";
 import { SectionDifusaoOperations } from "@/components/ecosystems/SectionDifusaoOperations";
 import { getPosts } from "@/services/Post/getPosts";
-import { SectionDifusaoAracoiaba } from "@/components/ecosystems/SectionDifusaoAracoiaba";
+import { SectionDifusaoSocial } from "@/components/ecosystems/SectionDifusaoSocial";
 
 export default async function HomePage() {
   const posts = await getPosts(3);
@@ -12,9 +10,9 @@ export default async function HomePage() {
   return (
     <>
       <SectionHero />
-      <SectionBlogPage posts={posts} />
       <SectionDifusaoOperations />
-      <SectionDifusaoAracoiaba />
+      <SectionDifusaoSocial />
+      <SectionBlogPage posts={posts} />
     </>
   );
 }

@@ -23,10 +23,10 @@ export default function LegalPrivacyPolicyPage() {
             </div>
             <div>
               <p className="mb-3 leading-relaxed text-gray-700">
-                O aplicativo <b>Difusão Aracoiaba</b> valoriza a sua privacidade
-                e está comprometido em proteger as informações pessoais
-                fornecidas pelos usuários. Esta Política de Privacidade explica
-                como coletamos, usamos e protegemos seus dados ao utilizar nosso
+                O aplicativo <b>Difusão Social</b> valoriza a sua privacidade e
+                está comprometido em proteger as informações pessoais fornecidas
+                pelos usuários. Esta Política de Privacidade explica como
+                coletamos, usamos e protegemos seus dados ao utilizar nosso
                 aplicativo.
               </p>
             </div>
@@ -35,8 +35,7 @@ export default function LegalPrivacyPolicyPage() {
                 1. Informações coletadas
               </h2>
               <p className="mb-3 leading-relaxed text-gray-700">
-                O <b>Difusão Aracoiaba</b> pode coletar as seguintes
-                informações:
+                O <b>Difusão Social</b> pode coletar as seguintes informações:
               </p>
               <ol>
                 <li>
@@ -117,7 +116,7 @@ export default function LegalPrivacyPolicyPage() {
 
 ## 4. Compartilhamento de informações
 
-O **Difusão Aracoiaba** não vende nem compartilha suas informações pessoais com terceiros, exceto:
+O **Difusão Social** não vende nem compartilha suas informações pessoais com terceiros, exceto:
 
 * Quando necessário para cumprir **obrigações legais**;
 * Quando for necessário para o funcionamento do aplicativo (ex.: serviços de hospedagem e armazenamento em nuvem).
@@ -157,7 +156,7 @@ Se tiver dúvidas ou solicitações relacionadas a esta Política de Privacidade
 
 👉 Essa versão está em conformidade com boas práticas de apps que usam **permissão de fotos** no Expo e com **LGPD (Lei Geral de Proteção de Dados do Brasil)**.
 
-Quer que eu prepare também uma **versão curta** dessa política para enviar à **Play Aracoiaba/App Aracoiaba**, já que elas exigem um resumo objetivo? */}
+Quer que eu prepare também uma **versão curta** dessa política para enviar à **Play Social/App Social**, já que elas exigem um resumo objetivo? */}
           </div>
         </div>
       </div>
